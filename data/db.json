@@ -1,0 +1,17 @@
+{
+  "pessoas": [
+    {
+
+      "nome": "json-server",
+      "cidade": "ssbv",
+      "estado": "typicode"
+    },
+
+    {
+
+      "nome": "php",
+      "cidade": "ssbv",
+      "estado": "typicode"
+    }
+  ]
+}

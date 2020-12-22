@@ -1,0 +1,79 @@
+<div class="ui-g">
+  <div class="container">
+    <div class="ui-g-12">
+      <h1>Nova Empresa</h1>
+    </div>
+          <p-fieldset legend="Cadastro nova pessoa" class="ui-g-12 ui-md-12">
+   <form action="">
+
+          <div class="ui-g-12  ui-md-9 ui-fluid">
+            <label>Nome</label>
+            <input id="input" name="nome" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder="Nome completo" class="ng-dirty ng-invalid">
+            <div *ngIf= "nome.hasError('required') && nome.dirty">
+            <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
+        </div>
+      </div>
+
+            <div class="ui-g-12  ui-md-3 ui-fluid">
+                <label>Nome abreviado</label>
+                <input id="input" name="nomeAbreviado" type="text" pInputText ngModel #nomeAbreviado="ngModel" required minlength="10" placeholder="Nome abreviado" class="ng-dirty ng-invalid">
+                <div *ngIf= "nomeAbreviado.hasError('required') && nomeAbreviado.dirty">
+                <p-message severity="error" text="Nome abreviado é obrigatorio"></p-message>
+          </div>
+        </div>
+
+
+        <div class="ui-g-12  ui-md-6 ui-fluid">
+          <label>Pessoa de contato</label>
+          <input id="input" name="" type="text" pInputText>
+      </div>
+
+
+      <div class="ui-g-12  ui-md-3 ui-fluid">
+        <label>Número</label>
+        <p-inputMask type="text" mask="99-999999999" placeholder="Seu numero"></p-inputMask>
+    </div>
+
+    <div class="ui-g-12  ui-md-3 ui-fluid">
+      <label>CNPJ</label>
+      <p-inputMask type="text" mask="99.999.999/999-99" placeholder="000.000.000/000-00"></p-inputMask>
+  </div>
+
+    <div class="ui-g-12  ui-md-4 ui-fluid">
+      <label>Endereço completo</label>
+      <input id="input" name="" type="text" pInputText>
+  </div>
+
+  <div class="ui-g-12  ui-md-4 ui-fluid">
+    <label>Bairro</label>
+    <input id="input" name="" type="text" pInputText>
+  </div>
+
+  <div class="ui-g-12  ui-md-4 ui-fluid">
+  <label>CEP</label>
+   <p-inputMask  mask="99999-999" name=""></p-inputMask>
+  </div>
+
+  <div class="ui-g-12  ui-md-6 ui-fluid">
+  <label>Cidade</label>
+  <input id="input" name="" type="text" pInputText>
+  </div>
+
+  <div class="ui-g-12  ui-md-6 ui-fluid">
+  <label>Estado</label>
+  <input id="input" name="" type="text" pInputText>
+  </div>
+
+
+  <div class="ui-g-12">
+  <button pButton type="submit" label="salvar" ></button>
+  <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+  <a href="http://"> Voltar a pesquisa</a>
+  </div>
+  </form>
+      </p-fieldset>
+  </div>
+
+</div>
+
+<app-pesquisa-empresa></app-pesquisa-empresa>

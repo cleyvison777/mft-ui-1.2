@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.0.0",
+    "@angular/cdk": "^11.0.2",
     "@angular/common": "~7.0.0",
     "@angular/compiler": "~7.0.0",
     "@angular/core": "~7.0.0",
@@ -21,7 +22,12 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "core-js": "^2.5.4",
+    "ng2-currency-mask": "^9.0.2",
+    "ng2-toasty": "^4.0.3",
+    "primeicons": "^1.0.0",
+    "primeng": "^7.0.0-beta.1",
     "rxjs": "~6.3.3",
+    "rxjs-compat": "^6.6.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
