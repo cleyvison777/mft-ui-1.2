@@ -1,0 +1,49 @@
+<div class="container">
+      <p-fieldset legend="Areas Cadastradas">
+        <div class="ui-g">
+          <div class="ui-g-12">
+              <form  autocomplete="off"  (ngSubmit)="pesquisarArea()">
+                  <div class="ui-g-12 ui-fluid">
+                      <label style="display: block">Pesquisar por Nome da Área: </label>
+                      <div class="ui-g-12 ui-md-7">
+                          <div class="ui-inputgroup">
+                              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                              <input type="text" pInputText name="nmArea" [(ngModel)]="filtro.nmArea"  placeholder="Pesquisar">
+                          </div>
+                      </div>
+
+                  </div>
+              </form>
+          </div>
+        </div>
+
+        <div class="ui-g">
+          <p-table [value]="area" [paginator]="true"  [rows]="filtro.size" [responsive]="true" [lazy]="true" #tabela
+           (onLazyLoad)="aoMudarPagina($event)" [totalRecords]="totalRegistros">
+              <ng-template pTemplate="header">
+                  <tr>
+                    <th>Empresa</th>
+                    <th>Nome da Area</th>
+                    <th>Estado</th>
+                    <th>Municipio</th>
+                    <th></th>
+
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-area>
+                  <tr class="hoverAmf">
+                    <td>{{area.cdEmpresa.nmEmpresa}}</td>
+                    <td>{{area.nmArea}}</td>
+                    <td>{{area.nmEstado}}</td>
+                    <td>{{area.nmMunicipio}}</td>
+                  <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
+                    (click)="excluirAmf(area)"></button>
+                  <button pButton icon="pi pi-pencil" pTooltip="editar"></button></td>
+              </tr>
+            </ng-template>
+          </p-table>
+
+      </div>
+   </p-fieldset>
+
+</div>

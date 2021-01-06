@@ -1,3 +1,8 @@
+import { PesquisaAreaComponent } from './pesquisa-area/pesquisa-area.component';
+import { CadastroAreaComponent } from './cadastro-area/cadastro-area.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/components/messages/messages';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
@@ -16,17 +21,12 @@ import { TabViewModule } from 'primeng/tabview';
 import { AppRoutingModule } from './../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CadastroEmpresaComponent } from './cadastro-empresa/cadastro-empresa.component';
-import { PesquisaEmpresaComponent } from './pesquisa-empresa/pesquisa-empresa.component';
-import { PesquisaGridComponent } from './pesquisa-grid/pesquisa-grid.component';
-
+import {CheckboxModule} from 'primeng/checkbox';
 @NgModule({
   declarations: [
-    CadastroEmpresaComponent,
-    PesquisaEmpresaComponent,
-    PesquisaGridComponent],
+    CadastroAreaComponent,
+    PesquisaAreaComponent
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -49,11 +49,12 @@ import { PesquisaGridComponent } from './pesquisa-grid/pesquisa-grid.component';
     MessagesModule,
     MessageModule,
     ButtonModule,
+    CheckboxModule
 
   ],
-  exports:[
-    CadastroEmpresaComponent,
-    PesquisaEmpresaComponent
+  exports: [
+    CadastroAreaComponent,
+    PesquisaAreaComponent
   ]
 })
-export class EmpresaModule { }
+export class AreaModule { }

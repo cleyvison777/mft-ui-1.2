@@ -1,0 +1,218 @@
+<div class="ui-g">
+  <div class="container">
+    <div class="ui-g-12">
+      <h1>Nova Area</h1>
+    </div>
+
+    <p-fieldset legend="Cadastro AMF">
+
+                 <div class="ui-g-12 ui-md-3 ui-fluid">
+                   <label>Empresa:</label>
+                   <p-dropdown name="empresa" [autoWidth]="false" placeholder= "Selecione a empresa" required filter="true"></p-dropdown>
+                 </div>
+
+                 <div class="ui-g-12 ui-md-3 ui-fluid">
+                   <label>Nome: </label>
+                   <input type="text" pInputText name="nmArea" required>
+
+                 </div>
+
+                 <div class="ui-g-12 ui-md-3 ui-fluid">
+                   <label>Munícipio: </label>
+                   <input type="text" pInputText name="nmMunicipio" required>
+                 </div>
+                 <div class="ui-g-12 ui-md-3 ui-fluid">
+                   <label >Estado: </label>
+                   <input type="text" pInputText name="nmEstado"  required>
+                 </div>
+
+                 <p-fieldset legend="Informações Geograficas">
+                   <div class="ui-g">
+
+                      <div class="ui-g-12 ui-md-5 ui-fluid">
+                        <label>Tipologia Florestal: </label>
+                        <input type="text" pInputText name="tipoLogiaFlorestal">
+                      </div>
+
+                      <div class="ui-g-2 ui-md-1 ui-fluid">
+                        <label>Latitude:</label>
+                        <input type="number" min="0" pInputText name="latitude1Grau">
+                      </div>
+                      <span style="margin-top: 30px;">°</span>
+                      <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                        <input type="number" min="0" pInputText name="latitude1Minuto">
+                      </div>
+                      <span style="margin-top: 30px;">|</span>
+
+                      <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                        <input type="text" pInputText name="latitude1Orientacao" >
+                      </div>
+
+                      <span style="margin-top: 40px;">a</span>
+                      <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                        <input type="number" min="0" pInputText name="latitude2Grau">
+                      </div>
+
+                      <span style="margin-top: 30px;">°</span>
+                      <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                        <input type="number" min="0" pInputText name="latitude2Minuto">
+                      </div>
+                      <span style="margin-top: 30px;">|</span>
+
+                      <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                        <input type="text" pInputText name="latitude2Orientacao">
+                      </div>
+
+                   </div>
+
+                   <div class="ui-g">
+                     <div class="ui-g-12 ui-md-5 ui-fluid">
+                       <label>Tipo Solo: </label>
+                       <input type="text" pInputText name="tipoSolo" >
+                     </div>
+
+                     <div class="ui-g-2 ui-md-1 ui-fluid">
+                       <label>Longitude:</label>
+                       <input type="number" min="0" pInputText name="longitude1Grau" >
+                     </div>
+                     <span style="margin-top: 30px;">°</span>
+                     <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                       <input type="number" min="0" pInputText name="longitude1Minuto" >
+                     </div>
+
+                     <span style="margin-top: 30px;">|</span>
+                     <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                       <input type="text" pInputText name="latitude1Orientacao">
+                     </div>
+
+                     <span style="margin-top: 40px;">a</span>
+                     <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                       <input type="number" min="0" pInputText name="latitude2Grau" >
+                     </div>
+
+                     <span style="margin-top: 30px;">°</span>
+                     <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                       <input type="number" min="0" pInputText name="latitude2Minuto">
+                     </div>
+
+                     <span style="margin-top: 30px;">|</span>
+                     <div class="ui-g-2 ui-md-1 ui-fluid" style="margin-top: 18px;">
+                       <input type="text" pInputText name="longitude2Orientacao">
+                     </div>
+                     <div class="ui-g-12 ui-md-1 ui-fluid">
+                       <label>Relevo: </label>
+                       <input type="text" pInputText name="relevo">
+                     </div>
+                   </div>
+                 </p-fieldset>
+
+                 <p-fieldset legend="Informações Clímaticas">
+                   <div class="ui-g-12 ui-md-10">
+                     <div class="ui-g-12 ui-md-3 ui-fluid" >
+                       <label>Anual:</label>
+                       <input type="number" pInputText name="precipMediaAnualmm" >
+                     </div>
+
+                     <div class="ui-g-12 ui-md-3 ui-fluid">
+                       <label>Mensal no Período de Chuva:</label>
+                       <input type="number" pInputText name="precipMediaMensalChuvamm">
+                     </div>
+
+                     <div class="ui-g-12 ui-md-3 ui-fluid">
+                       <label>Mensal no Período de Seca:</label>
+                       <input type="number" pInputText name="precipMediaMensalSecamm">
+                     </div>
+                   </div>
+
+
+                   <div class="ui-g-12 ui-md-9">
+                     <div class="ui-g-12 ui-md-3 ui-fluid">
+                       <label>Meses de Chuva:</label>
+                       <input type="text" pInputText name="mesesChuva"  style="width: 10">
+                     </div>
+                     <div class="ui-g-12 ui-md-3 ui-fluid">
+                       <label style="padding-left: 5px;">Meses de Seca:</label>
+                       <input type="text" pInputText name="mesesSeca">
+                     </div>
+
+                   </div>
+                   <div>
+                     <p-fieldset legend="Equação" class="ui-g-12 ui-md-3">
+                       <div class="ui-fluid">
+                        <label >Volume para inventario:</label>
+                         <div>
+                           <p-dropdown placeholder="Equação" filter="true"></p-dropdown>
+                           <button pButton type="button" icon="pi pi-pencil" style="left: 10px;"></button>
+                         </div>
+
+
+                       </div>
+                     </p-fieldset>
+                   </div>
+                 </p-fieldset>
+
+                 <p-fieldset legend="Informações Responsavel">
+                   <div class="ui-g-10">
+                     <div class="ui-g-11 ui-md-3 ui-fluid">
+                       <label>Nome: </label>
+                       <input type="text" pInputText name="mnResponsavel" >
+                     </div>
+
+                     <div class="ui-g-11 ui-md-3 ui-fluid">
+                       <label>Endereço:</label>
+                       <input type="text" pInputText name="enderecoResponsavel">
+                     </div>
+
+
+                   </div>
+
+                    <div class="ui-g-10">
+                      <div class="ui-g-11 ui-md-3 ui-fluid">
+                        <label>Telefone: </label>
+                        <p-inputMask mask="(99) 999-999999" name="nrTelefoneResponsavel" placeholder="(99) 999-9999"></p-inputMask>
+                      </div>
+                      <div class="ui-g-11 ui-md-3 ui-fluid">
+                        <label>Email:</label>
+                        <input type="email" pInputText name="emailResponsavel" placeholder="@">
+                      </div>
+                    </div>
+
+                   <div>
+                     <button pButton type="button" icon="pi pi-list" style="margin-bottom: 10px; margin-right: 10px;"></button>
+                     <button pButton type="button" icon="pi pi-list" style="margin-bottom: 10px;"></button>
+                   </div>
+
+                   <div>
+                     <button pButton type="button" icon="pi pi-sitemap" style="margin-bottom: 10px; margin-right: 10px;"></button>
+                     <button pButton type="button" icon="pi pi-pencil" ></button>
+                   </div>
+
+                 </p-fieldset>
+
+                 <div class="ui-g-12">
+                   <p-fieldset legend="Lista Especies">
+                   <div class="ui-fluid ui-g-4 ui-md-4" style="margin-right:60px;">
+                     <label>Lista de Especie: </label>
+                     <p-dropdown name="especies"  [autoWidth]="false" placeholder= "Selecione a Especie"
+                  filter="true" required></p-dropdown>
+                   </div>
+                     <div style="padding-bottom: 10px;">
+                       <p-checkbox name="lgMudaContada"   label="Muda contada">
+                       </p-checkbox>
+                     </div>
+                     <div>
+                       <p-checkbox name="lgPalmeiraContada"  label="Palmeira contada">
+                       </p-checkbox>
+                     </div>
+                   </p-fieldset>
+                 </div>
+
+
+
+
+    </p-fieldset>
+
+   </div>
+
+</div>
+         <app-pesquisa-area></app-pesquisa-area>

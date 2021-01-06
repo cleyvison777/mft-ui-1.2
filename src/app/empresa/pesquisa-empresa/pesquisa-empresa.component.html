@@ -3,13 +3,13 @@
           <p-fieldset legend="Dados Cadastrais">
             <div class="ui-g">
               <div class="ui-g-12">
-                  <form  autocomplete="off">
+                  <form  autocomplete="off" (ngSubmit)="pesquisaEmpresa()">
                       <div class="ui-g-12 ui-fluid">
                           <label style="display: block">Pesquisar por Nome: </label>
                           <div class="ui-g-12 ui-md-7">
                               <div class="ui-inputgroup">
                                   <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
-                                  <input type="text" pInputText name="nmEmpresa">
+                                  <input type="text" pInputText name="nmEmpresa" [(ngModel)]="filtro.nmEmpresa">
                               </div>
                           </div>
 
@@ -20,7 +20,8 @@
             <div class="ui-g">
 
                 <div class="ui-g-12 ui-md-12">
-                      <p-table [value]="empresas" [responsive]="true" [paginator]="true" [rows]="5">
+                      <p-table [value]="empresas" [responsive]="true" [paginator]="true" [rows]="filtro.size" [lazy]="true"
+                       (onLazyLoad)="aoMudarPagina($event)" [totalRecords]="totalRegistros">
                         <ng-template pTemplate="header">
                           <tr>
                             <th>Id</th>
@@ -38,9 +39,10 @@
                             <td>{{empresas.nmEmpresa}}</td>
                             <td>{{empresas.nmAbreviado}}</td>
                             <td>{{empresas.enderecoCompleto}}</td>
+                            <td>{{empresas.nrTelefone}}</td>
                             <td>{{empresas.cnpjEmpresa}}</td>
-                            <td>{{empresas.cnpjEmpresa}}</td>
-
+                            <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"></button>
+                            <button pButton icon="pi pi-pencil" pTooltip="editar"></button></td>
                           </tr>
                         </ng-template>
                       </p-table>
