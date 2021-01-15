@@ -3,7 +3,8 @@
 
 body {
   font-family:arial, Arial, Helvetica, sans-serif;
-  color: #404C51
+  color: #404C51,
+
 }
 
 label{
@@ -22,3 +23,4 @@ label{
   margin-right:10px;
   text-align: center;
 }
+

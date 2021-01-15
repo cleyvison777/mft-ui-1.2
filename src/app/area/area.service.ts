@@ -1,3 +1,4 @@
+import { CadAmf } from './../core/model';
 import { Headers, Http, URLSearchParams  } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -44,6 +45,20 @@ export class AreaService {
         });
 
     }
+
+    //adiciona registros na tabela
+    adicionar(cadAmf: CadAmf){
+      const params = new URLSearchParams;
+      const headers = new Headers();
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+      headers.append('Content-Type', 'application/json');
+
+       return this.http.post(this.cadAreaUrl,
+        JSON.stringify(cadAmf), { headers })
+         .toPromise()
+         .then(response => response.json());
+    }
+
 
     excluir(cdarea: number): Promise<void> {
       const headers = new Headers;

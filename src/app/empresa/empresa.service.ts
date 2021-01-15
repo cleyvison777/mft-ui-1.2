@@ -1,3 +1,4 @@
+import { Cadempresa } from './../core/model';
 import { Headers, Http, URLSearchParams  } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -66,6 +67,36 @@ export class EmpresaService {
       return resultado;
        });
 
+    }
+
+    adicionar(cadempresa: Cadempresa){
+      const params = new URLSearchParams;
+      const headers = new Headers();
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+      headers.append('Content-Type', 'application/json');
+
+     return  this.http.post(this.cadempresaurl,
+        JSON.stringify(cadempresa), { headers })
+         .toPromise()
+           .then(response => response.json());
+    }
+
+    listarTodas(): Promise<any> {
+      const headers = new Headers;
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+      headers.append('Content-Type', 'application/json');
+
+      return this.http.get(this.cadempresaurl, { headers })
+        .toPromise()
+        .then(response => response.json().content);
+    }
+
+    excluir(cdEmpresa: number): Promise<void> {
+      const headers = new Headers;
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+       return this.http.delete(`${this.cadempresaurl}/${cdEmpresa}`, { headers })
+       .toPromise()
+       .then(() => null);
     }
 
 

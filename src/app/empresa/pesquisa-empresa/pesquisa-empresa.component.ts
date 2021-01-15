@@ -1,5 +1,8 @@
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { ConfirmationService } from 'primeng/components/common/api';
+import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { EmpresaService, CadempresaFiltro } from './../empresa.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 
 @Component({
@@ -11,9 +14,13 @@ export class PesquisaEmpresaComponent implements OnInit {
 filtro = new CadempresaFiltro();
 totalRegistros = 0;
 empresas = [];
+@ViewChild('tabela') grid;
 
 
-  constructor( private empresaService: EmpresaService) { }
+  constructor( private empresaService: EmpresaService,
+    private toasty: ToastyService,
+    private confirmation: ConfirmationService,
+    private errorHandler :ErrorHandlerService) { }
 
   ngOnInit() {
     this.pesquisaEmpresa();
@@ -38,6 +45,31 @@ pesquisaEmpresa ( page = 0 ) {
     aoMudarPagina(event: LazyLoadEvent){
       const page = event.first / event.rows;
       this.pesquisaEmpresa(page);
+    }
+
+    excluirEmpresa(empresas: any) {
+      this.empresaService.excluir(empresas.cdEmpresa)
+       .then(() => {
+         if (this.grid.first === 0) {
+          this.pesquisaEmpresa();
+         } else {
+          this.grid.first = 0;
+          this.pesquisaEmpresa();
+         }
+         this.toasty.success('Empresa excluída com sucesso!')
+       })
+       .catch(erro => this.errorHandler.handle(erro));
+    }
+
+    confirmarExclusaoEmpresa(empresas: any) {
+      this.confirmation.confirm({
+        message: 'Tem certeza que deseja excluir?',
+        header: 'Confirmação',
+        icon: 'fa fa-trash',
+        accept: () => {
+          this.excluirEmpresa(empresas);
+        }
+      });
     }
 
 }
