@@ -99,5 +99,35 @@ export class EmpresaService {
        .then(() => null);
     }
 
+  atualizar(cadempresa: Cadempresa): Promise<Cadempresa>{
+    const headers = new Headers;
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+      return this.http.put(`${this.cadempresaurl}/${cadempresa.cdEmpresa}`,
+      JSON.stringify(cadempresa), { headers })
+      .toPromise()
+      .then(response => {
+        const cadempresaAlterada = response.json() as Cadempresa;
+      return cadempresaAlterada;
+    });
+
+   }
+
+   buscarPeloCodigoEmp(cdEmpresa: number): Promise<Cadempresa> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+
+    return this.http.get(`${this.cadempresaurl}/${cdEmpresa}`, { headers })
+      .toPromise()
+      .then(response => {
+        const cadempresa = response.json() as Cadempresa;
+
+        return cadempresa;
+      });
+  }
+      //futuramente pode ser utilizado
+   private converterStringParaData(empresas: Cadempresa[]){
+
+   }
 
 }

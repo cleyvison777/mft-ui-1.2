@@ -1,14 +1,14 @@
 <div class="ui-g">
   <div class="container">
     <div class="ui-g-12">
-      <h1>Nova Empresa</h1>
+      <h1>{{editando ? 'Edição' : 'Nova'}} Empresa</h1>
     </div>
           <p-fieldset legend="Cadastro nova pessoa" class="ui-g-12 ui-md-12">
-   <form #empresa="ngForm" autocomplete="on" (ngSubmit)="adicionarEmpresa(empresa)">
+   <form #empresa="ngForm" autocomplete="on" (ngSubmit)="salvar(empresa)">
 
           <div class="ui-g-12  ui-md-9 ui-fluid">
             <label>Nome</label>
-            <input id="input" name="nmEmpresa" type="text" pInputText ngModel #nome="ngModel" [(ngModel)]="cadEmpresa.nmEmpresa" required minlength="10" placeholder="Nome completo" class="ng-dirty ng-invalid">
+            <input id="input" name="nmEmpresa" type="text" pInputText ngModel #nome="ngModel" [(ngModel)]="empresasSalvar.nmEmpresa" required minlength="10" placeholder="Nome completo" class="ng-dirty ng-invalid">
             <div *ngIf= "nome.hasError('required') && nome.dirty">
             <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
         </div>
@@ -16,7 +16,7 @@
 
             <div class="ui-g-12  ui-md-3 ui-fluid">
                 <label>Nome abreviado</label>
-                <input id="input" name="nomeAbreviado" type="text" pInputText ngModel #nomeAbreviado="ngModel" [(ngModel)]="cadEmpresa.nmAbreviado" required minlength="10" placeholder="Nome abreviado" class="ng-dirty ng-invalid">
+                <input id="input" name="nomeAbreviado" type="text" pInputText ngModel #nomeAbreviado="ngModel" [(ngModel)]="empresasSalvar.nmAbreviado" required minlength="10" placeholder="Nome abreviado" class="ng-dirty ng-invalid">
                 <div *ngIf= "nomeAbreviado.hasError('required') && nomeAbreviado.dirty">
                 <p-message severity="error" text="Nome abreviado é obrigatorio"></p-message>
           </div>
@@ -25,23 +25,23 @@
 
         <div class="ui-g-12  ui-md-6 ui-fluid">
           <label>Pessoa de contato</label>
-          <input  name="pessoContato" type="text" [(ngModel)]="cadEmpresa.txPessoacontato" pInputText>
+          <input  name="pessoContato" type="text" [(ngModel)]="empresasSalvar.txPessoacontato" pInputText>
       </div>
 
 
       <div class="ui-g-12  ui-md-3 ui-fluid">
         <label>Número para contato</label>
-        <p-inputMask type="text" mask="99-999999999" placeholder="Seu numero" name="nrTelefone" [(ngModel)]="cadEmpresa.nrTelefone"></p-inputMask>
+        <p-inputMask type="text" mask="99-999999999" placeholder="Seu numero" name="nrTelefone" [(ngModel)]="empresasSalvar.nrTelefone"></p-inputMask>
     </div>
 
     <div class="ui-g-12  ui-md-3 ui-fluid">
       <label>CNPJ</label>
-      <p-inputMask type="text" mask="99.999.999/999-99" placeholder="000.000.000/000-00" name="cnpjEmpresa"  [(ngModel)]="cadEmpresa.cnpjEmpresa"></p-inputMask>
+      <p-inputMask type="text" mask="99.999.999/999-99" placeholder="000.000.000/000-00" name="cnpjEmpresa"  [(ngModel)]="empresasSalvar.cnpjEmpresa"></p-inputMask>
   </div>
 
     <div class="ui-g-12  ui-md-4 ui-fluid">
       <label>Endereço completo</label>
-      <input type="text" name="enderecoCompleto" pInputText [(ngModel)]="cadEmpresa.enderecoCompleto"/>
+      <input type="text" name="enderecoCompleto" pInputText [(ngModel)]="empresasSalvar.enderecoCompleto"/>
   </div>
 
   <div class="ui-g-12  ui-md-4 ui-fluid">
@@ -68,7 +68,7 @@
   <div class="ui-g-12">
   <button pButton type="submit" label="salvar" ></button>
   <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
-  <a href="http://"> Voltar a pesquisa</a>
+  <a  [routerLink]="['/empresa/cadastro']"> Voltar a pesquisa</a>
   </div>
   </form>
       </p-fieldset>

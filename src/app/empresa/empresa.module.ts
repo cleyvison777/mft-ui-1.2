@@ -50,10 +50,10 @@ import { PesquisaGridComponent } from './pesquisa-grid/pesquisa-grid.component';
     MessageModule,
     ButtonModule,
 
+
   ],
   exports:[
-    CadastroEmpresaComponent,
-    PesquisaEmpresaComponent
+
   ]
 })
 export class EmpresaModule { }

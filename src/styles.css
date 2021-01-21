@@ -24,3 +24,41 @@ label{
   text-align: center;
 }
 
+
+
+.login-page
+{
+    background-image: url('assets/error404.jpg');
+    background-repeat: no-repeat;
+    bottom: 0;
+    color: black;
+    left: 0;
+    overflow: auto;
+    padding: 3em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 32%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:auto 100%;
+
+
+
+}
+.login-page h1
+{
+    font-weight: 300;
+}
+.login-page h1 small
+{
+    color: gray;
+}
+.login-page .form-group
+{
+    padding: 8px 0;
+}
+.login-page .form-content
+{
+    padding: 40px 0;
+}

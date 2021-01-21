@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,11 +15,13 @@ import {MenuItem} from 'primeng/api';
 import { AreaService } from './../area/area.service';
 import { EmpresaService } from './../empresa/empresa.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ErrorHandlerService,
     EmpresaService,
     AreaService,
-    ConfirmationService
+    ConfirmationService,
+    Title
   ]
 })
 export class CoreModule { }

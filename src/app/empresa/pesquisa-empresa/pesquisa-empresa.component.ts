@@ -65,7 +65,6 @@ pesquisaEmpresa ( page = 0 ) {
       this.confirmation.confirm({
         message: 'Tem certeza que deseja excluir?',
         header: 'Confirmação',
-        icon: 'fa fa-trash',
         accept: () => {
           this.excluirEmpresa(empresas);
         }

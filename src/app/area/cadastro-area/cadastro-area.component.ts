@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { EmpresaService } from './../../empresa/empresa.service';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cadastro-area',
@@ -21,11 +22,13 @@ export class CadastroAreaComponent implements OnInit {
     private toasty: ToastyService,
     private areaService: AreaService,
     private empresaService: EmpresaService,
-
+    private title: Title
     ) { }
 
   ngOnInit() {
     this.carregarEmpresas();
+
+    this.title.setTitle('Área de Manejo Florestal-AMF')
 
   }
 

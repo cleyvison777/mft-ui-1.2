@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
           items: [
               {
                 label: 'Empresa',
-                routerLink: 'empresa/cadastro-empresa'
+                routerLink: 'empresa/cadastro'
               },
               {separator: true},
               {
