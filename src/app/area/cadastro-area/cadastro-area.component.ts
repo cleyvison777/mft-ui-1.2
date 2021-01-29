@@ -1,3 +1,6 @@
+import { ConfirmationService } from 'primeng/components/common/api';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EspecieService } from './../../lista-especie/especie.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { PesquisaAreaComponent } from './../pesquisa-area/pesquisa-area.component';
 import { AreaService } from './../area.service';
@@ -16,38 +19,115 @@ import { Title } from '@angular/platform-browser';
 export class CadastroAreaComponent implements OnInit {
 
   empresas =[];
+  especies = [];
   cadAmf = new CadAmf();
   constructor(
     private errorHandler :ErrorHandlerService,
     private toasty: ToastyService,
+    private listaEspecieService: EspecieService,
     private areaService: AreaService,
     private empresaService: EmpresaService,
-    private title: Title
+    private title: Title,
+    private route: ActivatedRoute,
+    private confirmation: ConfirmationService,
+    private router: Router,
     ) { }
 
   ngOnInit() {
     this.carregarEmpresas();
+    this.carregarListaEpecie();
+    this.cadAmf.lgMudaContada = false;
+    this.cadAmf.lgPalmeiraContada = false;
+
+      const codigoAmf = this.route.snapshot.params['codigo'];
+
+      if (codigoAmf) {
+        this.carregarAmf(codigoAmf);
+
+    }
 
     this.title.setTitle('Área de Manejo Florestal-AMF')
 
   }
 
-  adicionarArea(form: FormControl){
-    this.areaService.adicionar(this.cadAmf)
-     .then(() => {
-      this.toasty.success('Cadastrado realizado com sucesso!');
-       form.reset();
-       this.cadAmf = new CadAmf();
-     })
-     .catch(erro => this.errorHandler.handle(erro));
+  get editando() {
+    return Boolean(this.cadAmf.cdarea);
   }
 
+      adicionarArea(form: FormControl){
+        this.areaService.adicionar(this.cadAmf)
+        .then(() => {
+          this.toasty.success('Cadastrado realizado com sucesso!');
+          this.refresh();
+        })
+        .catch(erro => this.errorHandler.handle(erro));
+      }
 
-  carregarEmpresas() {
-    return this.empresaService.listarTodas()
-      .then(empresas => {
-        this.empresas = empresas.map(c => ({ label: c.cdEmpresa + " - " + c.nmEmpresa, value: c.cdEmpresa }));
-      })
+
+      carregarEmpresas() {
+        return this.empresaService.listarTodas()
+          .then(empresas => {
+            this.empresas = empresas.map(c => ({ label: c.cdEmpresa + " - " + c.nmEmpresa, value: c.cdEmpresa }));
+          })
+          .catch(erro => this.errorHandler.handle(erro));
+      }
+
+      carregarListaEpecie() {
+        return this.listaEspecieService.listarTodasEspecie()
+        .then( especies => {
+          this.especies = especies.map(e => ({label: e.cdListaEsp + " - " + e.nmListaEsp, value: e.cdListaEsp}));
+        })
+      }
+
+        //Metodo para carregar valores
+      carregarAmf(codigo: number) {
+        this.areaService.buscarPeloCodigo(codigo)
+        .then(amf => {
+        this.cadAmf = amf;
+        this.atualizarTituloEdicao();
+        })
       .catch(erro => this.errorHandler.handle(erro));
-  }
+      }
+
+
+      atualizarAmf(form: FormControl) {
+        this.areaService.atualizar(this.cadAmf)
+        .then(amf => {
+          this.cadAmf = amf;
+          this.toasty.success('Atualização realizada com sucesso!');
+          //REDIRECIONA PARA O ADICIONAR O AMF
+          this.router.navigate(['/area/cadastro-area']);
+
+        })
+        .catch(erro => this.errorHandler.handle(erro));
+      }
+      //confirmação para alterar
+      confirmarAlterar(amf: any) {
+        this.confirmation.confirm( {
+          message: 'Tem certeza que deseja alterar?',
+          accept: () => {
+            this.atualizarAmf(amf);
+          }
+        });
+      }
+
+
+      salvar(form: FormControl) {
+        if (this.editando) {
+          this.confirmarAlterar(form);
+        } else {
+      this.adicionarArea(form);
+        }
+
+     }
+     atualizarTituloEdicao(){
+      this.title.setTitle(`Edição Família: ${this.cadAmf.nmArea}`)
+
+    }
+
+      refresh(): void {
+        window.location.reload();
+        }
+
+
 }

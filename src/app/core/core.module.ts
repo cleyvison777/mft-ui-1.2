@@ -9,7 +9,6 @@ import { ErrorHandlerService } from './error-handler.service';
 import { ToastyModule } from 'ng2-toasty';
 import {MenubarModule} from 'primeng/menubar';
 import {MenuModule} from 'primeng/menu';
-import {MenuItem} from 'primeng/api';
 
 
 import { AreaService } from './../area/area.service';

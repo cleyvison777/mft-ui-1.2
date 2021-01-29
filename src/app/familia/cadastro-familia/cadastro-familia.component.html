@@ -1,0 +1,38 @@
+<div class="ui-g">
+  <div class="container">
+    <div class="ui-g-12 ui-md-12">
+      <h1>{{editando ? 'Edição' : 'Nova'}} Família</h1>
+    </div>
+          <p-fieldset legend="Cadastro família" class="ui-g-12 ui-md-12">
+            <form #familia="ngForm" autocomplete="on" (ngSubmit)="salvar(familia)">
+
+          <div class="ui-g-6  ui-md-12 ui-fluid">
+            <label>Nome</label>
+            <input id="input" name="nmFamilia" type="text" pInputText ngModel #nome="ngModel" [(ngModel)]="familiaSalva.nmFamilia" required minlength="10" placeholder="Nome família" class="ng-dirty ng-invalid">
+            <div *ngIf= "nome.hasError('required') && nome.dirty">
+            <p-message severity="error" text="Nome da família é obrigatorio"></p-message>
+        </div>
+      </div>
+
+
+
+
+  <div class="ui-g-12">
+  <button pButton type="submit" label="salvar" ></button>
+  <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+  <a  [routerLink]="['/familia/cadastro']"> Voltar a pesquisa</a>
+  </div>
+  <div *ngIf="editando" class="ui-g-2 ui-md-2 ui-fluid">
+    <button type="button" pButton label="Sair da edição" routerLink="/familia/cadastro"></button>
+  </div>
+  </form>
+      </p-fieldset>
+  </div>
+
+
+
+</div>
+
+
+
+<app-pesquisa-familia></app-pesquisa-familia>

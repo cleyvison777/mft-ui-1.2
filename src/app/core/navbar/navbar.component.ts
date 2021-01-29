@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
                 {separator: true},
                 {
                   label: 'Familia',
-                  routerLink: '/cadastro-familia'
+                  routerLink: 'familia/cadastro'
                 },
 
                 {

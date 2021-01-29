@@ -1,3 +1,5 @@
+import { CadastroFamiliaComponent } from './familia/cadastro-familia/cadastro-familia.component';
+import { PesquisaFamiliaComponent } from './familia/pesquisa-familia/pesquisa-familia.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { CadastroAreaComponent } from './area/cadastro-area/cadastro-area.component';
 import { CadastroEmpresaComponent } from './empresa/cadastro-empresa/cadastro-empresa.component';
@@ -14,6 +16,10 @@ const routes: Routes = [
   {path: 'empresa/cadastro', component:CadastroEmpresaComponent},
   {path: 'empresa/:codigo', component:CadastroEmpresaComponent},
   {path: 'area/cadastro-area', component: CadastroAreaComponent},
+  {path: 'area/:codigo', component: CadastroAreaComponent},
+  {path: 'familia', component:PesquisaFamiliaComponent},
+  {path: 'familia/cadastro', component:CadastroFamiliaComponent},
+  {path: 'familia/:codigo', component:CadastroFamiliaComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
 ];

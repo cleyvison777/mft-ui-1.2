@@ -53,8 +53,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 
   ],
   exports: [
-    CadastroAreaComponent,
-    PesquisaAreaComponent
+
   ]
 })
 export class AreaModule { }

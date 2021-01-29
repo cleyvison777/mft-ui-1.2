@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class CadAreaFiltro{
   nmArea: string;
   page = 0;
-  size = 2;
+  size = 10;
 
 }
 
@@ -66,6 +66,32 @@ export class AreaService {
       return this.http.delete(`${this.cadAreaUrl}/${cdarea}`, { headers })
       .toPromise()
       .then(() => null);
+    }
+
+    atualizar(cadAmf: CadAmf): Promise<CadAmf> {
+      const headers = new Headers;
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+      headers.append('Content-Type', 'application/json');
+       return this.http.put(`${this.cadAreaUrl}/${cadAmf.cdarea}`,
+       JSON.stringify(cadAmf), { headers })
+       .toPromise()
+       .then(response => {
+         const cadamfaltera = response.json() as CadAmf;
+
+         return cadamfaltera;
+       });
+    }
+
+    buscarPeloCodigo(cdarea: number): Promise<CadAmf> {
+      const headers = new Headers();
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+      return this.http.get(`${this.cadAreaUrl}/${cdarea}`, { headers })
+      .toPromise()
+      .then(response => {
+        const cadAmf = response.json() as CadAmf;
+
+        return cadAmf;
+      });
     }
 
 }
