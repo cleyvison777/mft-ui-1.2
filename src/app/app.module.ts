@@ -1,3 +1,4 @@
+import { GeneroModule } from './genero/genero.module';
 import { FamiliaModule } from './familia/familia.module';
 import { ListaEspecieModule } from './lista-especie/lista-especie.module';
 import { AreaModule } from './area/area.module';
@@ -25,7 +26,8 @@ import { HttpModule } from '@angular/http';
     HttpModule,
     AreaModule,
     ListaEspecieModule,
-    FamiliaModule
+    FamiliaModule,
+    GeneroModule
 
   ],
   providers: [

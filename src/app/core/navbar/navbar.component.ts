@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
 
                 {
                   label: 'Genero',
-                  routerLink: '/cadastro-genero'
+                  routerLink: 'genero/cadastro'
                 },
                 {
                   label: 'Grupo Ecologico',

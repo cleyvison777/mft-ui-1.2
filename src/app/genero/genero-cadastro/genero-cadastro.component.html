@@ -1,3 +1,78 @@
-<p>
-  genero-cadastro works!
-</p>
+<div class="ui-g">
+  <div class="container">
+      <p-panel>
+        <p-header>
+                <div class="ui-helper-clearfix">
+                    <span class="ui-panel-title ui-g-12 ui-md-11" style="font-size:16px;display:inline-block;margin-top:2px">Cadastro-Genero</span>
+                    <button type="button" (click)="showBasicDialog()" pButton icon="pi pi-eye" label="Familia " [style]="{'float':'right'}"></button>
+                    <p-dialog [(visible)]="displayBasic">
+                      <p-header>Cadastro Familia</p-header>
+                      <div class="ui-g">
+                        <div class="ui-g-12 ui-md-12">
+                          <p-table [value]="listaGenero" [paginator]="true" [rows]="30" [lazy]="true" [paginator]="true"
+                            (onLazyLoad)="aoMudarPaginaGenero($event)" #tabela [totalRecords]="totalRegistrosGenero">
+                                <ng-template pTemplate="header" >
+                                    <tr>
+
+                                      <th>Codigo</th>
+                                      <th>Genero</th>
+                                      <th>Familia</th>
+
+
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-listaGenero >
+                                    <tr class="hovergenero">
+                                      <td>{{listaGenero.cdGenero}}</td>
+                                      <td>{{listaGenero.nmGenero}}</td>
+                                      <td>{{listaGenero.cdFamilia.nmFamilia}}</td>
+                                </tr>
+                              </ng-template>
+                       </p-table>
+
+                 </div>
+
+
+            </div>
+
+                <p-footer>
+                    <button type="button" pButton icon="pi pi-pencil" (click)="displayBasic=false" label="Cad-Familia" routerLink="/cadastro-familia"></button>
+                    <button type="button" pButton icon="pi pi-times" (click)="displayBasic=false" label="Fechar" class="ui-button-secondary"></button>
+                </p-footer>
+            </p-dialog>
+
+          </div>
+      </p-header>
+
+      <form autocomplete="off" #cadgenero="ngForm" (ngSubmit)="salvar(cadgenero)">
+
+        <p-fieldset legend="{{editando ? 'EDITANDO ': ' '}} Genero">
+            <div class="ui-g-7 ui-md-7 ui-fluid">
+              <label>Nome: </label>
+              <input type="text" pInputText name="nmGenero" placeholder="Genero" [(ngModel)]="genero.nmGenero">
+            </div>
+
+            <div class="ui-fluid ui-g-5 ui-md-5">
+                <label>Familia: </label>
+                <p-dropdown name="familia"  [options]="cadastrofamilia" [autoWidth]="false" placeholder= "Selecione a Familia"
+                filter="true"  [(ngModel)]="genero.cdFamilia.cdFamilia">
+              </p-dropdown>
+          </div>
+
+          <div class="ui-g-12">
+            <button pButton type="submit" label="salvar" ></button>
+            <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+            <a  [routerLink]="['/genero/cadastro']"> Voltar a pesquisa</a>
+            </div>
+            <div *ngIf="editando" class="ui-g-2 ui-md-2 ui-fluid">
+              <button type="button" pButton label="Sair da edição" routerLink="/genero/cadastro"></button>
+            </div>
+            </p-fieldset>
+          </form>
+
+
+       </p-panel>
+  </div>
+</div>
+
+<app-genero-pesquisa></app-genero-pesquisa>
