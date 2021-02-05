@@ -1,3 +1,11 @@
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ConfirmationService } from 'primeng/components/common/api';
+import { ToastyService } from 'ng2-toasty/src/toasty.service';
+import { ErrorHandlerService } from './../error-handler.service';
+import { MenuService } from './../menu/menu.service';
+import { EmpresaService } from './../../empresa/empresa.service';
+import { EmpresaSelecionadaExibicao, MenuEmpresa, empresaSelecionada } from './../model';
 import { MenuItem } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +16,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(){
+  cdEmpresa: number;
+
+  empresas = [];
+  empresaSelecionadaExibicao= new EmpresaSelecionadaExibicao();
+
+  constructor(
+    private cadEmpresaService: EmpresaService,
+    private menuService: MenuService,
+    private errorHandler: ErrorHandlerService,
+    private toasty: ToastyService,
+    private confirmation: ConfirmationService,
+    private route: ActivatedRoute
+  ){
 
   }
 
    items: MenuItem[];
+   menuSalvar = new MenuEmpresa();
+   empresaSelecionada = new empresaSelecionada();
+
 
   ngOnInit() {
+
+    this.carregarEmpresas();
+    this.carregarEmpresaSelecionada();
 
     this.items = [
 
@@ -83,7 +109,7 @@ export class NavbarComponent implements OnInit {
               },
               {
                 label: 'Classe Floresta',
-                routerLink: '/associarverificador'
+                routerLink: 'floresta/cadastro'
               },
               {
                 label: 'Classe de Tamanho Individuo',
@@ -137,9 +163,9 @@ export class NavbarComponent implements OnInit {
                 icon: 'pi pi-fw pi-print',
                 routerLink: '/modmonitoramentotemplate',
 
-              }
+              },
 
-          ]
+          ],
       },
       {
           label: 'Inventario Temporario',
@@ -339,11 +365,55 @@ export class NavbarComponent implements OnInit {
               label: 'Ánalise Estática',
               routerLink: '/cadamostragem'
 
-            }
+            },
+
+
         ]
+
     },
 
+
+        {
+          label: 'Sair', icon: 'pi pi-home',
+          routerLink: '/dashboard'
+      }
   ];
+  };
+
+  carregarEmpresas() {
+    return this.cadEmpresaService.listarTodas()
+      .then(empresas => {
+        this.empresas = empresas.map(c => ({ label: c.cdEmpresa + " - " + c.nmEmpresa, value: c.cdEmpresa }));
+      })
   }
+
+  adicionar(form: FormControl){
+    this.menuService.adicionar(this.menuSalvar)
+      .then(() => {
+        this.toasty.success("Empresa selecionada com sucesso!");
+        form.reset();
+        this.menuSalvar = new MenuEmpresa();
+        this.refresh();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+
+      carregarEmpresaSelecionada() {
+        return this.menuService.carregarEmpresaSelecionadaNome()
+          .then(empresaSelecionada => {
+            this.empresaSelecionadaExibicao.nmempresa = empresaSelecionada;
+
+          })
+          .catch(erro => this.errorHandler.handle(erro));
+      }
+
+
+
+      refresh(): void {
+        window.location.reload();
+      }
+
+
 
   }

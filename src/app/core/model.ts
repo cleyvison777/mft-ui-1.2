@@ -289,3 +289,12 @@ export class CadTsAtualTsAnterior {
   cdTratamentotual = new CadTratamentoSilvicultural();
 }
 
+export class ClasseFloresta{
+
+  cdClassefloresta: number;
+  cdEmpresa = new Cadempresa();
+  nmClassefloresta: string;
+  imFigura: string;
+}
+
+

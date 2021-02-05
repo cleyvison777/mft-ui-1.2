@@ -1,10 +1,11 @@
+import { MenuService } from './../../core/menu/menu.service';
 import { ConfirmationService } from 'primeng/components/common/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EspecieService } from './../../lista-especie/especie.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { PesquisaAreaComponent } from './../pesquisa-area/pesquisa-area.component';
 import { AreaService } from './../area.service';
-import { CadAmf } from './../../core/model';
+import { CadAmf, MenuEmpresa } from './../../core/model';
 import { FormControl } from '@angular/forms';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { EmpresaService } from './../../empresa/empresa.service';
@@ -20,11 +21,16 @@ export class CadastroAreaComponent implements OnInit {
 
   empresas =[];
   especies = [];
+  area = [];
+  cdEmp: any;
   cadAmf = new CadAmf();
+  empresaSelecionada = new MenuEmpresa();
+
   constructor(
     private errorHandler :ErrorHandlerService,
     private toasty: ToastyService,
     private listaEspecieService: EspecieService,
+    private menuService: MenuService,
     private areaService: AreaService,
     private empresaService: EmpresaService,
     private title: Title,
@@ -38,6 +44,8 @@ export class CadastroAreaComponent implements OnInit {
     this.carregarListaEpecie();
     this.cadAmf.lgMudaContada = false;
     this.cadAmf.lgPalmeiraContada = false;
+    this.carregarEmpresaSelecionada();
+
 
       const codigoAmf = this.route.snapshot.params['codigo'];
 
@@ -78,6 +86,8 @@ export class CadastroAreaComponent implements OnInit {
           this.especies = especies.map(e => ({label: e.cdListaEsp + " - " + e.nmListaEsp, value: e.cdListaEsp}));
         })
       }
+
+
 
         //Metodo para carregar valores
       carregarAmf(codigo: number) {
@@ -129,5 +139,20 @@ export class CadastroAreaComponent implements OnInit {
         window.location.reload();
         }
 
+        pesquisar2(cdEmpresa) {
+          this.areaService.pesquisar2(cdEmpresa)
+            .then(empresaSelecionada =>  this.area  = empresaSelecionada);
+        }
+
+        carregarEmpresaSelecionada(){
+          return this.menuService.carregarEmpresaSelecionada()
+           .then(empresaSelecionada => {
+             this.empresaSelecionada.cdEmpresa = empresaSelecionada;
+             this.pesquisar2(this.empresaSelecionada.cdEmpresa);
+             this.cadAmf.cdEmpresa.cdEmpresa = this.empresaSelecionada.cdEmpresa
+
+           })
+           .catch(erro => this.errorHandler.handle(erro));
+        }
 
 }

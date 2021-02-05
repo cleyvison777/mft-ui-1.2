@@ -1,3 +1,4 @@
+import { ClasseFlorestaModule } from './classe-floresta/classe-floresta.module';
 import { GeneroModule } from './genero/genero.module';
 import { FamiliaModule } from './familia/familia.module';
 import { ListaEspecieModule } from './lista-especie/lista-especie.module';
@@ -12,9 +13,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import { MenuComponent } from './core/menu/menu.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { HttpModule } from '@angular/http';
     AreaModule,
     ListaEspecieModule,
     FamiliaModule,
-    GeneroModule
+    GeneroModule,
+    ClasseFlorestaModule
 
   ],
   providers: [

@@ -1,7 +1,9 @@
+import { DropdownModule } from 'primeng/components/dropdown/dropdown';
+import { MenuService } from './menu/menu.service';
 import { Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule }   from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
 import { ConfirmationService } from 'primeng/components/common/api';
@@ -27,7 +29,9 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     ToastyModule,
     ConfirmDialogModule,
     MenubarModule,
-    MenuModule
+    MenuModule,
+    DropdownModule,
+    FormsModule
   ],
   exports:[
     NavbarComponent,
@@ -40,7 +44,8 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     EmpresaService,
     AreaService,
     ConfirmationService,
-    Title
+    Title,
+    MenuService
   ]
 })
 export class CoreModule { }

@@ -1,9 +1,23 @@
 <nav class="navbar">
-
   <p-menubar [model]="items" [autoDisplay]="false">
-    <div>
-        <button pButton label="Início" icon="fa-sign-out" routerLink="/dashboard"></button>
-    </div>
+
+    <p><b style="color:rgb(48, 93, 48); font-size:15px">Empresa selecionada: </b> <i>{{empresaSelecionadaExibicao.nmempresa}}</i></p>
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="adicionar(f)">
+
+      <div class="ui-g-6 ui-fluid">
+        <p-dropdown name="empresa" [options]="empresas" [autoWidth]="false" placeholder="Selecione a empresa"
+        [(ngModel)]="menuSalvar.cdEmpresa"></p-dropdown>
+       </div>
+      <div class="ui-g-6 ui-fluid">
+        <button pButton type="submit" label="Selecionar Empresa" class="ui-button-raised ui-button-success"></button>
+
+      </div>
+
+      <!-- <div>
+        <button pButton label="Logout" icon="fa-sign-out"></button>
+    </div> -->
+    </form>
+
 </p-menubar>
 
 

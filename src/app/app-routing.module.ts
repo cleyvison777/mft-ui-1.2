@@ -1,3 +1,4 @@
+import { CadastroFlorestaComponent } from './classe-floresta/cadastro-floresta/cadastro-floresta.component';
 import { GeneroCadastroComponent } from './genero/genero-cadastro/genero-cadastro.component';
 import { GeneroPesquisaComponent } from './genero/genero-pesquisa/genero-pesquisa.component';
 import { CadastroFamiliaComponent } from './familia/cadastro-familia/cadastro-familia.component';
@@ -7,8 +8,10 @@ import { CadastroAreaComponent } from './area/cadastro-area/cadastro-area.compon
 import { CadastroEmpresaComponent } from './empresa/cadastro-empresa/cadastro-empresa.component';
 import { PesquisaEmpresaComponent } from './empresa/pesquisa-empresa/pesquisa-empresa.component';
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PesquisaFlorestaComponent } from './classe-floresta/pesquisa-floresta/pesquisa-floresta.component';
 
 const routes: Routes = [
 
@@ -26,6 +29,9 @@ const routes: Routes = [
   {path: 'genero', component:GeneroPesquisaComponent},
   {path: 'genero/cadastro', component:GeneroCadastroComponent},
   {path: 'genero/:codigo', component:GeneroCadastroComponent},
+  {path: 'floresta', component:PesquisaFlorestaComponent},
+  {path: 'floresta/cadastro', component:CadastroFlorestaComponent},
+  {path: 'floresta/:codigo', component:CadastroFlorestaComponent},
 
   {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},

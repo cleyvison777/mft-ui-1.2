@@ -7,23 +7,19 @@
     <p-fieldset legend="Cadastro AMF">
         <form (ngSubmit)="salvar(cadAmf)" #cadamf="ngForm" autocomplete="on">
 
-                 <div class="ui-g-12 ui-md-3 ui-fluid">
-                   <label>Empresa:</label>
-                   <p-dropdown name="empresa" [options]="empresas" [autoWidth]="false" placeholder= "Selecione a empresa"  required filter="true"
-                   [(ngModel)]="cadAmf.cdEmpresa.cdEmpresa" required></p-dropdown>
-                 </div>
 
-                 <div class="ui-g-12 ui-md-3 ui-fluid">
+
+                 <div class="ui-g-12 ui-md-4 ui-fluid">
                    <label>Nome: </label>
                    <input type="text" pInputText name="nmArea" [(ngModel)]="cadAmf.nmArea" required>
 
                  </div>
 
-                 <div class="ui-g-12 ui-md-3 ui-fluid">
+                 <div class="ui-g-12 ui-md-4 ui-fluid">
                    <label>Munícipio: </label>
                    <input type="text" pInputText name="nmMunicipio" [(ngModel)]="cadAmf.nmMunicipio" required>
                  </div>
-                 <div class="ui-g-12 ui-md-3 ui-fluid">
+                 <div class="ui-g-12 ui-md-4 ui-fluid">
                    <label >Estado: </label>
                    <input type="text" pInputText name="nmEstado"  [(ngModel)]="cadAmf.nmEstado" required>
                  </div>
