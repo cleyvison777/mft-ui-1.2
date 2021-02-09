@@ -1,2 +1,44 @@
-<app-pesquisa-floresta>
+<div class="ui-g">
+  <div class="container">
+    <div class="ui-g-12">
+      <h1>{{editando ? 'Edição' : 'Nova'}} Floresta</h1>
+    </div>
+          <p-fieldset legend="Cadastro nova Floresta" class="ui-g-12 ui-md-12">
+          <form #floresta="ngForm" autocomplete="on" (ngSubmit)="adicionarFloresta(floresta)">
+            <div class="ui-g-12  ui-md-10 ui-fluid">
+
+              <label>Nome</label>
+              <input id="input" name="nmClassefloresta" type="text" pInputText ngModel #nome="ngModel" [(ngModel)]="classeflorestaSalva.nmClassefloresta" required minlength="10" placeholder="Nome completo" class="ng-dirty ng-invalid">
+              <div *ngIf= "nome.hasError('required') && nome.dirty">
+              <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
+            </div>
+
+        </div>
+
+       <div class="ui-g-1  ui-md-1" style="padding-top: 25px;">
+        <p-fileUpload mode="basic"  name="enderecoImagem" [(ngModel)]="classeflorestaSalva.enderecoImagem" auto="true"  accept="image/*" maxFileSize="1000000"></p-fileUpload>
+
+       </div>
+
+
+
+        <div class="ui-g-12">
+          <button pButton type="submit" label="salvar" ></button>
+          <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+          <a  [routerLink]="['/floresta/cadastro']"> Voltar a pesquisa</a>
+          </div>
+          <div *ngIf="editando" class="ui-g-2 ui-md-2 ui-fluid">
+            <button type="button" pButton label="Sair da edição" routerLink="/floresta/cadastro"></button>
+          </div>
+          </form>
+
+
+
+      </p-fieldset>
+  </div>
+
+</div>
+
+
+<app-pesquisa-floresta></app-pesquisa-floresta>
 

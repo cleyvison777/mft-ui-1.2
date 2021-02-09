@@ -21,7 +21,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { AppRoutingModule } from './../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {LightboxModule} from 'primeng/components/lightbox/lightbox';
+import {FileUploadModule} from 'primeng/components/fileupload/fileupload';
 @NgModule({
   declarations: [CadastroFlorestaComponent, PesquisaFlorestaComponent],
   imports: [
@@ -45,6 +46,8 @@ import { BrowserModule } from '@angular/platform-browser';
     MessagesModule,
     MessageModule,
     ButtonModule,
+    LightboxModule,
+    FileUploadModule
   ]
 })
 export class ClasseFlorestaModule { }

@@ -17,15 +17,28 @@ export class FlorestaService {
   constructor( private http: Http) { }
 
   pesquisar2(cdEmpresa: any): Promise<any> {
+
     const params = new URLSearchParams;
     const headers = new Headers;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
       params.set('cdEmpresa', cdEmpresa);
         return this.http.get(`${this.urlClasseFloresta}?cdEmpresa=${cdEmpresa}`, { headers})
-          .toPromise()
-           .then(response => response.json().content)
-  }
+        .toPromise()
+        .then(response => response.json().content)
 
+
+  };
+
+  // Upload(event){
+
+  //   const headers = new Headers;
+  //   headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+  //   const imagem = event.target.files[0];
+  //   const formData = new FormData();
+  //    formData.append('imFigura', imagem);
+  //       this.http.post(`${this.urlClasseFloresta}`)
+
+  // }
    pesquisar(filtro: ClasseFlorestaFiltro): Promise<any> {
     const params = new URLSearchParams;
     const headers = new Headers;
@@ -57,9 +70,10 @@ export class FlorestaService {
    adicionar(classeFloresta: ClasseFloresta) {
     const params = new URLSearchParams;
     const headers = new Headers();
+    const formdata = new FormData();
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
     headers.append('Content-Type', 'application/json');
-
+    formdata.append('enderecoImagem', classeFloresta.enderecoImagem);
         return this.http.post(`${this.urlClasseFloresta}`, JSON.stringify
         (classeFloresta), {headers})
         .toPromise()
@@ -101,6 +115,16 @@ export class FlorestaService {
             });
 
    }
+
+   Upload(enderecoImagem: any){
+    const headers = new Headers;
+    const formdata = new FormData();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    formdata.append('enderecoImagem', enderecoImagem);
+    return this.http.post(`${this.urlClasseFloresta}`, {headers})
+
+
+  }
 
 
 

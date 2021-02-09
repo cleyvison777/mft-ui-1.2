@@ -29,6 +29,7 @@ export class PesquisaFlorestaComponent implements OnInit {
   }
 
   pesquisaFloresta(page = 0) {
+   this.filtro.page = page;
     this.florestaService.pesquisar(this.filtro)
      .then(resultado =>{
         this.totalRegistros = resultado.total;
@@ -43,5 +44,31 @@ export class PesquisaFlorestaComponent implements OnInit {
     const page = event.first / event.rows;
     this.pesquisaFloresta(page);
   }
+
+  excluirFloresta(classeFloresta: any){
+    this.florestaService.excluir(classeFloresta.cdClassefloresta)
+     .then(() =>{
+       if (this.grid.first === 0) {
+         this.pesquisaFloresta();
+       } else {
+        this.grid.first = 0;
+        this.pesquisaFloresta();
+       }
+       this.toasty.success('Floresta excluída com sucesso!')
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  confirmarExclusao(classeFloresta: any) {
+    this.confirmation.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      header: 'Confirmação',
+      icon: 'fa fa-trash',
+      accept: () => {
+        this.excluirFloresta(classeFloresta);
+      }
+    });
+  }
+
 
 }

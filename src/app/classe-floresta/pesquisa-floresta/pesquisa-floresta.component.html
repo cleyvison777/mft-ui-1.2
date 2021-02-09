@@ -2,13 +2,13 @@
   <p-fieldset legend="Florestas Cadastradas">
     <div class="ui-g">
       <div class="ui-g-12">
-          <form  autocomplete="off"  (ngSubmit)="pesquisaFloresta()">
+          <form  autocomplete="on"  (ngSubmit)="pesquisaFloresta()">
               <div class="ui-g-12 ui-fluid">
                   <label style="display: block">Pesquisar o nome da Floresta: </label>
                   <div class="ui-g-12 ui-md-7">
                       <div class="ui-inputgroup">
                           <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
-                          <input type="text" pInputText name="nmClasseFloresta" [(ngModel)]="filtro.nmClassefloresta"  placeholder="Pesquisar">
+                          <input type="text" pInputText name="nmClassefloresta" [(ngModel)]="filtro.nmClassefloresta"  placeholder="Pesquisar">
                       </div>
                   </div>
 
@@ -33,8 +33,9 @@
               <tr class="hoverAmf">
                 <td>{{floresta.cdClassefloresta}}</td>
                 <td>{{floresta.nmClassefloresta}}</td>
-                <td>{{floresta.imFigura}}</td>
-              <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"></button>
+                <td>{{floresta.enderecoImagem}}</td>
+              <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
+                (click)="confirmarExclusao(floresta)"></button>
               <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta]"></button></td>
           </tr>
         </ng-template>
