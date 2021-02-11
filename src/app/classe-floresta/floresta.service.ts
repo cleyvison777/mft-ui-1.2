@@ -70,10 +70,9 @@ export class FlorestaService {
    adicionar(classeFloresta: ClasseFloresta) {
     const params = new URLSearchParams;
     const headers = new Headers();
-    const formdata = new FormData();
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
     headers.append('Content-Type', 'application/json');
-    formdata.append('enderecoImagem', classeFloresta.enderecoImagem);
+
         return this.http.post(`${this.urlClasseFloresta}`, JSON.stringify
         (classeFloresta), {headers})
         .toPromise()
@@ -116,14 +115,8 @@ export class FlorestaService {
 
    }
 
-   Upload(enderecoImagem: any){
-    const headers = new Headers;
-    const formdata = new FormData();
-    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-    formdata.append('enderecoImagem', enderecoImagem);
-    return this.http.post(`${this.urlClasseFloresta}`, {headers})
-
-
+  urlUploadAnexo():string{
+    return `${this.urlClasseFloresta}/anexarimagem`
   }
 
 

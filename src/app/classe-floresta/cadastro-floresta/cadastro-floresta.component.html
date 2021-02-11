@@ -4,7 +4,7 @@
       <h1>{{editando ? 'Edição' : 'Nova'}} Floresta</h1>
     </div>
           <p-fieldset legend="Cadastro nova Floresta" class="ui-g-12 ui-md-12">
-          <form #floresta="ngForm" autocomplete="on" (ngSubmit)="adicionarFloresta(floresta)">
+          <form #floresta="ngForm" autocomplete="on" (ngSubmit)="salvar(floresta)">
             <div class="ui-g-12  ui-md-10 ui-fluid">
 
               <label>Nome</label>
@@ -16,7 +16,8 @@
         </div>
 
        <div class="ui-g-1  ui-md-1" style="padding-top: 25px;">
-        <p-fileUpload mode="basic"  name="enderecoImagem" [(ngModel)]="classeflorestaSalva.enderecoImagem" auto="true"  accept="image/*" maxFileSize="1000000"></p-fileUpload>
+        <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000"
+        [url]="urlUploadAnexo" (onBeforeSend)="antesUpload($event)"></p-fileUpload>
 
        </div>
 

@@ -36,7 +36,7 @@
                 <td>{{floresta.enderecoImagem}}</td>
               <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
                 (click)="confirmarExclusao(floresta)"></button>
-              <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta]"></button></td>
+              <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta.cdClassefloresta]"></button></td>
           </tr>
         </ng-template>
       </p-table>

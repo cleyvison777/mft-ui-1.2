@@ -294,7 +294,8 @@ export class ClasseFloresta{
   cdClassefloresta: number;
   cdEmpresa = new Cadempresa();
   nmClassefloresta: string;
-  enderecoImagem: any;
+  enderecoImagem: string;
+
 }
 
 

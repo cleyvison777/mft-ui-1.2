@@ -38,42 +38,79 @@ export class CadastroFlorestaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.carregarEmpresas();
     this.carregarEmpresaSelecionada();
+    this.title.setTitle('Classe Floresta');
 
-    this.title.setTitle('Classe Floresta')
+    const codigoFloresta = this.route.snapshot.params['codigo'];
+
+     if(codigoFloresta){
+       this.carregarFloresta(codigoFloresta);
+     }
+
   }
+
+  antesUpload(event){
+ event.xhr.setRequestHeader('Authorization', 'Bearer' + localStorage.getItem('Basic YWRtaW46YWRtaW4='))
+  }
+
+  get urlUploadAnexo(){
+    return this.florestaService.urlUploadAnexo()
+  }
+
 
   get editando(){
     return Boolean(this.classeflorestaSalva.cdClassefloresta);
   }
 
 
+
+
   adicionarFloresta(form: FormControl){
     this.florestaService.adicionar(this.classeflorestaSalva)
 
      .then(() => {
-      this.onBasicUpload(this.classeflorestaSalva.enderecoImagem)
       this.toasty.success('Cadastrado realizado com sucesso!');
-      //form.reset();
-     // this.refresh();
+      // form.reset();
+      // this.refresh();
      })
      .catch(erro => this.errorHandler.handle(erro));
   }
 
-  carregarEmpresas() {
-    return this.empresaService.listarTodas()
-      .then(empresas => {
-        this.empresas = empresas.map(c => ({ label: c.cdEmpresa + " - " + c.nmEmpresa, value: c.cdEmpresa }));
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }
-  onBasicUpload(imFigura: FormControl){
-    this.florestaService.Upload(this.enderecoImagem)
-      console.log();
-  }
 
 
+
+  // onBasicUpload(imFigura: FormControl){
+  //   this.florestaService.Upload(this.classeflorestaSalva.enderecoImagem)
+  //     console.log();
+  // }
+
+  atualizarFloresta(form: FormControl){
+    this.florestaService.atualizar(this.classeflorestaSalva)
+     .then(classefloresta => {
+        this.classeflorestaSalva = classefloresta;
+        this.toasty.success('Classe floresta atualizada com sucesso!');
+        this.router.navigate(['/floresta/cadastro']);
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  confirmarAlterarFloresta(classeFloresta: any) {
+    this.confirmation.confirm({
+      message: 'Tem certeza que deseja alterar?',
+      accept: () => {
+        this.atualizarFloresta(classeFloresta);
+      }
+    })
+  }
+
+  carregarFloresta(cdClassefloresta: number){
+      this.florestaService.buscarPeloCodigo(cdClassefloresta)
+       .then(floresta => {
+         this.classeflorestaSalva = floresta;
+         this.atualizarTitoloEdicao();
+       })
+       .catch(erro => this.errorHandler.handle(erro));
+  }
 
 
    atualizarTitoloEdicao(){
@@ -97,6 +134,13 @@ export class CadastroFlorestaComponent implements OnInit {
      .catch(erro => this.errorHandler.handle(erro));
   }
 
+  salvar(form: FormControl){
+   if(this.editando) {
+    this.confirmarAlterarFloresta(form)
+   }  else {
+    this.adicionarFloresta(form);
+   }
+  }
 
 
   refresh(): void {
