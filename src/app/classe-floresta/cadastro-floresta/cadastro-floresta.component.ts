@@ -49,12 +49,12 @@ export class CadastroFlorestaComponent implements OnInit {
 
   }
 
-  antesUpload(event){
- event.xhr.setRequestHeader('Authorization', 'Bearer' + localStorage.getItem('Basic YWRtaW46YWRtaW4='))
-  }
+  // antesUpload(event){
+  //  event.xhr.setRequestHeader('Authorization', 'Basic YWRtaW46YWRtaW4=' )
+  // }
 
   get urlUploadAnexo(){
-    return this.florestaService.urlUploadAnexo()
+    return this.florestaService.urlUploadAnexo(this.classeflorestaSalva)
   }
 
 

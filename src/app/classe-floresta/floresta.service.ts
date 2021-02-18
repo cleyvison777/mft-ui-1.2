@@ -115,8 +115,12 @@ export class FlorestaService {
 
    }
 
-  urlUploadAnexo():string{
-    return `${this.urlClasseFloresta}/anexarimagem`
+  urlUploadAnexo(classeFloresta: ClasseFloresta){
+    const params = new URLSearchParams;
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`${this.urlClasseFloresta}/cdClassefloresta=${classeFloresta.cdClassefloresta}?anexo`, (classeFloresta), {headers})
   }
 
 
