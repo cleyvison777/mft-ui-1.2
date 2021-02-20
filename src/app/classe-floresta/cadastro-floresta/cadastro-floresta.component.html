@@ -17,7 +17,7 @@
 
        <div class="ui-g-1  ui-md-1" style="padding-top: 25px;">
         <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000"
-        [url]="urlUploadAnexo"></p-fileUpload>
+        type="file" (change)="upload($event.target.files)"></p-fileUpload>
 
        </div>
 

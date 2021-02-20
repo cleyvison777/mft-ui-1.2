@@ -20,7 +20,7 @@ export class CadastroFlorestaComponent implements OnInit {
   empresas = [];
   cdEmp: any;
   floresta = [];
-  enderecoImagem: Set<File>;
+  anexo: File = null;
   classeflorestaSalva = new ClasseFloresta();
   empresaSelecionada = new MenuEmpresa();
 
@@ -49,13 +49,21 @@ export class CadastroFlorestaComponent implements OnInit {
 
   }
 
+  upload(form: FormData){
+    //pick from one of the 4 styles of file uploads below
+    this.florestaService.basicUpload(this.classeflorestaSalva);
+  }
+
   // antesUpload(event){
-  //  event.xhr.setRequestHeader('Authorization', 'Basic YWRtaW46YWRtaW4=' )
+  //    this.florestaService.urlUploadAnexo(event);
   // }
 
-  get urlUploadAnexo(){
-    return this.florestaService.urlUploadAnexo(this.classeflorestaSalva)
-  }
+
+
+
+  // get urlUploadAnexo(){
+  //   return this.florestaService.urlUploadAnexo(this.classeflorestaSalva)
+  // }
 
 
   get editando(){
