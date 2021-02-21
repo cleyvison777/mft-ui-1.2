@@ -34,16 +34,6 @@ export class FlorestaService {
     return `${this.urlClasseFloresta}/anexarimagem?cdClassefloresta=${classeFloresta.cdClassefloresta}`
   }
 
-  // Upload(event){
-
-  //   const headers = new Headers;
-  //   headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-  //   const imagem = event.target.files[0];
-  //   const formData = new FormData();
-  //    formData.append('imFigura', imagem);
-  //       this.http.post(`${this.urlClasseFloresta}`)
-
-  // }
    pesquisar(filtro: ClasseFlorestaFiltro): Promise<any> {
     const params = new URLSearchParams;
     const headers = new Headers;
@@ -71,9 +61,6 @@ export class FlorestaService {
          });
 
    }
-
-
-
    excluir(cdClassefloresta: number): Promise<void>{
     const headers = new Headers;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
@@ -109,8 +96,6 @@ export class FlorestaService {
 
    }
 
-
-
      adicionar(classeFloresta: ClasseFloresta) {
     const params = new URLSearchParams;
     const headers = new Headers();
@@ -123,18 +108,5 @@ export class FlorestaService {
          .then(response => response.json());
 
    }
-
-  /* basicUpload(classeFloresta: ClasseFloresta){
-    const headers = new Headers();
-    const formData = new FormData();
-    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-    
-    this.http.post(`${this.urlClasseFloresta}/anexo?anexo`, formData, {headers})
-      .toPromise()
-         .then(response => response.json());
-      });
-  }*/
-
-
 
 }
