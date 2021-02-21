@@ -49,9 +49,13 @@ export class CadastroFlorestaComponent implements OnInit {
 
   }
 
+  get urlUploadAnexo(){
+    return this.florestaService.urlUploadAnexo(this.classeflorestaSalva);
+  }
+
   upload(form: FormData){
     //pick from one of the 4 styles of file uploads below
-    this.florestaService.basicUpload(this.classeflorestaSalva);
+   // this.florestaService.basicUpload(this.classeflorestaSalva);
   }
 
   // antesUpload(event){

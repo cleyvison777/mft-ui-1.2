@@ -30,6 +30,10 @@ export class FlorestaService {
 
   };
 
+  urlUploadAnexo(classeFloresta: ClasseFloresta): string {
+    return `${this.urlClasseFloresta}/anexarimagem?cdClassefloresta=${classeFloresta.cdClassefloresta}`
+  }
+
   // Upload(event){
 
   //   const headers = new Headers;
@@ -120,15 +124,16 @@ export class FlorestaService {
 
    }
 
-   basicUpload(classeFloresta: ClasseFloresta){
+  /* basicUpload(classeFloresta: ClasseFloresta){
     const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
     const formData = new FormData();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    
     this.http.post(`${this.urlClasseFloresta}/anexo?anexo`, formData, {headers})
       .toPromise()
          .then(response => response.json());
-      })
-  }
+      });
+  }*/
 
 
 

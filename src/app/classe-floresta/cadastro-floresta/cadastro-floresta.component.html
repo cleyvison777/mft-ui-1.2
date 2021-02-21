@@ -14,14 +14,7 @@
             </div>
 
         </div>
-
-       <div class="ui-g-1  ui-md-1" style="padding-top: 25px;">
-        <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000"
-        type="file" (change)="upload($event.target.files)"></p-fileUpload>
-
-       </div>
-
-
+   
 
         <div class="ui-g-12">
           <button pButton type="submit" label="salvar" ></button>
@@ -30,6 +23,10 @@
           </div>
           <div *ngIf="editando" class="ui-g-2 ui-md-2 ui-fluid">
             <button type="button" pButton label="Sair da edição" routerLink="/floresta/cadastro"></button>
+            <td>
+              <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000000"
+              [url]="urlUploadAnexo"></p-fileUpload>
+            </td>  
           </div>
           </form>
 
