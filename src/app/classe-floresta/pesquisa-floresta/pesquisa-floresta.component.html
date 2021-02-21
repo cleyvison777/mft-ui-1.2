@@ -33,7 +33,7 @@
               <tr class="hoverAmf">
                 <td>{{floresta.cdClassefloresta}}</td>
                 <td>{{floresta.nmClassefloresta}}</td>
-                <td>{{floresta.enderecoImagem}}</td>
+                <td><img src ="{{floresta.enderecoImagem}}" height="175" width="140"/></td>
               <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
                 (click)="confirmarExclusao(floresta)"></button>
               <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta.cdClassefloresta]"></button></td>
