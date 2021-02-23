@@ -1,4 +1,3 @@
-import { FileUploadModule } from 'primeng/components/fileupload/fileupload';
 import { ClasseFloresta } from './../core/model';
 import { Http, URLSearchParams, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -29,6 +28,18 @@ export class FlorestaService {
 
 
   };
+
+  adicionar(classeFloresta: ClasseFloresta) {
+    const params = new URLSearchParams;
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+        return this.http.post(`${this.urlClasseFloresta}`, JSON.stringify
+        (classeFloresta), {headers})
+        .toPromise()
+        .then(response => response.json());
+
+ }
 
   urlUploadAnexo(classeFloresta: ClasseFloresta): string {
     return `${this.urlClasseFloresta}/anexarimagem?cdClassefloresta=${classeFloresta.cdClassefloresta}`
@@ -96,17 +107,6 @@ export class FlorestaService {
 
    }
 
-     adicionar(classeFloresta: ClasseFloresta) {
-    const params = new URLSearchParams;
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-    headers.append('Content-Type', 'application/json');
 
-        return this.http.post(`${this.urlClasseFloresta}`, JSON.stringify
-        (classeFloresta), {headers})
-        .toPromise()
-         .then(response => response.json());
-
-   }
 
 }

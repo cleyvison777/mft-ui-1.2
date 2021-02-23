@@ -1,6 +1,5 @@
-import { environment } from './../../../environments/environment.prod';
-import { FormControl } from '@angular/forms';
 import { FlorestaService } from './../floresta.service';
+import { FormControl } from '@angular/forms';
 import { ConfirmationService } from 'primeng/components/common/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -8,9 +7,8 @@ import { EmpresaService } from './../../empresa/empresa.service';
 import { MenuService } from './../../core/menu/menu.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { ClasseFloresta, MenuEmpresa, empresaSelecionada } from './../../core/model';
+import { ClasseFloresta, MenuEmpresa } from './../../core/model';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-cadastro-floresta',
   templateUrl: './cadastro-floresta.component.html',
@@ -54,20 +52,8 @@ export class CadastroFlorestaComponent implements OnInit {
   }
 
   upload(form: FormData){
-    //pick from one of the 4 styles of file uploads below
-   // this.florestaService.basicUpload(this.classeflorestaSalva);
+
   }
-
-  // antesUpload(event){
-  //    this.florestaService.urlUploadAnexo(event);
-  // }
-
-
-
-
-  // get urlUploadAnexo(){
-  //   return this.florestaService.urlUploadAnexo(this.classeflorestaSalva)
-  // }
 
 
   get editando(){
@@ -82,19 +68,12 @@ export class CadastroFlorestaComponent implements OnInit {
 
      .then(() => {
       this.toasty.success('Cadastrado realizado com sucesso!');
-      // form.reset();
-      // this.refresh();
+      form.reset();
+      this.refresh();
      })
      .catch(erro => this.errorHandler.handle(erro));
   }
 
-
-
-
-  // onBasicUpload(imFigura: FormControl){
-  //   this.florestaService.Upload(this.classeflorestaSalva.enderecoImagem)
-  //     console.log();
-  // }
 
   atualizarFloresta(form: FormControl){
     this.florestaService.atualizar(this.classeflorestaSalva)

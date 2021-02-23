@@ -23,6 +23,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {LightboxModule} from 'primeng/components/lightbox/lightbox';
 import {FileUploadModule} from 'primeng/components/fileupload/fileupload';
+import {DataListModule} from 'primeng/components/datalist/datalist';
+
 @NgModule({
   declarations: [CadastroFlorestaComponent, PesquisaFlorestaComponent],
   imports: [
@@ -47,7 +49,8 @@ import {FileUploadModule} from 'primeng/components/fileupload/fileupload';
     MessageModule,
     ButtonModule,
     LightboxModule,
-    FileUploadModule
+    FileUploadModule,
+    DataListModule
   ]
 })
 export class ClasseFlorestaModule { }
