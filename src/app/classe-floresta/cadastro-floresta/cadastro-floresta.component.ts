@@ -27,7 +27,6 @@ export class CadastroFlorestaComponent implements OnInit {
     private errorHandler :ErrorHandlerService,
     private toasty: ToastyService,
     private menuService: MenuService,
-    private empresaService: EmpresaService,
     private title: Title,
     private route: ActivatedRoute,
     private confirmation: ConfirmationService,

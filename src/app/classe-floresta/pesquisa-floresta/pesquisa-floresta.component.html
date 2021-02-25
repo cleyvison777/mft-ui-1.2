@@ -28,57 +28,30 @@
         <ng-template let-floresta pTemplate="body">
             <div class="ui-g ui-fluid car-item">
                 <div class="ui-g-12 ui-md-3" style="text-align:center">
-                  <img src ="{{floresta.enderecoImagem}}" height="175" width="140"/>
+                  <img src ="{{floresta.enderecoImagem}}" height="175" width="140"  onerror="this.style.display='none'"/>
                 </div>
                 <div class="ui-g-12 ui-md-9 car-details">
                     <div class="ui-g">
                         <div class="ui-g-2 ui-sm-6">Código: </div>
-                        <div class="ui-g-10 ui-sm-6">{{floresta.cdClassefloresta}}</div>
+                        <div class="ui-g-10 ui-sm-6"><strong>{{floresta.cdClassefloresta}}</strong></div>
 
                         <div class="ui-g-2 ui-sm-6">Nome: </div>
-                        <div class="ui-g-10 ui-sm-6">{{floresta.nmClassefloresta}}</div>
-
-                        <div class="ui-g-2 ui-sm-6">Exclusão/Edição: </div>
+                        <div class="ui-g-10 ui-sm-6"><strong>{{floresta.nmClassefloresta}}</strong></div>
+                        <div class="ui-g-2 ui-sm-8">Exclusão/Edição</div>
                         <div class="ui-g-10 ui-sm-6"><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
                           (click)="confirmarExclusao(floresta)"></button>
                           <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta.cdClassefloresta]"></button>
-
+                          <button pButton icon="pi pi-pencil" class="ui-button-secondary" (click)="showDialog(floresta)"  pButton icon="pi pi-search" pTooltip="vizualizar"  style="margin-left: 10px;"></button>
                         </div>
 
-
+                        <p-dialog header="Title" [(visible)]="display">
+                          <img src ="{{floresta.enderecoImagem}}"   onerror="this.style.display='none'"/>
+                      </p-dialog>
                     </div>
                 </div>
             </div>
         </ng-template>
       </p-dataList>
-
-
-
-      <!-- <p-table [value]="floresta" [paginator]="true"  [rows]="filtro.size" [responsive]="true" [lazy]="true" #tabela
-       (onLazyLoad)="aoMudarPagina($event)" [totalRecords]="totalRegistros">
-          <ng-template pTemplate="header">
-              <tr>
-                <th>id</th>
-                <th>Nome</th>
-                <th>Imagem</th>
-                <th></th>
-
-              </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-floresta>
-              <tr class="hoverAmf">
-                <td>{{floresta.cdClassefloresta}}</td>
-                <td>{{floresta.nmClassefloresta}}</td>
-                <td><img src ="{{floresta.enderecoImagem}}" height="175" width="140"/></td>
-              <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
-                (click)="confirmarExclusao(floresta)"></button>
-              <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta.cdClassefloresta]"></button></td>
-
-           </tr>
-        </ng-template>
-      </p-table> -->
-
-
   </div>
 </p-fieldset>
 

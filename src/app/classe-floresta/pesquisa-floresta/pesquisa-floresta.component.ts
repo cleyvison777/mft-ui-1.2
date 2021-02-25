@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { ClasseFloresta } from './../../core/model';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ConfirmationService } from 'primeng/components/common/api';
@@ -15,18 +17,50 @@ export class PesquisaFlorestaComponent implements OnInit {
   filtro = new ClasseFlorestaFiltro();
   totalRegistros = 0;
   empresas = [];
-  floresta =[];
+  floresta = [];
+  images: any[];
   @ViewChild('tabela') grid;
-
+  classeflorestaSalva = new ClasseFloresta();
+  display: boolean = false;
   constructor(
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
     private errorHandler :ErrorHandlerService,
     private florestaService: FlorestaService,
-  ) { }
+    private route: ActivatedRoute,
+
+  ) {  }
 
   ngOnInit() {
+
+
+
   }
+
+  showDialog() {
+
+     this.display = true;
+  }
+
+//     florestaImagem(cdClassefloresta: number){
+//       this.florestaService.pesquisarImagem2(cdClassefloresta)
+//       .then(resultado => {
+//       this.floresta = resultado.floresta
+//     })
+//     .catch(erro => this.errorHandler.handle(erro));
+//     }
+
+// pesquisarImagem(){
+//   this.florestaService.pesquisarImagem()
+//   .then(resultado =>{
+//     this.totalRegistros = resultado.total;
+//     this.floresta = resultado.classeFloresta;
+//  })
+
+//  .catch(erro => this.errorHandler.handle(erro));
+// }
+
+
 
   pesquisaFloresta(page = 0) {
    this.filtro.page = page;
@@ -70,5 +104,12 @@ export class PesquisaFlorestaComponent implements OnInit {
     });
   }
 
+carregarFloresta(codigo: number){
+ this.florestaService.buscarPeloCodigo(codigo)
+  .then(floresta => {
+  this.classeflorestaSalva = floresta;
+ })
+ .catch(erro => this.errorHandler.handle(erro));
+ }
 
 }

@@ -24,6 +24,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {LightboxModule} from 'primeng/components/lightbox/lightbox';
 import {FileUploadModule} from 'primeng/components/fileupload/fileupload';
 import {DataListModule} from 'primeng/components/datalist/datalist';
+import {DialogModule} from 'primeng/components/dialog/dialog';
 
 @NgModule({
   declarations: [CadastroFlorestaComponent, PesquisaFlorestaComponent],
@@ -50,7 +51,8 @@ import {DataListModule} from 'primeng/components/datalist/datalist';
     ButtonModule,
     LightboxModule,
     FileUploadModule,
-    DataListModule
+    DataListModule,
+    DialogModule
   ]
 })
 export class ClasseFlorestaModule { }

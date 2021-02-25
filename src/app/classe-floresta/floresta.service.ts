@@ -29,6 +29,38 @@ export class FlorestaService {
 
   };
 
+  pesquisarImagem(): Promise<any> {
+    const params = new URLSearchParams;
+    const headers = new Headers;
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+        return this.http.get(`${this.urlClasseFloresta}`, { headers})
+        .toPromise()
+        .then(response => response.json().content)
+
+
+  };
+
+
+  pesquisarImagem2(cdClassefloresta: any): Promise<any> {
+    const headers = new Headers();
+    const params = new URLSearchParams;
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+
+    return this.http.get(`${this.urlClasseFloresta}?cdClassefloresta=${cdClassefloresta}`)
+      .toPromise()
+      .then(response => {
+        const responseJson = response.json();
+        const listaTs = responseJson.content;
+        const resultado = {
+          listaTs,
+          total: responseJson.totalElements
+        };
+        return resultado;
+
+      });
+  }
+
+
   adicionar(classeFloresta: ClasseFloresta) {
     const params = new URLSearchParams;
     const headers = new Headers();
