@@ -79,7 +79,7 @@ export class NavbarComponent implements OnInit {
                 },
                 {
                   label: 'Grupo Ecologico',
-                  routerLink: '/cadastro-grupo-ecologico'
+                  routerLink: '/grupo-ecologico/cadastro'
                 },
                 {
                   label: 'Uso da Espécie',

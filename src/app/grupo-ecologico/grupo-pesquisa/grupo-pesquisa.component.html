@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="ui-g">
+     <p-fieldset legend="Dados Cadastrais">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12">
+              <form  autocomplete="off" (ngSubmit)="consultarGrupoEcologico()">
+                <div class="ui-g-12 ui-fluid">
+                    <label style="display: block">Pesquisar nome do grupo: </label>
+                    <div class="ui-g-12 ui-md-7">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                            <input type="text" pInputText name="nmGrupoEcologico" [(ngModel)]="filtro.nmGrupoEcologico" placeholder="Pesquisar">
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+          </div>
+     </div>
+      <div class="ui-g">
+
+        <div class="ui-g-12 ui-md-12">
+              <p-table [value]="listaGrupoEcologico"  [paginator]="true"   [rows]="filtro.size" [responsive]="true" [lazy]="true" #tabela
+              [totalRecords]="totalRegistrosGrupoEcologico" (onLazyLoad)="aoMudarPaginaGrupoEcologico($event)">
+                      <ng-template pTemplate="header" >
+                            <tr>
+
+                              <th>Codigo</th>
+                              <th>Grupo Ecológico</th>
+                              <th></th>
+
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-listaGrupoEcologico>
+                            <tr class="hovergenero">
+                              <td>{{listaGrupoEcologico.cdGrupoEcologico}}</td>
+                              <td>{{listaGrupoEcologico.nmGrupoEcologico}}</td>
+
+                              <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
+                                pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusao(listaGrupoEcologico)">
+                              </button>
+                              <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/cadastro-grupo-ecologico', listaGrupoEcologico.cdGrupoEcologico]"></button></td>
+                        </tr>
+                    </ng-template>
+              </p-table>
+
+             </div>
+       </div>
+
+     </p-fieldset>
+  </div>
+</div>

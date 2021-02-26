@@ -4,6 +4,7 @@ import { FamiliaModule } from './familia/familia.module';
 import { ListaEspecieModule } from './lista-especie/lista-especie.module';
 import { AreaModule } from './area/area.module';
 import { EmpresaModule } from './empresa/empresa.module';
+import { GrupoEcologicoModule } from './grupo-ecologico/grupo-ecologico.module';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -31,7 +32,8 @@ import { MenuComponent } from './core/menu/menu.component';
     ListaEspecieModule,
     FamiliaModule,
     GeneroModule,
-    ClasseFlorestaModule
+    ClasseFlorestaModule,
+    GrupoEcologicoModule
 
   ],
   providers: [

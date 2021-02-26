@@ -16,7 +16,6 @@ export class PesquisaFlorestaComponent implements OnInit {
 
   filtro = new ClasseFlorestaFiltro();
   totalRegistros = 0;
-  empresas = [];
   floresta = [];
   @ViewChild('tabela') grid;
   showDialog: ClasseFloresta;
@@ -35,7 +34,7 @@ export class PesquisaFlorestaComponent implements OnInit {
      this.florestaService.pesquisarImagem().then(floresta => this.floresta = floresta)
 
   }
-
+//funcão do botão vizualizar
   showDialo(event: Event, floresta: ClasseFloresta) {
      this.showDialog = floresta;
      this.display = true;
@@ -44,26 +43,7 @@ export class PesquisaFlorestaComponent implements OnInit {
   onDialogHide() {
     this.showDialog = null;
 }
-
-//     florestaImagem(cdClassefloresta: number){
-//       this.florestaService.pesquisarImagem2(cdClassefloresta)
-//       .then(resultado => {
-//       this.floresta = resultado.floresta
-//     })
-//     .catch(erro => this.errorHandler.handle(erro));
-//     }
-
-// pesquisarImagem(){
-//   this.florestaService.pesquisarImagem()
-//   .then(resultado =>{
-//     this.totalRegistros = resultado.total;
-//     this.floresta = resultado.classeFloresta;
-//  })
-
-//  .catch(erro => this.errorHandler.handle(erro));
-// }
-
-
+//////
 
   pesquisaFloresta(page = 0) {
    this.filtro.page = page;
