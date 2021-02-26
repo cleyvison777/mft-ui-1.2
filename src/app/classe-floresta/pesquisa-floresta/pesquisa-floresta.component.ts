@@ -18,8 +18,8 @@ export class PesquisaFlorestaComponent implements OnInit {
   totalRegistros = 0;
   empresas = [];
   floresta = [];
-  images: any[];
   @ViewChild('tabela') grid;
+  showDialog: ClasseFloresta;
   classeflorestaSalva = new ClasseFloresta();
   display: boolean = false;
   constructor(
@@ -32,15 +32,18 @@ export class PesquisaFlorestaComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-
-
+     this.florestaService.pesquisarImagem().then(floresta => this.floresta = floresta)
 
   }
 
-  showDialog() {
-
+  showDialo(event: Event, floresta: ClasseFloresta) {
+     this.showDialog = floresta;
      this.display = true;
+     event.preventDefault();
   }
+  onDialogHide() {
+    this.showDialog = null;
+}
 
 //     florestaImagem(cdClassefloresta: number){
 //       this.florestaService.pesquisarImagem2(cdClassefloresta)

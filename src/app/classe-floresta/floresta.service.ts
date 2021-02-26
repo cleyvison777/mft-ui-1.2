@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ClasseFlorestaFiltro {
   nmClassefloresta: string;
   page = 0;
-  size = 10;
+  size = 5;
 }
 @Injectable({
   providedIn: 'root'
