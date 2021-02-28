@@ -35,8 +35,13 @@ export class GrupoCadastroComponent implements OnInit {
 
   ngOnInit() {
     this.carregarEmpresaSelecionada();
+    this.title.setTitle('Grupo Ecológico');
 
-    this.title.setTitle('Grupo Ecológico')
+
+    const codigoGrupoEcologico = this.route.snapshot.params['codigo'];
+    if(codigoGrupoEcologico) {
+      this.carregarGrupoEcologico(codigoGrupoEcologico);
+    }
   }
 
   get editando(){
@@ -61,8 +66,45 @@ export class GrupoCadastroComponent implements OnInit {
 
 
 
+  atualizarGrupo(form: FormControl) {
+    this.grupoEcologicoService.atualizar(this.cadGrupoEcologicoSalva)
+   .then(grupoecologico => {
+         this.cadGrupoEcologicoSalva = grupoecologico;
+         this.toasty.success('Atualização realizada com sucesso!');
+         this.router.navigate(['/grupo-ecologico/cadastro']);
+       })
+       .catch(erro => this.errorHandler.handle(erro));
 
+  }
 
+  //confirmação para alterar
+     confirmarAlterar(cadGrupoEcologico: any) {
+       this.confirmation.confirm({
+         message: 'Tem certeza que deseja alterar?',
+         accept: () => {
+           this.atualizarGrupo(cadGrupoEcologico);
+         }
+       });
+     }
+
+     carregarGrupoEcologico(codigo: number){
+       this.grupoEcologicoService.buscarPeloCodigoGrupoEcologico(codigo)
+        .then( grupoecologico => {
+          this.cadGrupoEcologicoSalva = grupoecologico;
+          this.atualizarTituloEdicao();
+
+        })
+        .catch(erro => this.errorHandler.handle(erro));
+
+     }
+
+     salvar(form: FormControl) {
+      if (this.editando) {
+        this.confirmarAlterar(form);
+      } else {
+        this.adicionarGrupoEcologico(form);
+      }
+    }
 
 
   pesquisar2(cdEmpresa) {
@@ -82,12 +124,8 @@ export class GrupoCadastroComponent implements OnInit {
   }
 
 
-
-
-
   atualizarTituloEdicao(){
-    this.title.setTitle(`Edição Família: ${this.cadGrupoEcologicoSalva.nmGrupoEcologico}`)
-
+    this.title.setTitle(`Edição Grupo Ecológico: ${this.cadGrupoEcologicoSalva.nmGrupoEcologico}`)
   }
 
 
