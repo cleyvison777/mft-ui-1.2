@@ -83,7 +83,7 @@ export class NavbarComponent implements OnInit {
                 },
                 {
                   label: 'Uso da Espécie',
-                  routerLink: '/cadastro-usoespecie'
+                  routerLink: '/uso-especie/cadastro'
                 },
                 {
                   label: 'Categoria Proteção',

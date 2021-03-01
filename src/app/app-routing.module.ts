@@ -1,18 +1,15 @@
+import { EspecieCadastroComponent } from './lista-especie/especie-cadastro/especie-cadastro.component';
 import { GrupoCadastroComponent } from './grupo-ecologico/grupo-cadastro/grupo-cadastro.component';
 import { CadastroFlorestaComponent } from './classe-floresta/cadastro-floresta/cadastro-floresta.component';
 import { GeneroCadastroComponent } from './genero/genero-cadastro/genero-cadastro.component';
-import { GeneroPesquisaComponent } from './genero/genero-pesquisa/genero-pesquisa.component';
 import { CadastroFamiliaComponent } from './familia/cadastro-familia/cadastro-familia.component';
-import { PesquisaFamiliaComponent } from './familia/pesquisa-familia/pesquisa-familia.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { CadastroAreaComponent } from './area/cadastro-area/cadastro-area.component';
 import { CadastroEmpresaComponent } from './empresa/cadastro-empresa/cadastro-empresa.component';
-import { PesquisaEmpresaComponent } from './empresa/pesquisa-empresa/pesquisa-empresa.component';
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PesquisaFlorestaComponent } from './classe-floresta/pesquisa-floresta/pesquisa-floresta.component';
 
 const routes: Routes = [
 
@@ -31,6 +28,8 @@ const routes: Routes = [
   {path: 'floresta/:codigo', component:CadastroFlorestaComponent},
   {path: 'grupo-ecologico/cadastro', component:GrupoCadastroComponent},
   {path: 'grupo-ecologico/:codigo', component:GrupoCadastroComponent},
+  {path: 'uso-especie/cadastro', component:EspecieCadastroComponent},
+  {path: 'uso-especie/:codigo', component:EspecieCadastroComponent},
 
   {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},

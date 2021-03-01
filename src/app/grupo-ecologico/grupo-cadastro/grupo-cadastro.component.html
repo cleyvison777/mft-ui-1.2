@@ -6,7 +6,7 @@
           <p-fieldset legend="Cadastro grupo ecológico" class="ui-g-12 ui-md-12">
             <form #listaGrupoEcologico="ngForm" autocomplete="on" (ngSubmit)="adicionarGrupoEcologico(listaGrupoEcologico)">
 
-          <div class="ui-g-6  ui-md-12 ui-fluid">
+          <div class="ui-g-12  ui-md-12 ui-fluid">
             <label>Nome:</label>
             <input id="input" name="nmGrupoEcologico" type="text" pInputText ngModel #nome="ngModel" [(ngModel)]="cadGrupoEcologicoSalva.nmGrupoEcologico" required minlength="10" placeholder="Nome do grupo" class="ng-dirty ng-invalid">
             <div *ngIf= "nome.hasError('required') && nome.dirty">
