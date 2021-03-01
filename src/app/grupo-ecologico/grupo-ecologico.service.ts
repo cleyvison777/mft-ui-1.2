@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 export class GrupoEcologicoFiltro {
   nmGrupoEcologico: string;
+  cdEmpresa: number;
   page = 0;
   size = 15;
 

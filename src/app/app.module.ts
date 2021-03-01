@@ -1,3 +1,4 @@
+import { UsoEspecieModule } from './uso-especie/uso-especie.module';
 import { ClasseFlorestaModule } from './classe-floresta/classe-floresta.module';
 import { GeneroModule } from './genero/genero.module';
 import { FamiliaModule } from './familia/familia.module';
@@ -33,7 +34,8 @@ import { MenuComponent } from './core/menu/menu.component';
     FamiliaModule,
     GeneroModule,
     ClasseFlorestaModule,
-    GrupoEcologicoModule
+    GrupoEcologicoModule,
+    UsoEspecieModule
 
   ],
   providers: [

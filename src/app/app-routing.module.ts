@@ -1,4 +1,4 @@
-import { EspecieCadastroComponent } from './lista-especie/especie-cadastro/especie-cadastro.component';
+import { CadastroEspecieComponent } from './uso-especie/cadastro-especie/cadastro-especie.component';
 import { GrupoCadastroComponent } from './grupo-ecologico/grupo-cadastro/grupo-cadastro.component';
 import { CadastroFlorestaComponent } from './classe-floresta/cadastro-floresta/cadastro-floresta.component';
 import { GeneroCadastroComponent } from './genero/genero-cadastro/genero-cadastro.component';
@@ -28,8 +28,8 @@ const routes: Routes = [
   {path: 'floresta/:codigo', component:CadastroFlorestaComponent},
   {path: 'grupo-ecologico/cadastro', component:GrupoCadastroComponent},
   {path: 'grupo-ecologico/:codigo', component:GrupoCadastroComponent},
-  {path: 'uso-especie/cadastro', component:EspecieCadastroComponent},
-  {path: 'uso-especie/:codigo', component:EspecieCadastroComponent},
+  {path: 'uso-especie/cadastro', component:CadastroEspecieComponent},
+  {path: 'uso-especie/:codigo', component:CadastroEspecieComponent},
 
   {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},

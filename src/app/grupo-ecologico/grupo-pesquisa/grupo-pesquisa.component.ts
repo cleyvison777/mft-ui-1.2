@@ -15,8 +15,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class GrupoPesquisaComponent implements OnInit {
 
-  filtro = new GrupoEcologicoFiltro();
 
+
+  filtro = new GrupoEcologicoFiltro();
+  cdEmp: any;
   totalRegistrosGrupoEcologico = 0;
   listaGrupoEcologico = [];
   @ViewChild('tabela') grid;
@@ -34,6 +36,7 @@ export class GrupoPesquisaComponent implements OnInit {
 
   consultarGrupoEcologico(page = 0){
     this.filtro.page = page;
+    this.filtro.cdEmpresa = this.cdEmp;
     this.grupoEcologicoService.consulta(this.filtro)
      .then(resultado => {
        this.totalRegistrosGrupoEcologico = resultado.total;
