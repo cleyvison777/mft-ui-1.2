@@ -40,7 +40,10 @@ export class CadastroEspecieComponent implements OnInit {
 
   ngOnInit() {
     this.carregarEmpresaSelecionada();
-
+    const codigoUsoEspecie =  this.route.snapshot.params['codigo'];
+    if(codigoUsoEspecie) {
+      this.carregarUsoEspecie(codigoUsoEspecie);
+    }
   }
 
   get editando (){
@@ -73,6 +76,46 @@ export class CadastroEspecieComponent implements OnInit {
      })
      .catch(erro => this.errorHandler.handle(erro));
   }
+
+  atualizandoUsoEspecie(form: FormControl) {
+    this.usoespecieService.atualizarUsoespecie(this.usoEspecieSalva)
+     .then(cadEspecieUso => {
+       this.usoEspecieSalva = cadEspecieUso;
+       this.toasty.success('Atualização realizada com sucesso!');
+       this.router.navigate(['/uso-especie/cadastro']);
+
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+   //confirmação para alterar
+
+
+confirmarAlterar(cadEspecieUso: any) {
+  this.confirmation.confirm({
+      message: 'Tem certeza que deseja alterar?',
+      accept: () => {
+        this.atualizandoUsoEspecie(cadEspecieUso);
+      }
+    });
+}
+
+carregarUsoEspecie(codigo: number) {
+  this.usoespecieService.buscarPeloCodigoUsoEspecie(codigo)
+   .then(cadEspecieUso => {
+    this.usoEspecieSalva = cadEspecieUso
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+   }
+
+   salvar(form: FormControl) {
+     if(this.editando) {
+       this.confirmarAlterar(form);
+     } else {
+       this.adicionandoUsoEspecie(form);
+     }
+   }
+
 
   atualizarTituloEdicao(){
     this.title.setTitle(`Edição de Gênero: ${this.usoEspecieSalva.nmUso}`)

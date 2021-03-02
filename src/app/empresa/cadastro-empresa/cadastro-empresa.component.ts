@@ -74,6 +74,7 @@ export class CadastroEmpresaComponent implements OnInit {
         .then(empresa => {
           this.empresasSalvar = empresa;
           this.toasty.success('Empresa alterada com sucesso!');
+          this.router.navigate(['/empresa/cadastro'])
 
         })
         .catch(erro => this.errorHandler.handle(erro));

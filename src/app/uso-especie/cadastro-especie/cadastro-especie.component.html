@@ -5,24 +5,25 @@
     </div>
           <p-fieldset legend="Cadastro nova pessoa" class="ui-g-12 ui-md-12">
 
-            <form autocomplete="off" #usoEspecie="ngForm" (ngSubmit)="adicionandoUsoEspecie(usoEspecie)">
+            <form autocomplete="off" #usoEspecie="ngForm" (ngSubmit)="salvar(usoEspecie)">
               <div class="ui-g-12 ui-md-8 ui-fluid">
                 <label>Nome: </label>
                 <input type="text" name="nmUso" placeholder="Uso Especie" pInputText [(ngModel)]="usoEspecieSalva.nmUso" ></div>
 
                  <div class="ui-g-12 ui-md-4" style="margin-top: 19px;">
-                  <p-selectButton [options]="selecao" [(ngModel)]="usoEspecieSalva.lgMadeira" name="lgMadeira"></p-selectButton>
-
-
+                  <p-selectButton [options]="selecao" [(ngModel)]="usoEspecieSalva.lgMadeira" name="lgMadeira" ></p-selectButton>
                  </div>
 
-                 <div class="ui-g-12">
-                  <div *ngIf="editando" class="ui-g-3 ui-md-2">
-                    <strong><a routerLink="/cadastro-usoespecie"><button type="button" pButton label="Sair da edição"></button></a></strong>
-                  </div>
-                <button pButton type="submit" label="salvar" ></button>
-                <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+
+
+                  <div class="ui-g-12 ui-md-12">
+                    <button pButton type="submit" label="Salvar" [disabled]="!usoEspecieSalva.nmUso"></button>
+                    <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
                 </div>
+                <div *ngIf="editando" class="ui-g-12 ui-md-12">
+                  <strong><a routerLink="/uso-especie/cadastro"><button type="button" pButton label="Sair da edição"></button></a></strong>
+                </div>
+
             </form>
 
 
