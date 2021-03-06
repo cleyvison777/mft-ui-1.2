@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { MenuComponent } from './core/menu/menu.component';
+import { CategoriaProtecaoModule } from './categoria-protecao/categoria-protecao.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { MenuComponent } from './core/menu/menu.component';
     GeneroModule,
     ClasseFlorestaModule,
     GrupoEcologicoModule,
-    UsoEspecieModule
+    UsoEspecieModule,
+    CategoriaProtecaoModule
 
   ],
   providers: [

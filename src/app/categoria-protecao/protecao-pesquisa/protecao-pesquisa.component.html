@@ -1,0 +1,52 @@
+<div class="container">
+  <p-fieldset legend="Dados Cadastrais">
+    <div class="ui-g">
+      <div class="ui-g-12">
+          <form  autocomplete="on"  (ngSubmit)="consultaCategoriaProtecao()">
+              <div class="ui-g-12 ui-fluid">
+                  <label style="display: block">Pesquisar o nome da Proteção: </label>
+                  <div class="ui-g-12 ui-md-7">
+                      <div class="ui-inputgroup">
+                          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                          <input type="text" pInputText name="nmCategoriaProtecao" [(ngModel)]="filtroCategoria.nmCategoriaProtecao"  placeholder="Pesquisar">
+                      </div>
+                  </div>
+
+              </div>
+          </form>
+      </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-12">
+      <p-table [value]="listaCategoriaProtecao"  [paginator]="true"   [rows]="filtroCategoria.size" [responsive]="true" [lazy]="true"
+        [totalRecords]="totalRegistrosCategoriaProtecao" (onLazyLoad)="aoMudarPaginaCategoriaProtecao($event)" #tabela>
+            <ng-template pTemplate="header" >
+                  <tr>
+
+                    <th>Codigo</th>
+                    <th>Categoria Proteção</th>
+                    <th></th>
+
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-listaCategoriaProtecao>
+                  <tr class="hoverCtegoria">
+                    <td>{{listaCategoriaProtecao.cdCategoriaProtecao}}</td>
+                    <td>{{listaCategoriaProtecao.nmCategoriaProtecao}}</td>
+
+                    <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
+                      pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusao(listaCategoriaProtecao)">
+                    </button>
+                    <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/categoria-protecao', listaCategoriaProtecao.cdCategoriaProtecao]"></button></td>
+              </tr>
+            </ng-template>
+      </p-table>
+
+
+  </div>
+</p-fieldset>
+
+
+
+
+</div>

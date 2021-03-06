@@ -1,0 +1,35 @@
+<div class="ui-g">
+  <div class="container">
+    <div class="ui-g-12 ui-md-12">
+      <h1>{{editando ? 'Edição' : 'Nova'}} Categoria Proteção</h1>
+    </div>
+          <p-fieldset legend="Cadastro família" class="ui-g-12 ui-md-12">
+            <form  autocomplete="off" #categoriaProtecao="ngForm" (ngSubmit)="salvar(categoriaProtecao)">
+              <div class="ui-g-12 ui-md-12 ui-fluid">
+                <label>Nome: </label>
+                <input type="text" pInputText name="nmCategoriaProtecao" #nome="ngModel" placeholder="Categoria Proteção" [(ngModel)]="cadCategoriaProtecao.nmCategoriaProtecao" required  class="ng-dirty ng-invalid">
+                <div *ngIf= "nome.hasError('required') && nome.dirty">
+                  <p-message severity="error" text="Nome da categoria é obrigatorio"></p-message>
+              </div>
+              </div>
+
+
+
+  <div class="ui-g-12">
+  <button pButton type="submit" label="salvar" [disabled]="!cadCategoriaProtecao.nmCategoriaProtecao"></button>
+  <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+  </div>
+  <div *ngIf="editando" class="ui-g-10 ui-md-2 ui-fluid">
+    <button type="button" pButton label="Sair da edição" routerLink="/categoria-protecao/cadastro"></button>
+  </div>
+  </form>
+      </p-fieldset>
+  </div>
+
+
+
+</div>
+
+
+
+<app-protecao-pesquisa></app-protecao-pesquisa>

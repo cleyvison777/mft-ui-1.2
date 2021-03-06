@@ -87,7 +87,7 @@ export class NavbarComponent implements OnInit {
                 },
                 {
                   label: 'Categoria Proteção',
-                  routerLink: '/cadastro-categoria-protecao'
+                  routerLink: '/categoria-protecao/cadastro'
                 }
               ]
               },
