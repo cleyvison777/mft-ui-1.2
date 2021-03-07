@@ -5,6 +5,8 @@ import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { UsoEspecieService, UsoEspecieFiltro } from './../uso-especie.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { CadastroEspecieComponent } from '../cadastro-especie/cadastro-especie.component';
+import { MenuService } from 'src/app/core/menu/menu.service';
 
 @Component({
   selector: 'app-pesquisa-especie',
@@ -25,11 +27,22 @@ export class PesquisaEspecieComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
+    private menuService: MenuService,
   ) { }
 
   ngOnInit() {
+        
   }
-
+  
+  carregarEmpresaSelecionada() {
+    return this.menuService.carregarEmpresaSelecionada()
+      .then(empresaSelecionada => {
+        this.cdEmp = empresaSelecionada;
+        console.log("teste2 " + this.cdEmp)
+        this.pesquisandoUsoEspecie();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
 
   pesquisandoUsoEspecie(page = 0){
     this.filtro.page = page;
@@ -43,8 +56,8 @@ export class PesquisaEspecieComponent implements OnInit {
    }
    aoMudarPaginaEspecieUso(event: LazyLoadEvent) {
     const page = event.first / event.rows;
-    this.pesquisandoUsoEspecie(page);
-     }
+    this.carregarEmpresaSelecionada();
+   }
 
 
 

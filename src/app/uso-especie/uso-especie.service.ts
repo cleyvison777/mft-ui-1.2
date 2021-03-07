@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 
 export class UsoEspecieFiltro {
   nmUso: string;
-  cdEmpresa: number;
+  cdEmpresa: any;
   page = 0;
   size = 10;
 }
@@ -30,11 +30,19 @@ export class UsoEspecieService {
 
     return this.http.get(`${this.cadusoEspecieURL}?cdEmpresa=${cdEmpresa}`, { headers})
     .toPromise()
-    .then(response => response.json().content)
+      .then(response => {
+        const responseJson = response.json();
+        const cadEspecieUso = responseJson.content;
+
+        const resultado = {
+          cadEspecieUso,
+           total: responseJson.totalElements
+        };
+        return resultado;
+      });
 
 
-  };
-
+  }
 
   pesquisarUsoEspecie(filtro: UsoEspecieFiltro): Promise<any> {
     const params = new URLSearchParams;
@@ -43,6 +51,7 @@ export class UsoEspecieService {
 
     params.set('page', filtro.page.toString());
     params.set('size', filtro.size.toString());
+    params.set('cdEmpresa',filtro.cdEmpresa);
 
     if(filtro.nmUso) {
       params.set('nmUso', filtro.nmUso);
