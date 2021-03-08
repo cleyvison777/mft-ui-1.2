@@ -113,7 +113,7 @@ export class NavbarComponent implements OnInit {
               },
               {
                 label: 'Classe de Tamanho Individuo',
-                routerLink: '/cadastro-classtamanhoindividuo'
+                routerLink: '/classe-tamanho-individuo/cadastro'
               },
               {separator: true},
               {

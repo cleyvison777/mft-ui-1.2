@@ -1,3 +1,4 @@
+import { ClasseTamanhoIndividuoModule } from './classe-tamanho-individuo/classe-tamanho-individuo.module';
 import { UsoEspecieModule } from './uso-especie/uso-especie.module';
 import { ClasseFlorestaModule } from './classe-floresta/classe-floresta.module';
 import { GeneroModule } from './genero/genero.module';
@@ -37,7 +38,8 @@ import { CategoriaProtecaoModule } from './categoria-protecao/categoria-protecao
     ClasseFlorestaModule,
     GrupoEcologicoModule,
     UsoEspecieModule,
-    CategoriaProtecaoModule
+    CategoriaProtecaoModule,
+    ClasseTamanhoIndividuoModule
 
   ],
   providers: [

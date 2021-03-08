@@ -31,14 +31,13 @@ export class PesquisaEspecieComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-        
+
   }
-  
+
   carregarEmpresaSelecionada() {
     return this.menuService.carregarEmpresaSelecionada()
       .then(empresaSelecionada => {
         this.cdEmp = empresaSelecionada;
-        console.log("teste2 " + this.cdEmp)
         this.pesquisandoUsoEspecie();
       })
       .catch(erro => this.errorHandler.handle(erro));
@@ -58,7 +57,6 @@ export class PesquisaEspecieComponent implements OnInit {
     const page = event.first / event.rows;
     this.carregarEmpresaSelecionada();
    }
-
 
 
      excluindoUsoEspecie(cadUsoEspecie: any){

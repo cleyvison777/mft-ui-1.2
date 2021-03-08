@@ -1,0 +1,38 @@
+<div class="ui-g">
+  <div class="container">
+    <div class="ui-g-12 ui-md-12">
+      <h1>{{editando ? 'Edição' : 'Nova'}} Classe Tamanho Indivíduo</h1>
+    </div>
+          <p-fieldset legend="Cadastro classe tamanho" class="ui-g-12 ui-md-12">
+            <form #classeTamanho="ngForm" autocomplete="on" (ngSubmit)="salvar(classeTamanho)">
+
+          <div class="ui-g-12  ui-md-12 ui-fluid">
+            <label>Nome:</label>
+            <input id="input" name="nmClasseTamanho" type="text" pInputText ngModel #nome="ngModel" [(ngModel)]="cadClassTamanhoIndividuoSalva.nmClasseTamanho" required minlength="10" placeholder="Nome da Classe" class="ng-dirty ng-invalid">
+            <div *ngIf= "nome.hasError('required') && nome.dirty">
+            <p-message severity="error" text="Nome da grupo é obrigatorio"></p-message>
+        </div>
+      </div>
+
+  <div class="ui-g-12">
+  <button pButton type="submit" label="salvar" [disabled]="!cadClassTamanhoIndividuoSalva.nmClasseTamanho"></button>
+  <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+  </div>
+  <div *ngIf="editando" class="ui-g-6 ui-md-2 ui-fluid">
+    <button type="button" pButton label="Sair da edição" routerLink="/classe-tamanho-individuo/cadastro"></button>
+  </div>
+  </form>
+      </p-fieldset>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<app-classe-tamanho-pesquisa></app-classe-tamanho-pesquisa>

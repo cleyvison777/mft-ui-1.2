@@ -79,82 +79,8 @@ export class Verificador_m {
   p01_graco: number;
 }
 
-export class Verificador_Local_m {
-  codigo: number;
-  cdEmpresa = new Cadempresa();
-  r15_id_Verificador_m = new Verificador_m();
-  cdTipoDeVerificador = new Cadtipodeverificador();
-  cdLocal1 = new Modlocal1();
-  cdLocal2 = new Modlocal2();
-  cdLocal3 = new Modlocal3();
-  cdTipoDeMetodo = new Cadtipodemetodo();
-  txMetodologia: string;
-  cdFrequencia = new Cadfrequencia();
-  cdAmostragem = new Cadamostragem();
-  cdMaterial = new Cadmaterial();
-}
-
-export class Modlocal1 {
-  cdLocal1: number;
-  cdEmpresa = new Cadempresa();
-  nmlocal1: string;
-}
 
 
-export class Modlocal2 {
-  cdLocal2: number;
-  cdEmpresa = new Cadempresa();
-  cdLocal1 = new Modlocal1();
-  nmLocal2: string;
-}
-
-
-
-export class Modlocal3 {
-  cdLocal3: number;
-  cdEmpresa = new Cadempresa();
-  cdLocal1 = new Modlocal1();
-  cdLocal2 = new Modlocal2();
-  nmLocal3: string;
-}
-
-
-
-
-export class ModNivel1 {
-  cdNivel1: number;
-  cdEmpresa = new Cadempresa();
-  nmNivel1: string;
-}
-
-
-export class ModNivel2 {
-  cdNivel2: number;
-  cdNivel1 = new ModNivel1();
-  cdEmpresa = new Cadempresa();
-  nmNivel2: string;
-}
-
-
-
-export class ModNivel3 {
-  cdNivel1 = new ModNivel1();
-  cdNivel2 = new ModNivel2();
-  cdNivel3: number;
-  cdEmpresa = new Cadempresa();
-  nmNivel3: string;
-}
-
-
-
-export class ModNivel4 {
-  cdNivel1 = new ModNivel1();
-  cdNivel2 = new ModNivel2();
-  cdNivel3 = new ModNivel3();
-  cdNivel4: number;
-  cdEmpresa = new Cadempresa();
-  nmNivel4: string;
-}
 
 
 export class ModMonitoramentoTemplate {

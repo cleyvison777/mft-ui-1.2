@@ -24,9 +24,7 @@ export class UsoEspecieService {
     const params = new URLSearchParams;
     const headers = new Headers;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-
-
-      params.set('cdEmpresa', cdEmpresa);
+    params.set('cdEmpresa', cdEmpresa);
 
     return this.http.get(`${this.cadusoEspecieURL}?cdEmpresa=${cdEmpresa}`, { headers})
     .toPromise()
@@ -56,7 +54,7 @@ export class UsoEspecieService {
     if(filtro.nmUso) {
       params.set('nmUso', filtro.nmUso);
     }
-    return this.http.get(`${this.cadusoEspecieURL}`, {headers, search: filtro})
+    return this.http.get(`${this.cadusoEspecieURL}`, {headers,  search: filtro})
      .toPromise()
       .then(response => {
         const responseJson = response.json();

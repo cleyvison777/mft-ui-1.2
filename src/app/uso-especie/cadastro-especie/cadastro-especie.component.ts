@@ -39,6 +39,9 @@ export class CadastroEspecieComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.carregarEmpresaSelecionada();
+
+
     const codigoUsoEspecie =  this.route.snapshot.params['codigo'];
     if(codigoUsoEspecie) {
       this.carregarUsoEspecie(codigoUsoEspecie);
@@ -49,7 +52,7 @@ export class CadastroEspecieComponent implements OnInit {
     return Boolean(this.usoEspecieSalva.cdUso);
   }
 
-  
+
   adicionandoUsoEspecie(form: FormControl){
     this.usoespecieService.adicionarUsoEspecie(this.usoEspecieSalva)
      .then(() => {
@@ -104,6 +107,24 @@ carregarUsoEspecie(codigo: number) {
     this.title.setTitle(`Edição de Gênero: ${this.usoEspecieSalva.nmUso}`)
 
   }
+
+
+  pesquisar2(cdEmpresa) {
+    this.usoespecieService.pesquisar2(cdEmpresa)
+      .then(empresaSelecionada =>  this.cadEspecieUso  = empresaSelecionada);
+  }
+
+  carregarEmpresaSelecionada(){
+    return this.menuService.carregarEmpresaSelecionada()
+     .then(empresaSelecionada => {
+       this.empresaSelecionada.cdEmpresa = empresaSelecionada;
+       this.pesquisar2(this.empresaSelecionada.cdEmpresa);
+       this.usoEspecieSalva.cdEmpresa.cdEmpresa = this.empresaSelecionada.cdEmpresa
+
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
 
   refresh(): void {
     window.location.reload();
