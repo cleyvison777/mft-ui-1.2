@@ -1,0 +1,38 @@
+<div class="ui-g">
+  <div class="container">
+    <div class="ui-g-12">
+      <h1>{{editando ? 'Edição' : 'Nova'}} Medição</h1>
+    </div>
+    <form autocomplete="off" #medicao="ngForm" (ngSubmit)="salvar(medicao)">
+          <p-fieldset legend="Cadastro nova pessoa" class="ui-g-12 ui-md-12">
+
+            <div class="ui-fluid ui-g-12 ui-md-12" >
+              <label>AMF: </label>
+              <p-dropdown name="area" [options]="area" [autoWidth]="false" placeholder= "Selecione a area"
+              filter="true" required [(ngModel)]="cadMedicaoSalva.cdArea.cdarea"></p-dropdown>
+            </div>
+            <div class=" ui-fluid ui-g-12 ui-md-6">
+              <label>Inicio da Medição: </label>
+              <p-calendar [showIcon]="true" [(ngModel)]="cadMedicaoSalva.dtInicioMedica" name="dtInicioMedica" dateFormat="dd/mm/yy"  placeholder="dd/mm/aa" showButtonBar="true"></p-calendar><span style="margin-left:35px"></span>
+          </div>
+
+          <div  class="ui-fluid ui-g-12 ui-md-12">
+            <h3>Observações:</h3>
+            <textarea rows="5" cols="50" name="txObservacao" pInputTextarea [(ngModel)]="cadMedicaoSalva.txObservacao"></textarea>
+          </div>
+
+
+          <div class="ui-g-12">
+          <button pButton type="submit" label="salvar" ></button>
+          <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+          </div>
+          <div *ngIf="editando" class="ui-g-12 ui-md-12">
+            <strong><a routerLink="/medicao/cadastro"><button type="button" pButton label="Sair da edição"></button></a></strong>
+          </div>
+
+      </p-fieldset>
+    </form>
+  </div>
+</div>
+
+<app-medicao-pesquisa></app-medicao-pesquisa>

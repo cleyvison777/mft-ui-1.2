@@ -1,0 +1,55 @@
+<div class="container">
+  <p-fieldset legend="Medição Cadastradas">
+    <div class="ui-g">
+      <div class="ui-g-12">
+            <form  autocomplete="off" (ngSubmit)="pesquisarMedicao()">
+              <div class="ui-g-12 ui-fluid">
+                  <label style="display: block">Pesquisar por data: </label>
+                  <div class="ui-g-12 ui-md-7">
+                      <div class="ui-inputgroup">
+                          <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                          <input type="text" pInputText name="dtInicioMedica" [(ngModel)]="filtro.dtInicioMedica" placeholder="Pesquisar">
+                      </div>
+                  </div>
+
+              </div>
+          </form>
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <p-table [value]="cadMedicao"  [paginator]="true"   [rows]="filtro.size" [responsive]="true" [lazy]="true"
+    [totalRecords]="totalRegistrosMedicao" (onLazyLoad)="aoMudarPaginaEspecieUso($event)" #tabela>
+        <ng-template pTemplate="header" >
+            <tr>
+
+              <th>Codigo</th>
+              <th>Area</th>
+              <th>Data</th>
+              <th>Observações</th>
+              <th></th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cadMedicao>
+
+            <tr>
+              <td pEditableColumn>{{cadMedicao.cdMedicao}}</td>
+              <td pEditableColumn>{{cadMedicao.cdArea.nmArea}}</td>
+              <td pEditableColumn>{{cadMedicao.dtInicioMedica | date: 'dd/MM/yyyy'}}</td>
+              <td pEditableColumn>{{cadMedicao.txObservacao}}</td>
+
+              <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
+                pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusaoMedicao(cadMedicao)">
+              </button>
+              <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/medicao', cadMedicao.cdMedicao]"></button></td>
+
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+
+</p-fieldset>
+
+</div>

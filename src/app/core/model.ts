@@ -222,6 +222,15 @@ export class ClasseFloresta{
   nmClassefloresta: string;
   enderecoImagem: string;
 
+
+}
+export class CadMedicao {
+  cdMedicao: number;
+  cdEmpresa = new Cadempresa();
+  cdArea = new CadAmf();
+  dtInicioMedica: Date;
+  txObservacao: string
+
 }
 
 

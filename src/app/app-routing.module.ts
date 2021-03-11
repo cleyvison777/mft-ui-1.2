@@ -1,3 +1,4 @@
+import { MedicaoCadastroComponent } from './medicao/medicao-cadastro/medicao-cadastro.component';
 import { ClasseTamanhoCadastroComponent } from './classe-tamanho-individuo/classe-tamanho-cadastro/classe-tamanho-cadastro.component';
 import { ProtecaoCadastroComponent } from './categoria-protecao/protecao-cadastro/protecao-cadastro.component';
 import { CadastroEspecieComponent } from './uso-especie/cadastro-especie/cadastro-especie.component';
@@ -36,6 +37,8 @@ const routes: Routes = [
   {path: 'categoria-protecao/:codigo', component:ProtecaoCadastroComponent},
   {path: 'classe-tamanho-individuo/cadastro', component:ClasseTamanhoCadastroComponent},
   {path: 'classe-tamanho-individuo/:codigo', component:ClasseTamanhoCadastroComponent},
+  {path: 'medicao/cadastro', component:MedicaoCadastroComponent},
+  {path: 'medicao/:codigo', component:MedicaoCadastroComponent},
 
   {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},

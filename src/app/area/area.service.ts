@@ -107,4 +107,15 @@ export class AreaService {
       });
     }
 
+
+   listarTodasArea(): Promise<any> {
+    const headers = new Headers;
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.get(this. cadAreaUrl, { headers })
+    .toPromise()
+    .then(response => response.json().content);
+    }
+
 }
