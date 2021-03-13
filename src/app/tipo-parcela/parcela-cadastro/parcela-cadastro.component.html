@@ -1,0 +1,40 @@
+<div class="ui-g">
+  <div class="container">
+    <div class="ui-g-12">
+      <h1>{{editando ? 'EDIÇÃO' : 'CADASTRO'}}  TIPO PARCELA</h1>
+    </div>
+          <p-fieldset legend="Cadastro tipo parcela" class="ui-g-12 ui-md-12">
+
+
+            <form autocomplete="off" #tipoparcela="ngForm" (ngSubmit)="salvar(tipoparcela)">
+
+               <div class="class= ui-g-7 ui-md-7 ui-fluid">
+                 <label>Nome: </label>
+                 <input type="text" name="nmTipoParcela" placeholder="Tipo parcela" pInputText [(ngModel)]="cadTipoParcelaSalva.nmTipoParcela">
+              </div>
+                    <div class="class= ui-g-2 ui-md-3" style="margin-left: 100px;" >
+                     <p-checkbox name="lgEstudoCrescimento"  label="Estudo crescimento"  binary="true" [(ngModel)]="cadTipoParcelaSalva.lgEstudoCrescimento">
+                     </p-checkbox>
+                   </div>
+
+                   <div class="ui-md-12 ui-g-12">
+                     <button type="submit" pButton  label="Salvar" class="ui-button-primary"  [disabled]="!cadTipoParcelaSalva.nmTipoParcela"></button>
+                   </div>
+
+                   <div *ngIf="editando" class="ui-g-2 ui-md-2 ui-fluid">
+                     <button type="button" pButton label="Sair da edição" routerLink="/tipo-parcela/cadastro"></button>
+                 </div>
+
+            </form>
+
+      </p-fieldset>
+  </div>
+
+</div>
+
+
+
+
+
+
+<app-parcela-pesquisa></app-parcela-pesquisa>

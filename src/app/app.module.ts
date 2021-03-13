@@ -1,3 +1,4 @@
+import { TipoParcelaModule } from './tipo-parcela/tipo-parcela.module';
 import { MedicaoModule } from './medicao/medicao.module';
 import { ClasseTamanhoIndividuoModule } from './classe-tamanho-individuo/classe-tamanho-individuo.module';
 import { UsoEspecieModule } from './uso-especie/uso-especie.module';
@@ -41,7 +42,8 @@ import { CategoriaProtecaoModule } from './categoria-protecao/categoria-protecao
     UsoEspecieModule,
     CategoriaProtecaoModule,
     ClasseTamanhoIndividuoModule,
-    MedicaoModule
+    MedicaoModule,
+    TipoParcelaModule
 
   ],
   providers: [

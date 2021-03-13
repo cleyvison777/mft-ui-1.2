@@ -3,7 +3,7 @@
       <p-panel>
         <p-header>
                 <div class="ui-helper-clearfix">
-                    <span class="ui-panel-title ui-g-12 ui-md-11" style="font-size:16px;display:inline-block;margin-top:2px">Cadastro-Genero</span>
+                    <span class="ui-panel-title ui-g-12 ui-md-11" style="font-size:16px;display:inline-block;margin-top:2px">Cadastro-Gênero</span>
                     <button type="button" (click)="showBasicDialog()" pButton icon="pi pi-eye" label="Familia " [style]="{'float':'right'}"></button>
                     <p-dialog [(visible)]="displayBasic">
                       <p-header>Cadastro Familia</p-header>
@@ -46,7 +46,7 @@
 
       <form autocomplete="off" #cadgenero="ngForm" (ngSubmit)="salvar(cadgenero)">
 
-        <p-fieldset legend="{{editando ? 'EDITANDO ': ' '}} Genero">
+        <p-fieldset legend="{{editando ? 'EDITANDO ': 'CADASTRO'}} GÊNERO">
             <div class="ui-g-7 ui-md-7 ui-fluid">
               <label>Nome: </label>
               <input type="text" pInputText name="nmGenero" placeholder="Genero" [(ngModel)]="genero.nmGenero">

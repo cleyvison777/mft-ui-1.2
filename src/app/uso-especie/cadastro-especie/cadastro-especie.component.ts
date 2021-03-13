@@ -46,7 +46,12 @@ export class CadastroEspecieComponent implements OnInit {
     if(codigoUsoEspecie) {
       this.carregarUsoEspecie(codigoUsoEspecie);
     }
+
+    this.title.setTitle('Uso Espécie')
+
   }
+
+
 
   get editando (){
     return Boolean(this.usoEspecieSalva.cdUso);

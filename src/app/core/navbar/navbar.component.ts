@@ -105,7 +105,7 @@ export class NavbarComponent implements OnInit {
           items: [
               {
                 label: 'Tipo Parcela',
-                routerLink: '/tipo-parcela'
+                routerLink: '/tipo-parcela/cadastro'
               },
               {
                 label: 'Classe Floresta',
