@@ -1,3 +1,4 @@
+import { ClasseTamanhoModule } from './classe-tamanho/classe-tamanho.module';
 import { TipoParcelaModule } from './tipo-parcela/tipo-parcela.module';
 import { MedicaoModule } from './medicao/medicao.module';
 import { ClasseTamanhoIndividuoModule } from './classe-tamanho-individuo/classe-tamanho-individuo.module';
@@ -43,7 +44,8 @@ import { CategoriaProtecaoModule } from './categoria-protecao/categoria-protecao
     CategoriaProtecaoModule,
     ClasseTamanhoIndividuoModule,
     MedicaoModule,
-    TipoParcelaModule
+    TipoParcelaModule,
+    ClasseTamanhoModule
 
   ],
   providers: [

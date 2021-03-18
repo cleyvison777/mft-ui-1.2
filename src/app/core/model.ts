@@ -25,88 +25,7 @@ export class empresaSelecionada {
   cdEmpresa: number;
 }
 
-export class Cadamostragem {
-  cdAmostragem: number;
-  cdEmpresa = new Cadempresa();
-  nmAmostragem: string;
-}
 
-export class Cadfrequencia {
-  cdFrequencia: number;
-  cdEmpresa = new Cadempresa();
-  nmFrequencia: string;
-}
-
-export class Cadtipodemetodo {
-  cdTipoDeMetodo: number;
-  cdEmpresa = new Cadempresa();
-  nmTipoDeMetodo: string;
-}
-
-export class Cadmaterial {
-  cdMaterial: number;
-  cdEmpresa = new Cadempresa();
-  nmMaterial: string;
-}
-
-export class Cadtipodeverificador {
-  cdTipoDeVerificador: number;
-  nmTipoDeVerificador: string;
-  nrNiveis: number;
-  rotuloNivel1: string;
-  rotuloNivel2: string;
-  rotuloNivel3: string;
-  rotuloNivel4: string;
-  rotuloNivel5: string;
-}
-
-export class Cadniveldeavaliacao {
-  cdNivelDeAvaliacao: number;
-  nmNivelDeAvaliacao: string;
-  sigla: string;
-  txDescricao: string;
-}
-
-export class Verificador_m {
-  codigo: number;
-  cdEmpresa = new Cadempresa();
-  cdTipoDeVerificador = new Cadtipodeverificador();
-  cdVerificador: number;
-  cadNivelDeAvaliacao = new Cadniveldeavaliacao();
-  codalfa: string;
-  nmverificador: string;
-  limiar: string;
-  p01_graco: number;
-}
-
-
-
-
-
-export class ModMonitoramentoTemplate {
-  cdTemplate: number;
-  mmTemplate: string;
-  cdTipoDeVerificador = new Cadtipodeverificador();
-}
-
-export class AppMonitoramento {
-  cdMonitoramento: number;
-  cdTemplate = new ModMonitoramentoTemplate();
-  cdEmpresa = new Cadempresa();
-  nmMonitoramento: string;
-  cdTipoDeVerificador = new Cadtipodeverificador();
-  dtCriacao: Date;
-  txLocal: string;
-}
-
-export class AppAvaliacao {
-  cdAvaliacao: number;
-  cdMonitoramento = new AppMonitoramento();
-  cdEmpresa = new Cadempresa();
-  nmAvaliacao: string;
-  dtInicio: Date;
-  dtFim: Date;
-}
 
 export class CadListaEspecie {
   cdListaEsp: number;
@@ -233,4 +152,36 @@ export class CadMedicao {
 
 }
 
+export class CadEquacao {
 
+  cdEquacao: number;
+  cdEmpresa = new Cadempresa();
+	nmEquacao: string;
+  Equacao: string;
+  txObservacaoEquacao: string;
+  imgEquacao: string;
+}
+export class CadClasseDeTamanho {
+
+  cdClasseTamanho: number;
+  cdEmpresa = new Cadempresa();;
+  cdArea = new CadAmf();;
+  cdEquacao = new CadEquacao();
+	dapMinimoComFustemm: number;
+  dapMaximoComFustemm: number;
+	dapMinimoSemFustemm: number;
+	dapMaximoSemFustemm: number;;
+  alturaMinimam: number;;
+	alturaMaximam: number;;
+	comprimentoParcelam: number;;
+  larguraParcelam: number;;
+	r33_cdFormatoSubParcela: number;;
+	dimensao1SubParcelam: number;;
+	dimensao2SubParcelam: number;;
+  dimensao3SubParcelam: number;;
+	padraoCrescAnualMiniMomm: number;;
+  padraoCrescAnualMaxiMomm: number;;
+	dapMaxiMoingMedicao2mm: number;;
+	nrSubParcelasPorParcela: number;;
+
+}

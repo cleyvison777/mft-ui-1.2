@@ -1,0 +1,25 @@
+ <div class="ui-g">
+    <div class="container">
+      <div class="ui-g-12">
+        <h1>{{editando ? 'EDIÇÃO' : 'CADASTRO'}} CLASSE TAMANHO</h1>
+      </div>
+
+         <form autocomplete="off" #classetamanho="ngForm" (ngSubmit)="adicionarClassedeTamanho(classetamanho)">
+
+             <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+             <p-fieldset legend="Cadastro classe tamanho" class="ui-g-12 ui-md-12">
+              <div class="ui-fluid ui-g-12 ui-md-12" >
+                <label>AMF: </label>
+                <p-dropdown name="area" [options]="area" [autoWidth]="false" placeholder= "Selecione a area"
+                filter="true" required [(ngModel)]="classedeTamanhoSalva.cdArea.cdarea"></p-dropdown>
+              </div>
+              <div class="ui-fluid ui-g-12 ui-md-12" >
+                <label>Classe de tamanho: </label>
+                <p-dropdown name="classeInd" [options]="classeInd" [autoWidth]="false" placeholder= "Selecione a area"
+                filter="true" required [(ngModel)]="classedeTamanhoSalva.cdClasseTamanho"></p-dropdown>
+              </div>
+             </p-fieldset>
+
+         </form>
+    </div>
+ </div>

@@ -1,3 +1,4 @@
+import { MenuItem } from 'primeng/api';
 import { AreaService } from './../../area/area.service';
 import { FormControl } from '@angular/forms';
 import { MenuEmpresa, CadMedicao } from './../../core/model';
@@ -21,7 +22,8 @@ export class MedicaoCadastroComponent implements OnInit {
   area = [];
   empresaSelecionada = new MenuEmpresa();
   cadMedicaoSalva = new CadMedicao();
-
+  items: MenuItem[];
+  activeItem: MenuItem;
   constructor(
     private menuService: MenuService,
     private areaService: AreaService,
@@ -38,6 +40,11 @@ export class MedicaoCadastroComponent implements OnInit {
     this.carregarArea();
     this.carregarEmpresaSelecionada();
 
+    this.items = [
+      {label: 'Medição', icon: 'fa-bar-chart', routerLink: '/medicao/cadastro'},
+      {label: 'Classe tamanho', icon: 'fa-calendar', routerLink: '/classe-tamanho/cadastro'},
+  ];
+
     const codigoMedicao =  this.route.snapshot.params['codigo'];
     if(codigoMedicao) {
       this.carregarMedicao(codigoMedicao);
@@ -47,7 +54,6 @@ export class MedicaoCadastroComponent implements OnInit {
 
 
   }
-
 
 
 

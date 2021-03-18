@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MedicaoCadastroComponent } from './medicao-cadastro/medicao-cadastro.component';
-import { MedicaoPesquisaComponent } from './medicao-pesquisa/medicao-pesquisa.component';
+import { TamanhoCadastroComponent } from './tamanho-cadastro/tamanho-cadastro.component';
+import { TamanhoPesquisaComponent } from './tamanho-pesquisa/tamanho-pesquisa.component';
+
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/components/messages/messages';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
@@ -23,10 +24,8 @@ import {CalendarModule} from 'primeng/components/calendar/calendar';
 import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
 import {InputTextareaModule} from 'primeng/components/inputtextarea/inputtextarea';
 import {TabMenuModule} from 'primeng/components/tabmenu/tabmenu';
-
-
 @NgModule({
-  declarations: [MedicaoCadastroComponent, MedicaoPesquisaComponent],
+  declarations: [TamanhoCadastroComponent, TamanhoPesquisaComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -56,4 +55,4 @@ import {TabMenuModule} from 'primeng/components/tabmenu/tabmenu';
 
   ]
 })
-export class MedicaoModule { }
+export class ClasseTamanhoModule { }
