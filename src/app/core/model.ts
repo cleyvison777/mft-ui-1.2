@@ -175,7 +175,7 @@ export class CadClasseDeTamanho {
 	alturaMaximam: number;;
 	comprimentoParcelam: number;;
   larguraParcelam: number;;
-	r33_cdFormatoSubParcela: number;;
+	cdFormatoSubParcela: number;;
 	dimensao1SubParcelam: number;;
 	dimensao2SubParcelam: number;;
   dimensao3SubParcelam: number;;
@@ -184,4 +184,15 @@ export class CadClasseDeTamanho {
 	dapMaxiMoingMedicao2mm: number;;
 	nrSubParcelasPorParcela: number;;
 
+}
+
+export class GeraParcelESubParcela {
+
+  id: number;
+  cdEmpresa = new Cadempresa();
+  cdArea = new CadAmf();
+  cdTipoParcela = new CadTipoParcela;
+  cdParcelaInicio: number;
+  nrParcelas: number;
+  nrSubParcelasPorParcelas: number
 }

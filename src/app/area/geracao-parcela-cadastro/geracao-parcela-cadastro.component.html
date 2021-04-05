@@ -1,0 +1,39 @@
+<div class="ui-g">
+    <div class="container">
+       <p-fieldset legend="AMF" class="ui-g-12 ui-md-12">
+         <form (ngSubmit)="adicionar(geracao)" #geracao="ngForm">
+          <div class="ui-fluid ui-g-6 ui-md-6" >
+            <label>AMF: </label>
+            <p-dropdown name="area" [options]="area" [autoWidth]="false" placeholder= "Selecione a area"
+             filter="true" required [(ngModel)]="geraParcelESubParcelaSalva.cdArea.cdarea"></p-dropdown>
+          </div>
+
+          <div class="ui-fluid ui-g-6 ui-md-6" >
+            <label>Tipo padrão de parcela: </label>
+            <p-dropdown name="listaTipoparcela" [options]="listaTipoparcela" [autoWidth]="false" placeholder= "Selecione a area"
+             filter="true" required [(ngModel)]="geraParcelESubParcelaSalva.cdTipoParcela.cdTipoParcela"></p-dropdown>
+          </div>
+
+          <div class="ui-fluid ui-g-6 ui-md-6">
+             <label>Numero da primeira parcela: </label>
+             <input type="text" pInputText name="">
+          </div>
+
+          <div class="ui-fluid ui-g-6 ui-md-6">
+            <label>Quantidade de parcelas a gerar: </label>
+            <input type="text" pInputText name="nrParcelas" [(ngModel)]="geraParcelESubParcelaSalva.nrParcelas">
+         </div>
+
+         <div class="ui-fluid ui-g-6 ui-md-6">
+          <label>Quantidade de subparcelas para cada parcela: </label>
+          <input type="text" pInputText name="nrSubParcelasPorParcelas" [(ngModel)]="geraParcelESubParcelaSalva.nrSubParcelasPorParcelas">
+       </div>
+
+       <div class="ui-g-12">
+        <button pButton type="submit" icon="pi pi-check" label="Gerar parcelas e subparcelas"></button>
+        <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+        </div>
+        </form>
+      </p-fieldset>
+   </div>
+</div>

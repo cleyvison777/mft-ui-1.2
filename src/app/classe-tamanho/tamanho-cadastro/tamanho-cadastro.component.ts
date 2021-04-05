@@ -1,3 +1,4 @@
+import { EquacaoService } from './../../equacao/equacao.service';
 import { ClasseTamanhoService  as ClasseTamanhoIndividuoService} from './../../classe-tamanho-individuo/classe-tamanho.service';
 import { MenuItem } from 'primeng/api';
 import { AreaService } from './../../area/area.service';
@@ -23,6 +24,7 @@ export class TamanhoCadastroComponent implements OnInit {
   classeInd = [];
   cdEmp: any;
   area = [];
+  equacoes = [];
   empresaSelecionada = new MenuEmpresa();
   classedeTamanhoSalva = new CadClasseDeTamanho();
   items: MenuItem[];
@@ -34,7 +36,7 @@ export class TamanhoCadastroComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private classedeTamanhoService: ClasseTamanhoService,
     private classeTamanhoIndividuoService: ClasseTamanhoIndividuoService,
-
+    private equacaoService: EquacaoService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
     private route: ActivatedRoute,
@@ -47,6 +49,7 @@ export class TamanhoCadastroComponent implements OnInit {
     this.carregarEmpresaSelecionada();
     this.carregarArea();
     this.carregarClasseIndv();
+     this.carregarEquacao();
 
     this.items = [
       {label: 'Classe tamanho', icon: 'fa-calendar', routerLink: '/classe-tamanho/cadastro'},
@@ -72,6 +75,14 @@ export class TamanhoCadastroComponent implements OnInit {
      })
      .catch(erro => this.errorHandler.handle(erro));
   }
+
+   carregarEquacao(){
+    return this.equacaoService.listarTodasEquacao()
+   .then( equacoes => {
+     console.log(equacoes);
+   })
+    .catch(erro => this.errorHandler.handle(erro));
+      }
 
   carregarArea() {
     return this.areaService.listarTodasArea()

@@ -1,3 +1,4 @@
+import { EquacaoModule } from './equacao/equacao.module';
 import { ClasseTamanhoModule } from './classe-tamanho/classe-tamanho.module';
 import { TipoParcelaModule } from './tipo-parcela/tipo-parcela.module';
 import { MedicaoModule } from './medicao/medicao.module';
@@ -10,6 +11,7 @@ import { ListaEspecieModule } from './lista-especie/lista-especie.module';
 import { AreaModule } from './area/area.module';
 import { EmpresaModule } from './empresa/empresa.module';
 import { GrupoEcologicoModule } from './grupo-ecologico/grupo-ecologico.module';
+import { CategoriaProtecaoModule } from './categoria-protecao/categoria-protecao.module';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -20,7 +22,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { MenuComponent } from './core/menu/menu.component';
-import { CategoriaProtecaoModule } from './categoria-protecao/categoria-protecao.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,9 @@ import { CategoriaProtecaoModule } from './categoria-protecao/categoria-protecao
     ClasseTamanhoIndividuoModule,
     MedicaoModule,
     TipoParcelaModule,
-    ClasseTamanhoModule
+    ClasseTamanhoModule,
+    EquacaoModule,
+
 
   ],
   providers: [

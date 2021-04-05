@@ -45,7 +45,6 @@ const routes: Routes = [
   {path: 'tipo-parcela/:codigo', component:ParcelaCadastroComponent},
   {path: 'classe-tamanho/cadastro', component:TamanhoCadastroComponent},
   {path: 'classe-tamanho/:codigo', component:TamanhoCadastroComponent},
-
   {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
 ];

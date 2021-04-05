@@ -1,7 +1,6 @@
 import { CadClasseDeTamanho } from './../core/model';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
-
 export class classeTamanhoFiltro {
   cdEmpresa: any;
   page = 0;
@@ -28,10 +27,10 @@ export class ClasseTamanhoService {
     .toPromise()
       .then(response => {
         const responseJson = response.json();
-        const cadEspecieUso = responseJson.content;
+        const classedeTamanho = responseJson.content;
 
         const resultado = {
-          cadEspecieUso,
+          classedeTamanho,
            total: responseJson.totalElements
         };
         return resultado;

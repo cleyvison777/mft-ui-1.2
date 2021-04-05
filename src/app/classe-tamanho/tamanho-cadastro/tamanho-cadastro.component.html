@@ -8,18 +8,101 @@
 
              <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
              <p-fieldset legend="Cadastro classe tamanho" class="ui-g-12 ui-md-12">
-              <div class="ui-fluid ui-g-12 ui-md-12" >
+              <div class="ui-fluid ui-g-12 ui-lg-12 ui-md-12">
                 <label>AMF: </label>
                 <p-dropdown name="area" [options]="area" [autoWidth]="false" placeholder= "Selecione a area"
                 filter="true" required [(ngModel)]="classedeTamanhoSalva.cdArea.cdarea"></p-dropdown>
               </div>
-              <div class="ui-fluid ui-g-12 ui-md-12" >
+              <div class="ui-fluid ui-g-12 ui-lg-12 ui-md-12" >
                 <label>Classe de tamanho: </label>
                 <p-dropdown name="classeInd" [options]="classeInd" [autoWidth]="false" placeholder= "Selecione a area"
                 filter="true" required [(ngModel)]="classedeTamanhoSalva.cdClasseTamanho"></p-dropdown>
               </div>
+
+              <p-fieldset legend="Diametro e Altura" class="ui-g-12 ui-lg-6 ui-md-6">
+
+                <span class="ui-g-5">Diamentro com descrição de fuste(MM)</span>
+                <div class="ui-g-2 ui-lg-2 ui-md-2 ui-fluid">
+                <input type="number" min="1" pInputText name="latitude2Grau" placeholder="Minimo">
+                <input type="number" min="1" pInputText name="latitude2Grau" placeholder="Minimo">
+                </div>
+                <div class="ui-g-2 ui-md-2 ui-lg-2 ui-fluid">
+                <input type="number" min="1" pInputText name="latitude2Grau" placeholder="Maximo">
+                <input type="number" min="1" pInputText name="latitude2Grau" placeholder="Maximo">
+                </div>
+
+                <span class="ui-g-5">Diamentro com descrição de fuste(MM)</span>
+                <div class="ui-g-2 ui-md-2 ui-lg-2 ui-fluid">
+                <input type="number" min="1" pInputText name="latitude2Grau" placeholder="Minimo">
+                <input type="number" min="1" pInputText name="latitude2Grau" placeholder="Minimo">
+                </div>
+                <div class="ui-g-2 ui-md-2 ui-lg-2 ui-fluid">
+                <input type="number" min="1" pInputText name="latitude2Grau" placeholder="Maximo">
+                <input type="number" min="1" pInputText name="latitude2Grau" placeholder="Maximo">
+                </div>
+
+              </p-fieldset>
+
+              <p-fieldset legend="Outros" class="ui-g-12 ui-md-6">
+                <div class="ui-fluid ui-g-12 ui-lg-12 ui-md-12" >
+                  <label>Equação do volume: </label>
+                  <p-dropdown name="equacao" [options]="equacoes" [autoWidth]="false"
+                  filter="true" required [(ngModel)]="classedeTamanhoSalva.cdEquacao.cdEquacao"></p-dropdown>
+                </div>
+
+                <div class="ui-fluid ui-g-12 ui-lg-12 ui-md-12">
+                    <label>Maior diametro permitido para ingresso apartir de 2º medição (mm)</label>
+                     <input type="text" pInputText name="">
+
+                </div>
+              </p-fieldset>
+
+              <p-fieldset legend="Parcela e SubParcela" class="ui-g-12 ui-md-12 ">
+
+              <div class="ui-g-12 ui-md-2 ui-lg-2 ui-fluid">
+                <label>Parcela (m)</label><br />
+                <span>Comprimeto</span>
+                <input type="text" pInputText name="">
+              </div>
+
+              <div class="ui-g-12 ui-md-1 ui-lg-1 ui-fluid" style="padding-top: 26px;">
+                <span>Largura</span>
+                <input type="text" pInputText name="">
+              </div>
+
+              <div class="ui-g-12  ui-md-2 ui-lg-2 ui-fluid">
+                <label>SubParcela (m)</label><br />
+                <span>Diametro.1</span>
+                <input type="text" pInputText name="">
+              </div>
+
+              <div class="ui-g-12 ui-md-1 ui-lg-1 ui-fluid" style="padding-top: 26px;">
+                <span>Dim.2</span>
+                <input type="text" pInputText name="">
+              </div>
+
+              <div class="ui-g-12 ui-md-1 ui-lg-1 ui-fluid" style="padding-top: 26px;">
+                <span>Dim.3</span>
+                <input type="text" pInputText name="">
+              </div>
+
+              <div class="ui-g-12  ui-md-3 ui-lg-3 ui-fluid">
+                <label>Nº de subparcelas amostradas por parcelas</label>
+                <input type="text" pInputText name="">
+              </div>
+              </p-fieldset>
+
+              <div class="ui-g-12">
+                <button pButton type="submit" label="salvar" [disabled]=""></button>
+                <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+                </div>
+                <div *ngIf="editando" class="ui-g-6 ui-md-2 ui-fluid">
+                  <button type="button" pButton label="Sair da edição" routerLink="/classe-tamanho-individuo/cadastro"></button>
+                </div>
+
              </p-fieldset>
 
          </form>
     </div>
  </div>
+  <app-tamanho-pesquisa></app-tamanho-pesquisa>

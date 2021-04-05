@@ -88,7 +88,7 @@ export class EmpresaService {
 
       return this.http.get(this.cadempresaurl, { headers })
         .toPromise()
-        .then(response => response.json().content);
+          .then(response => response.json().content);
     }
 
     excluir(cdEmpresa: number): Promise<void> {

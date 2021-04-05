@@ -3,7 +3,6 @@ import { ConfirmationService } from 'primeng/components/common/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EspecieService } from './../../lista-especie/especie.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
-import { PesquisaAreaComponent } from './../pesquisa-area/pesquisa-area.component';
 import { AreaService } from './../area.service';
 import { CadAmf, MenuEmpresa } from './../../core/model';
 import { FormControl } from '@angular/forms';
@@ -25,6 +24,8 @@ export class CadastroAreaComponent implements OnInit {
   cdEmp: any;
   cadAmf = new CadAmf();
   empresaSelecionada = new MenuEmpresa();
+  displayBasic: boolean;
+
 
   constructor(
     private errorHandler :ErrorHandlerService,
@@ -37,6 +38,7 @@ export class CadastroAreaComponent implements OnInit {
     private route: ActivatedRoute,
     private confirmation: ConfirmationService,
     private router: Router,
+
     ) { }
 
   ngOnInit() {
@@ -61,6 +63,11 @@ export class CadastroAreaComponent implements OnInit {
   get editando() {
     return Boolean(this.cadAmf.cdarea);
   }
+
+  ////chamar o dialog
+  showBasicDialog() {
+    this.displayBasic = true;
+}
 
       adicionarArea(form: FormControl){
         this.areaService.adicionar(this.cadAmf)
