@@ -1,3 +1,4 @@
+import { GeracaoParcelaSubparcelaModule } from './geracao-parcela-subparcela/geracao-parcela-subparcela.module';
 import { EquacaoModule } from './equacao/equacao.module';
 import { ClasseTamanhoModule } from './classe-tamanho/classe-tamanho.module';
 import { TipoParcelaModule } from './tipo-parcela/tipo-parcela.module';
@@ -12,7 +13,6 @@ import { AreaModule } from './area/area.module';
 import { EmpresaModule } from './empresa/empresa.module';
 import { GrupoEcologicoModule } from './grupo-ecologico/grupo-ecologico.module';
 import { CategoriaProtecaoModule } from './categoria-protecao/categoria-protecao.module';
-
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -48,6 +48,7 @@ import { MenuComponent } from './core/menu/menu.component';
     TipoParcelaModule,
     ClasseTamanhoModule,
     EquacaoModule,
+
 
 
   ],

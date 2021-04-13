@@ -46,7 +46,7 @@ export class CadastroAreaComponent implements OnInit {
     this.carregarListaEpecie();
     this.cadAmf.lgMudaContada = false;
     this.cadAmf.lgPalmeiraContada = false;
-    this.carregarEmpresaSelecionada();
+    this.carregarEmpresaSelecionadaArea();
 
 
       const codigoAmf = this.route.snapshot.params['codigo'];
@@ -151,7 +151,7 @@ export class CadastroAreaComponent implements OnInit {
             .then(empresaSelecionada =>  this.area  = empresaSelecionada);
         }
 
-        carregarEmpresaSelecionada(){
+        carregarEmpresaSelecionadaArea(){
           return this.menuService.carregarEmpresaSelecionada()
            .then(empresaSelecionada => {
              this.empresaSelecionada.cdEmpresa = empresaSelecionada;

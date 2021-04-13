@@ -164,7 +164,7 @@ export class CadEquacao {
 export class CadClasseDeTamanho {
 
   cdClasseTamanho: number;
-  cdEmpresa = new Cadempresa();;
+  cdEmpresa = new Cadempresa();
   cdArea = new CadAmf();;
   cdEquacao = new CadEquacao();
 	dapMinimoComFustemm: number;
@@ -190,8 +190,8 @@ export class GeraParcelESubParcela {
 
   id: number;
   cdEmpresa = new Cadempresa();
-  cdArea = new CadAmf();
-  cdTipoParcela = new CadTipoParcela;
+  cdArea = new CadAmf();;
+  cdTipoParcela = new  CadTipoParcela;
   cdParcelaInicio: number;
   nrParcelas: number;
   nrSubParcelasPorParcelas: number

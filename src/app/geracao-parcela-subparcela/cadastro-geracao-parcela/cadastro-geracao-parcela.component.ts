@@ -1,22 +1,22 @@
-import { EmpresaService } from './../../empresa/empresa.service';
-import { TipoParcelaService } from './../../tipo-parcela/tipo-parcela.service';
-import { MenuEmpresa, GeraParcelESubParcela } from '../../core/model';
+import { GeracaoParSubService, gerarParcelaFiltro } from './../geracao-par-sub.service';
 import { FormControl } from '@angular/forms';
-import { GeracaoParcelaService } from '../geracao-parcela.service';
+import { TipoParcelaService } from './../../tipo-parcela/tipo-parcela.service';
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { ToastyService } from 'ng2-toasty/src/toasty.service';
+import { MenuService } from './../../core/menu/menu.service';
 import { ConfirmationService } from 'primeng/components/common/api';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AreaService } from '../area.service';
-import { MenuService } from '../../core/menu/menu.service';
-import { ToastyService } from 'ng2-toasty/src/toasty.service';
-import { ErrorHandlerService } from '../../core/error-handler.service';
+import { AreaService } from './../../area/area.service';
+import { GeraParcelESubParcela, MenuEmpresa } from './../../core/model';
 import { Component, OnInit } from '@angular/core';
+import { EmpresaService } from 'src/app/empresa/empresa.service';
 
 @Component({
-  selector: 'app-geracao-parcela-cadastro',
-  templateUrl: './geracao-parcela-cadastro.component.html',
-  styleUrls: ['./geracao-parcela-cadastro.component.css']
+  selector: 'app-cadastro-geracao-parcela',
+  templateUrl: './cadastro-geracao-parcela.component.html',
+  styleUrls: ['./cadastro-geracao-parcela.component.css']
 })
-export class GeracaoParcelaCadastroComponent implements OnInit {
+export class CadastroGeracaoParcelaComponent implements OnInit {
   empresas =[];
   area = [];
   geracao = []
@@ -24,8 +24,9 @@ export class GeracaoParcelaCadastroComponent implements OnInit {
   cdEmp: any;
   empresaSelecionada = new MenuEmpresa();
   geraParcelESubParcelaSalva = new GeraParcelESubParcela();
-
   displayBasic: boolean; //chamar o dialog
+  filtro = new gerarParcelaFiltro();
+
   constructor(
     private errorHandler :ErrorHandlerService,
     private toasty: ToastyService,
@@ -34,33 +35,32 @@ export class GeracaoParcelaCadastroComponent implements OnInit {
     private confirmation: ConfirmationService,
     private router: Router,
     private areaService: AreaService,
-    private geracaoParcelaService: GeracaoParcelaService,
+    private geracaoParcelaService: GeracaoParSubService,
     private tipoParcelaService: TipoParcelaService,
     private empresaService:  EmpresaService
   ) { }
 
   ngOnInit() {
-     this.carregarArea();
-     this.carregarTipoParcela();
-     this.carregarEmpresas();
-  }
+    this.carregarArea();
+    this.carregarTipoParcela();
+    this.carregarEmpresaSelecionada();
+    this.carregarEmpresas();
+   }
 
-     ////chamar o dialog
-  showBasicDialog() {
-   this.displayBasic = true
-  }
-
-  adicionar(form: FormControl){
-    this.geracaoParcelaService.adicionar(this.geraParcelESubParcelaSalva)
+   adicionarParcela(form: FormControl){
+     this.geracaoParcelaService.adicionar(this.geraParcelESubParcelaSalva)
       .then(() => {
-        this.toasty.success('Parcela gerada com sucesso!');
-        form.reset()
-        this.refresh();
-        this.toasty.success('Cadastrado realizado com sucesso!');
+        this.toasty.success("Uso Especie cadastrada com sucesso!");
+        form.reset();
+        this.refresh()
       })
       .catch(erro => this.errorHandler.handle(erro));
+    }
 
-  }
+
+
+
+
   carregarTipoParcela() {
      return this.tipoParcelaService.listarTodasParcelas()
       .then( listaTipoparcela =>{
@@ -69,12 +69,12 @@ export class GeracaoParcelaCadastroComponent implements OnInit {
   }
 
   carregarEmpresas() {
-    return this.empresaService.listarTodas()
-      .then(empresas => {
-        this.empresas = empresas.map(c => ({ label: c.cdEmpresa + " - " + c.nmEmpresa, value: c.cdEmpresa }));
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }
+   return this.empresaService.listarTodas()
+  .then(empresas => {
+      this.empresas = empresas.map(c => ({ label: c.cdEmpresa + " - " + c.nmEmpresa, value: c.cdEmpresa }));
+    })
+   .catch(erro => this.errorHandler.handle(erro));
+ }
 
   carregarArea() {
     return this.areaService.listarTodasArea()
@@ -91,16 +91,15 @@ export class GeracaoParcelaCadastroComponent implements OnInit {
     window.location.reload();
     }
 
-    pesquisar2(cdEmpresa) {
-      this.geracaoParcelaService.pesquisar2(cdEmpresa)
-        .then(empresaSelecionada =>  this.geracao  = empresaSelecionada);
-    }
+
+
+
 
     carregarEmpresaSelecionada(){
       return this.menuService.carregarEmpresaSelecionada()
        .then(empresaSelecionada => {
          this.empresaSelecionada.cdEmpresa = empresaSelecionada;
-         this.pesquisar2(this.empresaSelecionada.cdEmpresa);
+         this.filtro.cdempresa = this.empresaSelecionada.cdEmpresa
          this.geraParcelESubParcelaSalva.cdEmpresa = this.empresaSelecionada.cdEmpresa
 
        })

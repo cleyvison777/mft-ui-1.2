@@ -1,8 +1,6 @@
-import { CadastroGeracaoParcelaComponent } from './../geracao-parcela-subparcela/cadastro-geracao-parcela/cadastro-geracao-parcela.component';
-import { PesquisaAreaComponent } from './pesquisa-area/pesquisa-area.component';
-import { CadastroAreaComponent } from './cadastro-area/cadastro-area.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CadastroGeracaoParcelaComponent } from './cadastro-geracao-parcela/cadastro-geracao-parcela.component';
 
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/components/messages/messages';
@@ -26,11 +24,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
-  declarations: [
-    PesquisaAreaComponent,
-    CadastroAreaComponent,
-    CadastroGeracaoParcelaComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     BrowserModule,
@@ -56,8 +50,9 @@ import {DialogModule} from 'primeng/dialog';
     CheckboxModule,
     DialogModule,
 
-
-
   ],
+  exports:[
+    CadastroGeracaoParcelaComponent
+  ]
 })
-export class AreaModule { }
+export class GeracaoParcelaSubparcelaModule { }
