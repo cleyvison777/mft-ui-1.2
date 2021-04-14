@@ -1,3 +1,8 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SilviculturalCadastroComponent } from './silvicultural-cadastro/silvicultural-cadastro.component';
+import { SilviculturalPesquisaComponent } from './silvicultural-pesquisa/silvicultural-pesquisa.component';
+
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/components/messages/messages';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
@@ -14,15 +19,10 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { AppRoutingModule } from './../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import {PanelModule} from 'primeng/components/panel/panel';
 
-import { CommonModule } from '@angular/common';
-import { CadastroFamiliaComponent } from './cadastro-familia/cadastro-familia.component';
-import { PesquisaFamiliaComponent } from './pesquisa-familia/pesquisa-familia.component';
-
 @NgModule({
-  declarations: [CadastroFamiliaComponent, PesquisaFamiliaComponent],
+  declarations: [SilviculturalCadastroComponent, SilviculturalPesquisaComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -46,4 +46,4 @@ import { PesquisaFamiliaComponent } from './pesquisa-familia/pesquisa-familia.co
     PanelModule
   ]
 })
-export class FamiliaModule { }
+export class SituacaoSilviculturalModule { }

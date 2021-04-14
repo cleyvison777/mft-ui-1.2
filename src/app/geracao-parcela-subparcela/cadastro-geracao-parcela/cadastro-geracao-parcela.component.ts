@@ -100,10 +100,11 @@ export class CadastroGeracaoParcelaComponent implements OnInit {
        .then(empresaSelecionada => {
          this.empresaSelecionada.cdEmpresa = empresaSelecionada;
          this.filtro.cdempresa = this.empresaSelecionada.cdEmpresa
-         this.geraParcelESubParcelaSalva.cdEmpresa = this.empresaSelecionada.cdEmpresa
+         this.geraParcelESubParcelaSalva.cdEmpresa.cdEmpresa = this.empresaSelecionada.cdEmpresa
 
        })
        .catch(erro => this.errorHandler.handle(erro));
     }
 
 }
+

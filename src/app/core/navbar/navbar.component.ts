@@ -118,7 +118,7 @@ export class NavbarComponent implements OnInit {
               {separator: true},
               {
                 label: 'Situação Solvicultural',
-                routerLink: '/cadastro-situacaosilvicultural'
+                routerLink: '/situacao-silvicultural/cadastro'
               },
               {
                 label: 'Tratamento anterior e Tratamento atual:',
