@@ -47,7 +47,7 @@ const routes: Routes = [
   {path: 'classe-tamanho/cadastro', component:TamanhoCadastroComponent},
   {path: 'classe-tamanho/:codigo', component:TamanhoCadastroComponent},
   {path: 'situacao-silvicultural/cadastro', component:SilviculturalCadastroComponent},
-  {path: 'situacao-silvicultural:codigo', component:SilviculturalCadastroComponent},
+  {path: 'situacao-silvicultural/:codigo', component:SilviculturalCadastroComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
 ];

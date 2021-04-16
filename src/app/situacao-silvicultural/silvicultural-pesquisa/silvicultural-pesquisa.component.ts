@@ -34,14 +34,14 @@ export class SilviculturalPesquisaComponent implements OnInit {
      return this.menuService.carregarEmpresaSelecionada()
        .then(empresaSelecionada => {
          this.cdEmp = empresaSelecionada;
-          this.cosultaSilvicultural();
+          this.consultaSilvicultural();
        })
        .catch(erro => this.errorHandler.handle(erro));
   };
 
    // consultaSilvicultural
 
-  cosultaSilvicultural(page = 0) {
+  consultaSilvicultural(page = 0) {
     this.filtro.page = page
     this.filtro.cdEmpresa = this.cdEmp;
     this.situacaoService.consultar(this.filtro)
@@ -64,11 +64,11 @@ export class SilviculturalPesquisaComponent implements OnInit {
     this.situacaoService.excluir(listaSilvicultural.cdTratamento)
      .then(() =>{
        if (this.grid.first === 0) {
-         this.cosultaSilvicultural();
+         this.consultaSilvicultural();
        }
        else {
         this.grid.first = 0;
-        this.cosultaSilvicultural();
+        this.consultaSilvicultural();
        }
        this.toasty.success('Situação Silvicultural excluída com sucesso!');
 

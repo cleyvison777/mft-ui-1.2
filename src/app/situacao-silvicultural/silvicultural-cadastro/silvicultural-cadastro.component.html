@@ -1,3 +1,28 @@
-<p>
-  silvicultural-cadastro works!
-</p>
+<div class="ui-g">
+   <div class="container">
+      <div class="ui-g-12 ui-md-12">
+        <h1>{{'' ? 'EDIÇÃO' : 'CADASTRO'}} TRATAMENTO SILVICULTURAL</h1>
+      </div>
+
+      <p-fieldset legend="Situação Silvicultural">
+        <form autocomplete="off" #silvicultural="ngForm" (submit)="salvar(silvicultural)">
+          <div class="ui-g-12 ui-md-12 ui-fluid" >
+            <label>Nome: </label>
+            <input type="text" pInputText name="nmTratamento" placeholder="Silvicultural"  required [(ngModel)]="cadTratamentoSilviculturalSalva.nmTratamento">
+          </div>
+
+          <div class="ui-g-12">
+            <button type="submit" pButton   label="Salvar" class="ui-button-success" [disabled]="!cadTratamentoSilviculturalSalva.nmTratamento"></button>
+            <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+            </div>
+            <div *ngIf="editando" class="ui-g-12 ui-md-12">
+              <strong><a routerLink="/situacao-silvicultural/cadastro"><button type="button" pButton label="Sair da edição"></button></a></strong>
+            </div>
+
+        </form>
+      </p-fieldset>
+   </div>
+
+</div>
+
+<app-silvicultural-pesquisa></app-silvicultural-pesquisa>

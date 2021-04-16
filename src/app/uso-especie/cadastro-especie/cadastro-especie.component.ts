@@ -94,7 +94,8 @@ confirmarAlterar(cadEspecieUso: any) {
 carregarUsoEspecie(codigo: number) {
   this.usoespecieService.buscarPeloCodigoUsoEspecie(codigo)
    .then(cadEspecieUso => {
-    this.usoEspecieSalva = cadEspecieUso
+    this.usoEspecieSalva = cadEspecieUso;
+    this.atualizarTituloEdicao();
     })
     .catch(erro => this.errorHandler.handle(erro));
    }

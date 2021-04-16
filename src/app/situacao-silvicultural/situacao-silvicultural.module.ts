@@ -43,7 +43,8 @@ import {PanelModule} from 'primeng/components/panel/panel';
     MessageModule,
     ButtonModule,
     MultiSelectModule,
-    PanelModule
+    PanelModule,
+    FieldsetModule
   ]
 })
 export class SituacaoSilviculturalModule { }
