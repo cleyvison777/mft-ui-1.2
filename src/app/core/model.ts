@@ -165,24 +165,24 @@ export class CadClasseDeTamanho {
 
   cdClasseTamanho: number;
   cdEmpresa = new Cadempresa();
-  cdArea = new CadAmf();;
+  cdArea = new CadAmf();
   cdEquacao = new CadEquacao();
 	dapMinimoComFustemm: number;
   dapMaximoComFustemm: number;
 	dapMinimoSemFustemm: number;
-	dapMaximoSemFustemm: number;;
-  alturaMinimam: number;;
-	alturaMaximam: number;;
-	comprimentoParcelam: number;;
-  larguraParcelam: number;;
-	cdFormatoSubParcela: number;;
-	dimensao1SubParcelam: number;;
-	dimensao2SubParcelam: number;;
-  dimensao3SubParcelam: number;;
-	padraoCrescAnualMiniMomm: number;;
-  padraoCrescAnualMaxiMomm: number;;
-	dapMaxiMoingMedicao2mm: number;;
-	nrSubParcelasPorParcela: number;;
+	dapMaximoSemFustemm: number;
+  alturaMinimam: number;
+	alturaMaximam: number;
+	comprimentoParcelam: number;
+  larguraParcelam: number;
+	cdFormatoSubParcela: number;
+	dimensao1SubParcelam: number;
+	dimensao2SubParcelam: number;
+  dimensao3SubParcelam: number;
+	padraoCrescAnualMiniMomm: number;
+  padraoCrescAnualMaxiMomm: number;
+	dapMaxiMoingMedicao2mm: number;
+	nrSubParcelasPorParcela: number;
 
 }
 

@@ -1,3 +1,4 @@
+import { ParcelaModule } from './parcela/parcela.module';
 import { SituacaoSilviculturalModule } from './situacao-silvicultural/situacao-silvicultural.module';
 import { GeracaoParcelaSubparcelaModule } from './geracao-parcela-subparcela/geracao-parcela-subparcela.module';
 import { EquacaoModule } from './equacao/equacao.module';
@@ -49,7 +50,8 @@ import { MenuComponent } from './core/menu/menu.component';
     TipoParcelaModule,
     ClasseTamanhoModule,
     EquacaoModule,
-    SituacaoSilviculturalModule
+    SituacaoSilviculturalModule,
+    ParcelaModule
 
 
 

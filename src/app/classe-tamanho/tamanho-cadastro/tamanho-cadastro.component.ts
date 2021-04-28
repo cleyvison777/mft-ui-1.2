@@ -1,9 +1,9 @@
+import { ClasseDeTamanhoService } from './../classe-de-tamanho.service';
 import { EquacaoService } from './../../equacao/equacao.service';
 import { ClasseTamanhoService  as ClasseTamanhoIndividuoService} from './../../classe-tamanho-individuo/classe-tamanho.service';
 import { MenuItem } from 'primeng/api';
 import { AreaService } from './../../area/area.service';
 import { FormControl } from '@angular/forms';
-import { ClasseTamanhoService } from './../classe-tamanho.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/components/common/api';
@@ -34,7 +34,7 @@ export class TamanhoCadastroComponent implements OnInit {
     private menuService: MenuService,
     private areaService: AreaService,
     private errorHandler: ErrorHandlerService,
-    private classedeTamanhoService: ClasseTamanhoService,
+    private classedeTamanhoService: ClasseDeTamanhoService,
     private classeTamanhoIndividuoService: ClasseTamanhoIndividuoService,
     private equacaoService: EquacaoService,
     private toasty: ToastyService,
@@ -78,10 +78,10 @@ export class TamanhoCadastroComponent implements OnInit {
 
    carregarEquacao(){
     return this.equacaoService.listarTodasEquacao()
-   .then( equacoes => {
-     console.log(equacoes);
-   })
-    .catch(erro => this.errorHandler.handle(erro));
+      .then( equacoes => {
+        this.equacoes = equacoes.map(e => ({label: e.cdEquacao + " - " + e.nmEquacao, value: e.cdEquacao}))
+      })
+      .catch(erro => this.errorHandler.handle(erro));
       }
 
   carregarArea() {

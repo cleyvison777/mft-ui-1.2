@@ -10,7 +10,7 @@ export class classeTamanhoFiltro {
 @Injectable({
   providedIn: 'root'
 })
-export class ClasseTamanhoService {
+export class ClasseDeTamanhoService {
 
   classeTamanhoUrl = 'http://localhost:8082/classedetanho';
 

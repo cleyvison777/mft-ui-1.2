@@ -1,10 +1,10 @@
+import { ClasseDeTamanhoService, classeTamanhoFiltro } from './../classe-de-tamanho.service';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { CadClasseDeTamanho } from './../../core/model';
 import { MenuService } from 'src/app/core/menu/menu.service';
 import { ConfirmationService } from 'primeng/components/common/api';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
-import { classeTamanhoFiltro, ClasseTamanhoService } from './../classe-tamanho.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -22,7 +22,7 @@ export class TamanhoPesquisaComponent implements OnInit {
    @ViewChild('tabela') grid;
 
   constructor(
-    private classeTamanhoService: ClasseTamanhoService,
+    private classeDeTamanhoService: ClasseDeTamanhoService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
     private confirmation: ConfirmationService,
@@ -46,7 +46,7 @@ export class TamanhoPesquisaComponent implements OnInit {
    pesquisarClasseTamanho(page = 0){
       this.filtro.page = page;
       this.filtro.cdEmpresa = this.cdEmp;
-       this.classeTamanhoService.pesquisarClasse(this.filtro)
+       this.classeDeTamanhoService.pesquisarClasse(this.filtro)
         .then(resultado =>{
           this.totalRegistroTamanho = resultado.total;
           this.classedeTamanho = resultado.classedeTamanho;
@@ -60,7 +60,7 @@ export class TamanhoPesquisaComponent implements OnInit {
    }
 
    excluindoClasseTamanho(classedeTamanho: any) {
-     this.classeTamanhoService.excluir(classedeTamanho.cdClasseTamanho)
+     this.classeDeTamanhoService.excluir(classedeTamanho.cdClasseTamanho)
       .then(() =>{
         if(this.grid.first === 0) {
           this.pesquisarClasseTamanho();

@@ -3,11 +3,9 @@
     <div class="ui-g-12">
       <h1> {{editando ? 'EDIÇÃO ': 'CADASTRO'}} ÁREA</h1>
     </div>
-
+    <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
     <p-fieldset legend="Cadastro AMF">
         <form (ngSubmit)="salvar(cadAmf)" #cadamf="ngForm" autocomplete="on">
-
-
 
                  <div class="ui-g-12 ui-md-4 ui-fluid">
                    <label>Nome: </label>
@@ -139,7 +137,7 @@
                        <div class="ui-fluid">
                         <label >Volume para inventario:</label>
                          <div>
-                           <p-dropdown placeholder="Equação" filter="true"></p-dropdown>
+                           <p-dropdown placeholder="Equação" [options]="equacao" name="equacao" [(ngModel)]="cadAmf.cdarea" filter="true"></p-dropdown>
                            <button pButton type="button" icon="pi pi-pencil" style="left: 10px;"></button>
                          </div>
 

@@ -1,5 +1,6 @@
+import { MenuItem } from 'primeng/api';
 import { MenuService } from './../../core/menu/menu.service';
-import { ConfirmationService } from 'primeng/components/common/api';
+import { ConfirmationService} from 'primeng/components/common/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EspecieService } from './../../lista-especie/especie.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
@@ -10,6 +11,7 @@ import { ErrorHandlerService } from './../../core/error-handler.service';
 import { EmpresaService } from './../../empresa/empresa.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { EquacaoService } from 'src/app/equacao/equacao.service';
 
 @Component({
   selector: 'app-cadastro-area',
@@ -22,15 +24,20 @@ export class CadastroAreaComponent implements OnInit {
   especies = [];
   area = [];
   cdEmp: any;
+  equacao = [];
   cadAmf = new CadAmf();
   empresaSelecionada = new MenuEmpresa();
   displayBasic: boolean;
+  items: MenuItem[];
+  activeItem: MenuItem;
+
 
 
   constructor(
     private errorHandler :ErrorHandlerService,
     private toasty: ToastyService,
     private listaEspecieService: EspecieService,
+    private equacaoService: EquacaoService,
     private menuService: MenuService,
     private areaService: AreaService,
     private empresaService: EmpresaService,
@@ -41,13 +48,21 @@ export class CadastroAreaComponent implements OnInit {
 
     ) { }
 
+
+
   ngOnInit() {
     this.carregarEmpresas();
     this.carregarListaEpecie();
     this.cadAmf.lgMudaContada = false;
     this.cadAmf.lgPalmeiraContada = false;
     this.carregarEmpresaSelecionadaArea();
+    // falta implementar o cadEquacao no back-end this.carregarEquacao();
 
+     this.items = [
+      {label: 'Área de Manejo', icon: 'fa-calendar', routerLink: '/area/cadastro-area'},
+       {label: 'Parcela', routerLink: '/parcela/cadastro'},
+       {label: 'SubParcela', routerLink: '/area/cadastro-area'}
+     ];
 
       const codigoAmf = this.route.snapshot.params['codigo'];
 
@@ -92,6 +107,13 @@ export class CadastroAreaComponent implements OnInit {
         .then( especies => {
           this.especies = especies.map(e => ({label: e.cdListaEsp + " - " + e.nmListaEsp, value: e.cdListaEsp}));
         })
+      }
+      carregarEquacao() {
+        return this.equacaoService.listarTodasEquacao()
+         .then( equacao => {
+            this.equacao = equacao.map(e => ({label: e.cdEquacao + " - " + e.nmEquacao, value: e.cdEquacao}))
+         })
+         .catch(erro => this.errorHandler.handle(erro));
       }
 
 

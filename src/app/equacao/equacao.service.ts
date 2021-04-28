@@ -15,7 +15,7 @@ export class EquacaoService {
 
 
 
-  equacaoURL = ' http://localhost:8082/equacao'
+  equacaoURL = 'http://localhost:8082/equacao'
   constructor(private http: Http) { }
 
 
