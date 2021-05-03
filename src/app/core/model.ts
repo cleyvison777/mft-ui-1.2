@@ -196,3 +196,36 @@ export class GeraParcelESubParcela {
   nrParcelas: number;
   nrSubParcelasPorParcelas: number
 }
+
+export class CadParcela {
+cdParcela: number;
+cdEmpresa = new Cadempresa();
+cdArea = new CadAmf();
+cdTipoParcela = new  CadTipoParcela;
+txObservacoesParcela: string;
+latitudePonto1Grau: number;
+latitudePonto1Minuto: number;
+latitudePonto1Orientacao: string;
+longitudePonto1Grau: number;
+longitudePonto1Minuto: number;
+longitudePonto1Orientacao: string;
+latitudePonto2Grau: number;
+latitudePonto2Minuto: number;
+latitudePonto2Orientacao: string;
+longitudePonto2Grau: number;
+longitudePonto2Minuto: number;
+longitudePonto2Orientacao: string;
+latitudePonto3Grau: number;
+latitudePonto3Minuto: number;
+latitudePonto3Orientacao: string;
+longitudePonto3Grau: number;
+longitudePonto3Minuto: number;
+longitudePonto3Orientacao: string;
+latitudePonto4Grau: number;
+latitudePonto4Minuto: number;
+latitudePonto4Orientacao: string;
+longitudePonto4Grau: number;
+longitudePonto4Minuto: number;
+longitudePonto4Orientacao: string;
+lgTestemunha: boolean;
+}

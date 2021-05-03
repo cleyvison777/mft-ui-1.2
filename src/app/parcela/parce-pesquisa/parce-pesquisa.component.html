@@ -1,3 +1,33 @@
-<p>
-  parce-pesquisa works!
-</p>
+
+          <div class="ui-g">
+           <div class="container">
+              <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <p-fieldset legend="Dados Cadastrais"  class="ui-g-12 ui-md-12 ui-lg-12">
+                       <p-table [value]="parcelas" [contextMenu]="parcelas" [paginator]="true" [rows]="5"
+                       [responsive]="true" [lazy]="true" [totalRecords]="totalRegistrosParcela" (onLazyLoad)="aoMudarPagina($event)" #tabela>
+
+                       <ng-template pTemplate="header">
+                            <tr>
+                               <th>Parcela</th>
+                               <th>Tipo de Parcela</th>
+                               <th></th>
+                            </tr>
+                       </ng-template>
+
+                       <ng-template pTemplate="body" let-parcelas>
+                            <tr>
+                               <td>{{parcelas.cdParcela}}</td>
+                               <td>{{parcelas.cdTipoParcela.nmTipoParcela}}</td>
+                                <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
+                                  pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusao(parcelas)">
+                                </button>
+                                <button pButton icon="pi pi-pencil" pTooltip="editar" ></button></td>
+                            </tr>
+                       </ng-template>
+
+
+                       </p-table>
+                    </p-fieldset>
+               </div>
+            </div>
+         </div>
