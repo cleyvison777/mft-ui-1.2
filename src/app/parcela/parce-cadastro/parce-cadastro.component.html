@@ -4,18 +4,25 @@
          <h1>PARCELA</h1>
         </div>
 
-           <form autocomplete="off">
+
               <p-tabMenu [model]="items" [activeItem]="activeItem">
               </p-tabMenu>
-
+              <form autocomplete="off" #parcela="ngForm" (ngSubmit)="adicionarParcela(parcela)">
               <p-fieldset legend="Parcela"  class="ui-g-12 ui-md-12 ui-lg-12">
-                <div class="ui-fluid ui-g-6 ui-md-6" >
+
+                <div class="ui-fluid ui-g-4 ui-md-4" >
+                  <label>Nome da AMF: </label>
+                  <p-dropdown name="area" [options]="area" [autoWidth]="false" placeholder= "Selecione a parcela"
+                   filter="true" required [(ngModel)]="parcelaSalva.cdArea.cdarea" ></p-dropdown>
+                </div>
+
+                <div class="ui-fluid ui-g-4 ui-md-4" >
                   <label>Tipo padrão de parcela: </label>
                   <p-dropdown name="listaTipoparcela" [options]="listaTipoparcela" [autoWidth]="false" placeholder= "Selecione a parcela"
-                   filter="true" required ></p-dropdown>
+                   filter="true" required  [(ngModel)]="parcelaSalva.cdTipoParcela.cdTipoParcela"></p-dropdown>
                 </div>
-                <div class="ui-g-4 ui-md-4 testemunha">
-                   <p-checkbox name="yourName" value="YourValue" label="Testemunha" binary="true" inputId="id"></p-checkbox>
+                <div class="ui-g-3 ui-md-3 testemunha">
+                   <p-checkbox name="yourName" value="YourValue" label="Testemunha" binary="true" [(ngModel)]="parcelaSalva.lgTestemunha"></p-checkbox>
 
                 </div>
 
@@ -31,6 +38,7 @@
                   <div class="ui-g-1 ui-md-1 ui-fluid cordenadas-marginTop">
                     <input type="text" pInputText name="longitude2Orientacao">
                   </div>
+
                   <div class="ui-g-1 ui-md-1 ui-fluid cordenadas-marginTop">
                     <input type="text" pInputText name="longitude2Orientacao">
                   </div>

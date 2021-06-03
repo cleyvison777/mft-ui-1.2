@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+import { CadParcela, MenuEmpresa } from './../../core/model';
 import { TipoParcelaService } from './../../tipo-parcela/tipo-parcela.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +22,9 @@ export class ParceCadastroComponent implements OnInit {
   items: MenuItem[];
   listaTipoparcela = [];
   parcelas = [];
-
+  area = [] ;
+  empresaSelecionada = new MenuEmpresa();
+  parcelaSalva =  new CadParcela();
   activeItem: MenuItem;
   constructor(
 
@@ -42,8 +46,34 @@ export class ParceCadastroComponent implements OnInit {
       {label: 'Parcela', routerLink:'/parcela/cadastro'},
       {label: 'SubParcela', routerLink:'/area/cadastro-area'}
     ];
-   this.carregarTipoParcela();
+
+     this.carregarTipoParcela();
+     this.carregarArea();
+     this.parcelaSalva.lgTestemunha = false;
+     this.title.setTitle('Parcela');
+
   }
+
+
+  adicionarParcela(form: FormControl) {
+    this.parcelaService.adicionar(this.parcelaSalva)
+     .then(() => {
+      this.toasty.success("Parcela cadastrada com sucesso!");
+      form.reset();
+      this.refresh()
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+
+ }
+
+  carregarArea() {
+    return this.areaService.listarTodasArea()
+     .then( area =>{
+       this.area = area.map(e => ({label: e.cdarea + " - " + e.nmArea, value: e.cdarea}));
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
 
   carregarTipoParcela() {
     return this.tipoParcelaService.listarTodasParcelas()
@@ -51,5 +81,26 @@ export class ParceCadastroComponent implements OnInit {
        this.listaTipoparcela = listaTipoparcela.map( e => ({label: e.cdTipoParcela + " - "+ e.nmTipoParcela, value: e.cdTipoParcela}))
      })
  }
+
+
+
+ pesquisar2(cdEmpresa) {
+  this.parcelaService.pesquisar2(cdEmpresa)
+    .then(empresaSelecionada =>  this.parcelas  = empresaSelecionada);
+  }
+
+  carregarEmpresaSelecionada(){
+    return this.menuService.carregarEmpresaSelecionada()
+     .then(empresaSelecionada => {
+        this.empresaSelecionada.cdEmpresa = empresaSelecionada;
+          this.pesquisar2(this.empresaSelecionada.cdEmpresa);
+            this.parcelaSalva.cdEmpresa.cdEmpresa = this.empresaSelecionada.cdEmpresa
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  refresh(): void {
+    window.location.reload();
+  }
 
 }

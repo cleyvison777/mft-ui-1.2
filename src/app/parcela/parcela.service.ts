@@ -15,7 +15,7 @@ parcelaURL = 'http://localhost:8082/cadparcela'
 
   constructor(private http: Http) { }
 
-  pesquisa2(cdEmpresa: any) {
+  pesquisar2(cdEmpresa: any): Promise<any>{
     const params = new URLSearchParams();
     const headers = new Headers();
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');

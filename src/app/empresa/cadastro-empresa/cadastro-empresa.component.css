@@ -1,0 +1,26 @@
+.loader-empresa{
+  position: absolute;
+  left: 0;
+  right: 0;
+
+
+}
+
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+      stroke: #d62d20;
+  }
+  40% {
+      stroke: #0057e7;
+  }
+  66% {
+      stroke: #008744;
+  }
+  80%,
+  90% {
+      stroke: #ffa700;
+
+  }
+}

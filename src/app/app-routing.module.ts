@@ -1,3 +1,4 @@
+import { SubparcelaCadastroComponent } from './sub-parcela/subparcela-cadastro/subparcela-cadastro.component';
 import { ParceCadastroComponent } from './parcela/parce-cadastro/parce-cadastro.component';
 import { SilviculturalCadastroComponent } from './situacao-silvicultural/silvicultural-cadastro/silvicultural-cadastro.component';
 import { TamanhoCadastroComponent } from './classe-tamanho/tamanho-cadastro/tamanho-cadastro.component';
@@ -51,8 +52,9 @@ const routes: Routes = [
   {path: 'situacao-silvicultural/:codigo', component:SilviculturalCadastroComponent},
   {path: 'parcela/cadastro', component:ParceCadastroComponent},
   {path: 'parcela/:codigo', component:ParceCadastroComponent},
+  {path: 'subparcela/cadastro', component:SubparcelaCadastroComponent},
+  {path: 'subparcela/:codigo', component:SubparcelaCadastroComponent},
 
-  {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
 ];
 

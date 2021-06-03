@@ -130,7 +130,7 @@ export class NavbarComponent implements OnInit {
               },
               {
                 label: 'Dano',
-                routerLink: '/modnivel4'
+                routerLink: '/mop/cadastro'
               },
               {
                 label: 'Podridão',

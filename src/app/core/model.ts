@@ -198,6 +198,7 @@ export class GeraParcelESubParcela {
 }
 
 export class CadParcela {
+id: number;
 cdParcela: number;
 cdEmpresa = new Cadempresa();
 cdArea = new CadAmf();

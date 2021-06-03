@@ -1,0 +1,28 @@
+ <div class="ui-g">
+    <div class="container">
+      <form>
+      <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+
+      <p-fieldset legend="Dados cadastrais" >
+        <div class="ui-g-12 ui-md-5 ui-fluid">
+            <p-dropdown [options]=""  placeholder="Selecionar" filter="true"></p-dropdown>
+          </div>
+
+          <div class="ui-g-12 ui-md-5 ui-fluid">
+            <p-dropdown [options]=""  placeholder="Selecionar" filter="true"></p-dropdown>
+          </div>
+      </p-fieldset>
+      <p-fieldset legend="Dados cadastrais">
+
+            <div class="ui-g-12 ui-md-5 ui-fluid">
+               <label>Subparcela:</label>
+                 <input type="text" name="" pInputText placeholder="Nome da Subparcela">
+            </div>
+
+
+     </p-fieldset>
+    </form>
+    </div>
+
+ </div>
+ <app-subparcela-pesquisa></app-subparcela-pesquisa>

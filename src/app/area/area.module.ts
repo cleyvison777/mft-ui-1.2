@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {CheckboxModule} from 'primeng/checkbox';
 import {DialogModule} from 'primeng/dialog';
+import {ProgressSpinnerModule} from 'primeng/components/progressspinner/progressspinner';
 
 @NgModule({
   declarations: [
@@ -56,8 +57,8 @@ import {DialogModule} from 'primeng/dialog';
     ButtonModule,
     CheckboxModule,
     DialogModule,
-    TabMenuModule
-
+    TabMenuModule,
+    ProgressSpinnerModule
 
   ],
 })

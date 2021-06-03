@@ -30,7 +30,7 @@ export class CadastroAreaComponent implements OnInit {
   displayBasic: boolean;
   items: MenuItem[];
   activeItem: MenuItem;
-
+  salvarEmAndamento: boolean = false;
 
 
   constructor(
@@ -61,7 +61,7 @@ export class CadastroAreaComponent implements OnInit {
      this.items = [
       {label: 'Área de Manejo', icon: 'fa-calendar', routerLink: '/area/cadastro-area'},
        {label: 'Parcela', routerLink: '/parcela/cadastro'},
-       {label: 'SubParcela', routerLink: '/area/cadastro-area'}
+       {label: 'SubParcela', routerLink: '/subparcela/cadastro'}
      ];
 
       const codigoAmf = this.route.snapshot.params['codigo'];
@@ -88,10 +88,15 @@ export class CadastroAreaComponent implements OnInit {
         this.areaService.adicionar(this.cadAmf)
         .then(() => {
           this.toasty.success('Cadastrado realizado com sucesso!');
+          this.salvarEmAndamento = true;
+
           this.refresh();
+
         })
         .catch(erro => this.errorHandler.handle(erro));
       }
+
+
 
 
       carregarEmpresas() {

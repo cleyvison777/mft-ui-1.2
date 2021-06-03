@@ -18,17 +18,20 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ProgressSpinnerModule } from 'primeng/components/progressspinner/progressspinner';
+import {ProgressBarModule} from 'primeng/components/progressbar/progressbar';
+
+
 //import { EmpresaRoutingModule } from './empresa-routing.module';
 
 import { CadastroEmpresaComponent } from './cadastro-empresa/cadastro-empresa.component';
 import { PesquisaEmpresaComponent } from './pesquisa-empresa/pesquisa-empresa.component';
-import { PesquisaGridComponent } from './pesquisa-grid/pesquisa-grid.component';
+
 
 @NgModule({
   declarations: [
     CadastroEmpresaComponent,
-    PesquisaEmpresaComponent,
-    PesquisaGridComponent],
+    PesquisaEmpresaComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -51,6 +54,9 @@ import { PesquisaGridComponent } from './pesquisa-grid/pesquisa-grid.component';
     MessagesModule,
     MessageModule,
     ButtonModule,
+    ProgressBarModule,
+    ProgressSpinnerModule
+
     // EmpresaRoutingModule
 
 

@@ -20,7 +20,7 @@ export class CadastroEmpresaComponent implements OnInit {
 
   empresas = [];
   empresasSalvar = new Cadempresa();
-
+  salvarEmAndamento: boolean = false;
 
   constructor(
     private errorHandler :ErrorHandlerService,
@@ -54,6 +54,7 @@ export class CadastroEmpresaComponent implements OnInit {
       .then(() => {
         this.toasty.success("Empresa cadastrada com sucesso!");
         form.reset();
+        this.salvarEmAndamento = true;
        this.refresh();
 
       })

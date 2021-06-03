@@ -23,7 +23,8 @@ totalRegistrosFamilia = 0;
     private familiaService: FamiliaService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+
   ) { }
 
 

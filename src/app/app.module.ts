@@ -1,6 +1,6 @@
+import { SubParcelaModule } from './sub-parcela/sub-parcela.module';
 import { ParcelaModule } from './parcela/parcela.module';
 import { SituacaoSilviculturalModule } from './situacao-silvicultural/situacao-silvicultural.module';
-import { GeracaoParcelaSubparcelaModule } from './geracao-parcela-subparcela/geracao-parcela-subparcela.module';
 import { EquacaoModule } from './equacao/equacao.module';
 import { ClasseTamanhoModule } from './classe-tamanho/classe-tamanho.module';
 import { TipoParcelaModule } from './tipo-parcela/tipo-parcela.module';
@@ -51,7 +51,8 @@ import { MenuComponent } from './core/menu/menu.component';
     ClasseTamanhoModule,
     EquacaoModule,
     SituacaoSilviculturalModule,
-    ParcelaModule
+    ParcelaModule,
+    SubParcelaModule
 
 
 

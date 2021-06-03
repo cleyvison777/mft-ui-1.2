@@ -7,6 +7,7 @@
     <p-fieldset legend="Cadastro AMF">
         <form (ngSubmit)="salvar(cadAmf)" #cadamf="ngForm" autocomplete="on">
 
+
                  <div class="ui-g-12 ui-md-4 ui-fluid">
                    <label>Nome: </label>
                    <input type="text" pInputText name="nmArea" [(ngModel)]="cadAmf.nmArea" required>
@@ -201,8 +202,12 @@
                        </p-checkbox>
                      </div>
 
+
                      <div class="ui-g-12">
-                      <button pButton type="submit" label="salvar" ></button>
+                      <div class="loader-area" *ngIf="salvarEmAndamento">
+                        <p-progressSpinner [style]="{top: '50%', left: '50%'}"  strokeWidth="8" fill="#EEEEEE" animationDuration=".6s" class="ui-progress-spinner-color" color="accept"></p-progressSpinner>
+                       </div>
+                      <button pButton type="submit" label="salvar"></button>
                       <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
                       <a  [routerLink]="['/area/cadastro-area']"> Voltar a pesquisa</a>
                       </div>

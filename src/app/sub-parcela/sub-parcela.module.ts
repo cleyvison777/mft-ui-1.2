@@ -1,3 +1,8 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SubparcelaCadastroComponent } from './subparcela-cadastro/subparcela-cadastro.component';
+import { SubparcelaPesquisaComponent } from './subparcela-pesquisa/subparcela-pesquisa.component';
+
 import { TabMenuModule } from 'primeng/components/tabmenu/tabmenu';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
@@ -20,13 +25,9 @@ import { FormsModule } from '@angular/forms';
 import {EditorModule} from 'primeng/components/editor/editor';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ParceCadastroComponent } from './parce-cadastro/parce-cadastro.component';
-import { ParcePesquisaComponent } from './parce-pesquisa/parce-pesquisa.component';
 
 @NgModule({
-  declarations: [ParceCadastroComponent, ParcePesquisaComponent],
+  declarations: [SubparcelaCadastroComponent, SubparcelaPesquisaComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -53,4 +54,4 @@ import { ParcePesquisaComponent } from './parce-pesquisa/parce-pesquisa.componen
     EditorModule
   ]
 })
-export class ParcelaModule { }
+export class SubParcelaModule { }

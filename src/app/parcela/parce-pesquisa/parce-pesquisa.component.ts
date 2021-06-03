@@ -40,6 +40,7 @@ export class ParcePesquisaComponent implements OnInit {
 
   }
 
+
   pesquisaParcela(page = 0){
       this.filtro.page = page;
        this.filtro.cdEmpresa = this.cdEmp;
