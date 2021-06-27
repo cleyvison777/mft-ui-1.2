@@ -44,8 +44,9 @@ export class ParceCadastroComponent implements OnInit {
     this.items = [
       {label: 'Área de Manejo', routerLink:'/area/cadastro-area'},
       {label: 'Parcela', routerLink:'/parcela/cadastro'},
-      {label: 'SubParcela', routerLink:'/area/cadastro-area'}
+      {label: 'SubParcela', routerLink: '/subparcela/cadastro'}
     ];
+
 
      this.carregarTipoParcela();
      this.carregarArea();

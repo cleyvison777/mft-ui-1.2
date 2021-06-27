@@ -4,13 +4,21 @@
       <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
 
       <p-fieldset legend="Dados cadastrais" >
-        <div class="ui-g-12 ui-md-5 ui-fluid">
-            <p-dropdown [options]=""  placeholder="Selecionar" filter="true"></p-dropdown>
+        <div class="ui-fluid ui-g-6 ui-md-4" >
+          <label>AMF: </label>
+          <p-dropdown name="listaTipoparcela"  [autoWidth]="false" placeholder= "Selecione a area"
+           filter="true" required [options]="area"></p-dropdown>
+        </div>
+        <div class="ui-fluid ui-g-6 ui-md-4" >
+          <label>Tipo Parcela: </label>
+          <p-dropdown name="listaTipoparcela" [options]="listaTipoparcela" [autoWidth]="false" placeholder= "Selecione a parcela"
+           filter="true" required ></p-dropdown>
+        </div>
+
+          <div class="ui-g-12 ui-md-2 ui-md-offset-1">
+            <button pButton type="button" label="Identicadores e responsaveis pela subparcela selecionada" icon="pi pi-sitemap"></button>
           </div>
 
-          <div class="ui-g-12 ui-md-5 ui-fluid">
-            <p-dropdown [options]=""  placeholder="Selecionar" filter="true"></p-dropdown>
-          </div>
       </p-fieldset>
       <p-fieldset legend="Dados cadastrais">
 

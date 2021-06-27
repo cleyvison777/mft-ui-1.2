@@ -230,3 +230,11 @@ longitudePonto4Minuto: number;
 longitudePonto4Orientacao: string;
 lgTestemunha: boolean;
 }
+
+export class CadSubParcela {
+  id: number;
+  cdSubParcela: number;
+  cdEmpresa = new Cadempresa();
+  cdParcela = new CadParcela();
+
+}
