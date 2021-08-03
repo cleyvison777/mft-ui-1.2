@@ -26,6 +26,7 @@
                     <th>Nome da Area</th>
                     <th>Estado</th>
                     <th>Municipio</th>
+                    <th>Anotações/Observações</th>
                     <th></th>
 
                   </tr>
@@ -36,6 +37,7 @@
                     <td>{{area.nmArea}}</td>
                     <td>{{area.nmEstado}}</td>
                     <td>{{area.nmMunicipio}}</td>
+                    <td id="maxlength">{{area.txObservacaoArea}}</td>
                   <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
                     (click)="confirmarExclusao(area)"></button>
                   <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/area', area.cdarea]"></button></td>

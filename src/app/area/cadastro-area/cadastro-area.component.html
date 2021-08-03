@@ -186,7 +186,7 @@
 
                  </p-fieldset>
 
-                 <div class="ui-g-12">
+                 <div class="ui-g-12 ui-md-12">
                    <p-fieldset legend="Lista Especies">
                    <div class="ui-fluid ui-g-4 ui-md-4" style="margin-right:60px;">
                      <label>Lista de Especie: </label>
@@ -203,17 +203,26 @@
                      </div>
 
 
-                     <div class="ui-g-12">
-                      <div class="loader-area" *ngIf="salvarEmAndamento">
-                        <p-progressSpinner [style]="{top: '50%', left: '50%'}"  strokeWidth="8" fill="#EEEEEE" animationDuration=".6s" class="ui-progress-spinner-color" color="accept"></p-progressSpinner>
-                       </div>
-                      <button pButton type="submit" label="salvar"></button>
-                      <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
-                      <a  [routerLink]="['/area/cadastro-area']"> Voltar a pesquisa</a>
-                      </div>
+
                    </p-fieldset>
                  </div>
 
+                 <p-fieldset legend="Notações e Observações">
+                  <span class="ui-float-label">
+                    <textarea rows="5"  id="float-input" cols="70" pInputTextarea name="txObservacaoArea" [(ngModel)]="cadAmf.txObservacaoArea"></textarea>
+                    <label for="float-input">Anotações:</label>
+                </span>
+
+                </p-fieldset>
+
+                <div class="ui-g-12">
+                  <div class="loader-area" *ngIf="salvarEmAndamento">
+                    <p-progressSpinner [style]="{top: '50%', left: '50%'}"  strokeWidth="8" fill="#EEEEEE" animationDuration=".6s" class="ui-progress-spinner-color" color="accept"></p-progressSpinner>
+                   </div>
+                  <button pButton type="submit" label="salvar"></button>
+                  <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+                  <a  [routerLink]="['/area/cadastro-area']"> Voltar a pesquisa</a>
+                  </div>
 
           </form>
 
