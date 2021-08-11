@@ -24,6 +24,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { MenuComponent } from './core/menu/menu.component';
+import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subparcela-selecionada/idetificadores-subparcela-selecionada.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { MenuComponent } from './core/menu/menu.component';
     EquacaoModule,
     SituacaoSilviculturalModule,
     ParcelaModule,
-    SubParcelaModule
+    SubParcelaModule,
+    IdetificadoresSubparcelaSelecionadaModule,
 
 
 
