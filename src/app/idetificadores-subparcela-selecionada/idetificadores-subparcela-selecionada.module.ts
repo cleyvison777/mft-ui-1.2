@@ -25,6 +25,7 @@ import { AppRoutingModule } from './../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import {EditorModule} from 'primeng/components/editor/editor';
 import { BrowserModule } from '@angular/platform-browser';
+import { PanelModule } from 'primeng/components/panel/panel';
 
 @NgModule({
   declarations: [IdentificadorCadastroComponent, IdentificadorPesquisaComponent],
@@ -51,7 +52,8 @@ import { BrowserModule } from '@angular/platform-browser';
     ButtonModule,
     CheckboxModule,
     TabMenuModule,
-    EditorModule
+    EditorModule,
+    PanelModule
   ]
 })
 export class IdetificadoresSubparcelaSelecionadaModule { }
