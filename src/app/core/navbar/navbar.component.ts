@@ -60,12 +60,12 @@ export class NavbarComponent implements OnInit {
               {separator: true},
               {
                 label: 'Lista Especie',
-                routerLink: '/cadniveldeavaliacao',
+                routerLink: 'lista-especie/cadastro',
 
                 items: [{
                   label: 'Mautenção da Lista Espécie',
                   icon:'pi pi-fw pi-cog',
-                  routerLink: '/lista-especie'
+                  routerLink: 'lista-especie/cadastro'
                 },
                 {separator: true},
                 {

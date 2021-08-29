@@ -1,3 +1,70 @@
-<p>
-  especie-pesquisa works!
-</p>
+   <div class="ui-g">
+     <div class="container">
+        <p-panel>
+          <p-fieldset legend="Dados cadastrais">
+            <div class="ui-g-12 ui-md-12">
+              <form  autocomplete="off" (ngSubmit)="consultarListaEspecie()">
+                <div class="ui-g-12 ui-fluid">
+                    <label style="display: block">Pesquisar Grupo Ecológico: </label>
+                    <div class="ui-g-12 ui-md-7">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                            <input type="text" pInputText name="nmListaEsp" [(ngModel)]="filtro.nmListaEsp" placeholder="Pesquisar">
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+          </div>
+
+          <div class="ui-g-12 ui-md-12">
+          <p-table [value]="listaespecie"  [contextMenu]="listaespecie" [paginator]="true"   [rows]="filtro.size" [responsive]="true" [lazy]="true"
+          [totalRecords]="totalRegistrosEspecie" (onLazyLoad)="aoMudarPaginaEspecie($event)" #tabela>
+              <ng-template pTemplate="header" >
+                  <tr>
+
+                    <th>Codigo</th>
+                    <th>Lista Especie</th>
+                    <th></th>
+
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-listaespecie>
+
+                  <tr>
+                    <td pEditableColumn>{{listaespecie.cdListaEsp}}</td>
+                    <td pEditableColumn>{{listaespecie.nmListaEsp}}</td>
+
+                    <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
+                      pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusao(listaespecie)">
+                    </button>
+                    <button pButton icon="pi pi-pencil" pTooltip="editar"  [routerLink]="['/lista-especie', listaespecie.cdListaEsp]"></button></td>
+
+              </tr>
+            </ng-template>
+          </p-table>
+
+          </div>
+          </p-fieldset>
+          <p-footer>
+            <button pButton type="button" label="Selecionar" icon="pi pi-check"></button>
+            <button pButton type="button" label="Copia lista para..." style="margin-left: 10px;" icon="pi pi-copy" (click)="showBasicDialog()"></button>
+
+            <p-dialog header="Copia lista especie para..." [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+             teste
+          <p-footer>
+              <button type="button" pButton icon="pi pi-check" (click)="displayBasic=false" label="Processar"></button>
+              <button type="button" pButton icon="pi pi-times" (click)="displayBasic=false" label="Cancelar" class="ui-button-secondary"></button>
+          </p-footer>
+          </p-dialog>
+
+
+          </p-footer>
+
+
+
+
+        </p-panel>
+
+     </div>
+</div>

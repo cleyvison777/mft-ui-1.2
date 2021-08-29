@@ -20,8 +20,7 @@ export class EspecieCadastroComponent implements OnInit {
 listaespecie = [];
  empresas = [];
  listaEspecieSalva = new CadListaEspecie;
-//chamar o dialog
-displayBasic: boolean;
+
   constructor(
     private listaEspecieService: EspecieService,
     private errorHandler :ErrorHandlerService,
@@ -36,12 +35,15 @@ displayBasic: boolean;
   ) { }
 
   ngOnInit() {
+
+    this.carregarEmpresas();
+    const codigoListaEspecie = this.route.snapshot.params[ 'codigo'];
+    if(codigoListaEspecie) {
+      this.carregarListaEspecie(codigoListaEspecie);
+    }
   }
 
-  ////chamar o dialog
-showBasicDialog() {
-  this.displayBasic = true;
-}
+
 
 get editanto() {
   return Boolean(this.listaEspecieSalva.cdListaEsp);

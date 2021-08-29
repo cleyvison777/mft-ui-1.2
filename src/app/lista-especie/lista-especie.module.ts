@@ -1,9 +1,10 @@
+import { DialogModule } from 'primeng/dialog';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EspecieCadastroComponent } from './especie-cadastro/especie-cadastro.component';
 import { EspeciePesquisaComponent } from './especie-pesquisa/especie-pesquisa.component';
 
-
+import { PanelModule } from 'primeng/components/panel/panel';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/components/messages/messages';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
@@ -19,6 +20,7 @@ import { TableModule } from 'primeng/components/table/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TabViewModule } from 'primeng/tabview';
+
 import { AppRoutingModule } from './../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,6 +52,8 @@ import { BrowserModule } from '@angular/platform-browser';
     MessagesModule,
     MessageModule,
     ButtonModule,
+    PanelModule,
+    DialogModule
   ]
 })
 export class ListaEspecieModule { }
