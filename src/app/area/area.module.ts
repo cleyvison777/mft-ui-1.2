@@ -1,5 +1,4 @@
 import { TabMenuModule } from 'primeng/components/tabmenu/tabmenu';
-import { CadastroGeracaoParcelaComponent } from './../geracao-parcela-subparcela/cadastro-geracao-parcela/cadastro-geracao-parcela.component';
 import { PesquisaAreaComponent } from './pesquisa-area/pesquisa-area.component';
 import { CadastroAreaComponent } from './cadastro-area/cadastro-area.component';
 import { NgModule } from '@angular/core';
@@ -31,7 +30,6 @@ import {ProgressSpinnerModule} from 'primeng/components/progressspinner/progress
   declarations: [
     PesquisaAreaComponent,
     CadastroAreaComponent,
-    CadastroGeracaoParcelaComponent
   ],
   imports: [
     CommonModule,

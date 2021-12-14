@@ -50,9 +50,10 @@ export class CadastroGeracaoParcelaComponent implements OnInit {
    adicionarParcela(form: FormControl){
      this.geracaoParcelaService.adicionar(this.geraParcelESubParcelaSalva)
       .then(() => {
-        this.toasty.success("Uso Especie cadastrada com sucesso!");
-        form.reset();
-        this.refresh()
+        this.toasty.success('Parcela gerada com sucesso!');
+        form.reset()
+        this.refresh();
+        this.toasty.success('Cadastrado realizado com sucesso!');
       })
       .catch(erro => this.errorHandler.handle(erro));
     }
@@ -90,9 +91,6 @@ export class CadastroGeracaoParcelaComponent implements OnInit {
   refresh(): void {
     window.location.reload();
     }
-
-
-
 
 
     carregarEmpresaSelecionada(){

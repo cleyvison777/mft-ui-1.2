@@ -166,7 +166,7 @@ export class CadClasseDeTamanho {
   cdClasseTamanho: number;
   cdEmpresa = new Cadempresa();
   cdArea = new CadAmf();
-  cdEquacao = new CadEquacao();
+  cdEquacaovolumepadrao = new CadEquacao();
 	dapMinimoComFustemm: number;
   dapMaximoComFustemm: number;
 	dapMinimoSemFustemm: number;

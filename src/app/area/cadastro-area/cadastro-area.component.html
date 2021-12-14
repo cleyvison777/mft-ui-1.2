@@ -181,7 +181,7 @@
 
                    <div>
                      <button pButton type="button" icon="pi pi-sitemap" pTooltip="Parametros"  tooltipPosition="left" style="margin-bottom: 10px; margin-right: 10px;" [routerLink]="['/medicao/cadastro']"></button>
-                     <button pButton type="button" icon="pi pi-pencil"  (click)="showBasicDialog()" pTooltip="Geração de parcelas e subparcelas" tooltipPosition="right"></button>
+                     <button pButton type="button" icon="pi pi-pencil"  pTooltip="Geração de parcelas e subparcelas" tooltipPosition="right" [routerLink]="['/geracao-parcela/cadastro']"></button>
                    </div>
 
                  </p-fieldset>
@@ -229,13 +229,7 @@
 
     </p-fieldset>
 
-    <p-dialog header="Geração de parcelas e subparcelas" [(visible)]="displayBasic"  [responsive]="true" [style]="{width: 'width', minWidth: 'minWidth'}">
-      <p-header></p-header>
-    <app-cadastro-geracao-parcela></app-cadastro-geracao-parcela>
-      <p-footer>
-        <button type="button" pButton icon="pi pi-sign-out" (click)="displayBasic=false" label="Sair" class="ui-button-secondary"></button>
-      </p-footer>
-    </p-dialog>
+
 
 
 

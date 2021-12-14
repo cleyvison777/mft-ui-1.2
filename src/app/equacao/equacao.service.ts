@@ -116,7 +116,7 @@ export class EquacaoService {
 
           return this.http.get(this.equacaoURL, {headers})
            .toPromise()
-            .then(response => response.json().content)
+            .then(response => response.json().content);
       }
 
 }

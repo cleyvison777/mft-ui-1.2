@@ -1,3 +1,4 @@
+import { GeracaoParcelaSubparcelaModule } from './geracao-parcela-subparcela/geracao-parcela-subparcela.module';
 import { SubParcelaModule } from './sub-parcela/sub-parcela.module';
 import { ParcelaModule } from './parcela/parcela.module';
 import { SituacaoSilviculturalModule } from './situacao-silvicultural/situacao-silvicultural.module';
@@ -50,6 +51,7 @@ import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subp
     MedicaoModule,
     TipoParcelaModule,
     ClasseTamanhoModule,
+    GeracaoParcelaSubparcelaModule,
     EquacaoModule,
     SituacaoSilviculturalModule,
     ParcelaModule,

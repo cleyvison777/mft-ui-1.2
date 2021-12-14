@@ -89,7 +89,6 @@ export class CadastroAreaComponent implements OnInit {
         .then(() => {
           this.toasty.success('Cadastrado realizado com sucesso!');
           this.salvarEmAndamento = true;
-
           this.refresh();
 
         })

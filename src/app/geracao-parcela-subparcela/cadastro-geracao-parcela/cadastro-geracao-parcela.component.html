@@ -8,32 +8,27 @@
            filter="true" required [(ngModel)]="geraParcelESubParcelaSalva.cdArea"></p-dropdown>
         </div>
 
-        <div class="ui-g-3 ui-fluid">
-          <label>Empresa:</label>
-          <p-dropdown name="empresa" [options]="empresas" [autoWidth]="false" placeholder= "Selecione a empresa"
-          [(ngModel)]="geraParcelESubParcelaSalva.cdEmpresa"></p-dropdown>
-
-        </div>
-
         <div class="ui-fluid ui-g-6 ui-md-6" >
           <label>Tipo padrão de parcela: </label>
           <p-dropdown name="listaTipoparcela" [options]="listaTipoparcela" [autoWidth]="false" placeholder= "Selecione a area"
            filter="true" required [(ngModel)]="geraParcelESubParcelaSalva.cdTipoParcela"></p-dropdown>
         </div>
 
+
+
         <div class="ui-fluid ui-g-6 ui-md-6">
            <label>Numero da primeira parcela: </label>
-           <input type="text" pInputText name="">
+           <input type="number" pInputText  [(ngModel)]="geraParcelESubParcelaSalva.cdParcelaInicio" name="cdParcelaInicio">
         </div>
 
         <div class="ui-fluid ui-g-6 ui-md-6">
           <label>Quantidade de parcelas a gerar: </label>
-          <input type="text" pInputText name="nrParcelas" [(ngModel)]="geraParcelESubParcelaSalva.nrParcelas">
+          <input type="number" pInputText name="nrParcelas" [(ngModel)]="geraParcelESubParcelaSalva.nrParcelas">
        </div>
 
        <div class="ui-fluid ui-g-6 ui-md-6">
         <label>Quantidade de subparcelas para cada parcela: </label>
-        <input type="text" pInputText name="nrSubParcelasPorParcelas" [(ngModel)]="geraParcelESubParcelaSalva.nrSubParcelasPorParcelas">
+        <input type="number" pInputText name="nrSubParcelasPorParcelas" [(ngModel)]="geraParcelESubParcelaSalva.nrSubParcelasPorParcelas">
      </div>
 
      <div class="ui-g-12">

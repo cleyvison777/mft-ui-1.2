@@ -1,6 +1,6 @@
+import { CadastroGeracaoParcelaComponent } from './cadastro-geracao-parcela/cadastro-geracao-parcela.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CadastroGeracaoParcelaComponent } from './cadastro-geracao-parcela/cadastro-geracao-parcela.component';
 
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/components/messages/messages';
@@ -24,7 +24,9 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CadastroGeracaoParcelaComponent
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -51,8 +53,6 @@ import {DialogModule} from 'primeng/dialog';
     DialogModule,
 
   ],
-  exports:[
-    CadastroGeracaoParcelaComponent
-  ]
+
 })
 export class GeracaoParcelaSubparcelaModule { }

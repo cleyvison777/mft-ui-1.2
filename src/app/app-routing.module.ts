@@ -1,3 +1,4 @@
+import { CadastroGeracaoParcelaComponent } from './geracao-parcela-subparcela/cadastro-geracao-parcela/cadastro-geracao-parcela.component';
 import { EspecieCadastroComponent } from './lista-especie/especie-cadastro/especie-cadastro.component';
 import { IdentificadorCadastroComponent } from './idetificadores-subparcela-selecionada/identificador-cadastro/identificador-cadastro.component';
 import { SubparcelaCadastroComponent } from './sub-parcela/subparcela-cadastro/subparcela-cadastro.component';
@@ -60,8 +61,13 @@ const routes: Routes = [
   {path: 'subparcela/:codigo', component:SubparcelaCadastroComponent},
   {path: 'idetificadores-subparcela-selecionada/cadastro', component:IdentificadorCadastroComponent},
   {path: 'idetificadores-subparcela-selecionada/:codigo', component:IdentificadorCadastroComponent},
+  {path: 'geracao-parcela/cadastro', component:CadastroGeracaoParcelaComponent},
+  {path: 'geracao-parcela/:codigo', component:CadastroGeracaoParcelaComponent},
+
   {path: 'lista-especie/cadastro', component:EspecieCadastroComponent},
   {path: 'lista-especie/:codigo', component:EspecieCadastroComponent},
+
+
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
 ];
 
