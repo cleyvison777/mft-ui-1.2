@@ -30,10 +30,10 @@ export class EquacaoService {
     .toPromise()
       .then(response => {
         const responseJson = response.json();
-        const equacoes = responseJson.content;
+        const equacao = responseJson.content;
 
         const resultado = {
-          equacoes,
+          equacao,
            total: responseJson.totalElements
         };
         return resultado;
@@ -55,10 +55,10 @@ export class EquacaoService {
        .toPromise()
         .then(response => {
           const responseJason = response.json();
-          const equacoes = responseJason.content;
+          const equacao = responseJason.content;
 
           const resultado = {
-            equacoes,
+            equacao,
             total: responseJason.totalElements
           };
            return resultado;
@@ -103,8 +103,8 @@ export class EquacaoService {
           return this.http.get(`${this.equacaoURL}/${cdEquacao}`, {headers})
            .toPromise()
             .then(response => {
-              const equacoes = response.json() as CadEquacao;
-              return equacoes;
+              const equacao = response.json() as CadEquacao;
+              return equacao;
             });
       }
 

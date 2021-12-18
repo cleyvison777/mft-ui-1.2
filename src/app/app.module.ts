@@ -1,3 +1,4 @@
+import { DanoModule } from './dano/dano.module';
 import { GeracaoParcelaSubparcelaModule } from './geracao-parcela-subparcela/geracao-parcela-subparcela.module';
 import { SubParcelaModule } from './sub-parcela/sub-parcela.module';
 import { ParcelaModule } from './parcela/parcela.module';
@@ -57,6 +58,7 @@ import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subp
     ParcelaModule,
     SubParcelaModule,
     IdetificadoresSubparcelaSelecionadaModule,
+    DanoModule
 
 
 

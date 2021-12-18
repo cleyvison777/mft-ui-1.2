@@ -1,3 +1,4 @@
+import { DanoCadastroComponent } from './dano/dano-cadastro/dano-cadastro.component';
 import { CadastroGeracaoParcelaComponent } from './geracao-parcela-subparcela/cadastro-geracao-parcela/cadastro-geracao-parcela.component';
 import { EspecieCadastroComponent } from './lista-especie/especie-cadastro/especie-cadastro.component';
 import { IdentificadorCadastroComponent } from './idetificadores-subparcela-selecionada/identificador-cadastro/identificador-cadastro.component';
@@ -63,6 +64,9 @@ const routes: Routes = [
   {path: 'idetificadores-subparcela-selecionada/:codigo', component:IdentificadorCadastroComponent},
   {path: 'geracao-parcela/cadastro', component:CadastroGeracaoParcelaComponent},
   {path: 'geracao-parcela/:codigo', component:CadastroGeracaoParcelaComponent},
+
+  {path: 'dano/cadastro', component:DanoCadastroComponent},
+  {path: 'dano/:codigo', component:CadastroGeracaoParcelaComponent},
 
   {path: 'lista-especie/cadastro', component:EspecieCadastroComponent},
   {path: 'lista-especie/:codigo', component:EspecieCadastroComponent},

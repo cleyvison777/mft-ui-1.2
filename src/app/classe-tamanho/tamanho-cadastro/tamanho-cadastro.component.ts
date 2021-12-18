@@ -24,7 +24,7 @@ export class TamanhoCadastroComponent implements OnInit {
   classeInd = [];
   cdEmp: any;
   area = [];
-  equacoes = [];
+  equacao = [];
   empresaSelecionada = new MenuEmpresa();
   classedeTamanhoSalva = new CadClasseDeTamanho();
   items: MenuItem[];
@@ -78,8 +78,8 @@ export class TamanhoCadastroComponent implements OnInit {
 
    carregarEquacao(){
     return this.equacaoService.listarTodasEquacao()
-      .then( equacoes => {
-        this.equacoes = equacoes.map(e => ({label: e.cdEquacao + " - " + e.nmEquacao, value: e.cdEquacao}))
+      .then( equacao => {
+        this.equacao = equacao.map(e => ({label: e.cdEquacao + " - " + e.nmEquacao, value: e.cdEquacao}))
       })
       .catch(erro => this.errorHandler.handle(erro));
       }
