@@ -145,8 +145,8 @@ export class NavbarComponent implements OnInit {
                 routerLink: 'forma-copa/cadastro'
               },
               {
-                label: 'Copy',
-                routerLink: '/modnivel4'
+                label: 'Cipo',
+                routerLink: 'cipo/cadastro'
               },
               {separator: true},
               {

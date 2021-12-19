@@ -1,3 +1,4 @@
+import { CipoModule } from './cipo/cipo.module';
 import { FormaCopaModule } from './forma-copa/forma-copa.module';
 import { IluminacaoModule } from './iluminacao/iluminacao.module';
 import { PodridaoModule } from './podridao/podridao.module';
@@ -64,7 +65,8 @@ import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subp
     DanoModule,
     PodridaoModule,
     IluminacaoModule,
-    FormaCopaModule
+    FormaCopaModule,
+    CipoModule
 
 
 
