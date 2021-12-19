@@ -157,7 +157,7 @@ export class NavbarComponent implements OnInit {
               {
                 label: 'Impressão de Ficha de Campo',
                 icon: 'pi pi-fw pi-print',
-                routerLink: '/modmonitoramentotemplate',
+                routerLink: '/impressao-ficha',
 
               },
 

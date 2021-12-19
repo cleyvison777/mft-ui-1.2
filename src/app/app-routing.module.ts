@@ -1,3 +1,4 @@
+import { ImpressaoFichaCampoComponent } from './impressao-ficha/impressao-ficha-campo/impressao-ficha-campo.component';
 import { CipoCadastroComponent } from './cipo/cipo-cadastro/cipo-cadastro.component';
 import { FormaCadastroComponent } from './forma-copa/forma-cadastro/forma-cadastro.component';
 import { IluminacaoCadastroComponent } from './iluminacao/iluminacao-cadastro/iluminacao-cadastro.component';
@@ -78,6 +79,7 @@ const routes: Routes = [
   {path: 'forma-copa/:codigo', component:FormaCadastroComponent},
   {path: 'cipo/cadastro', component:CipoCadastroComponent},
   {path: 'cipo/:codigo', component:CipoCadastroComponent},
+  {path: 'impressao-ficha', component:ImpressaoFichaCampoComponent},
   {path: 'lista-especie/cadastro', component:EspecieCadastroComponent},
   {path: 'lista-especie/:codigo', component:EspecieCadastroComponent},
 

@@ -1,3 +1,4 @@
+import { ImpressaoFichaModule } from './impressao-ficha/impressao-ficha.module';
 import { CipoModule } from './cipo/cipo.module';
 import { FormaCopaModule } from './forma-copa/forma-copa.module';
 import { IluminacaoModule } from './iluminacao/iluminacao.module';
@@ -66,7 +67,8 @@ import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subp
     PodridaoModule,
     IluminacaoModule,
     FormaCopaModule,
-    CipoModule
+    CipoModule,
+    ImpressaoFichaModule
 
 
 
