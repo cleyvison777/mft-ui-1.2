@@ -7,14 +7,13 @@
             [totalRecords]="totalRegistrosSubParcela" (onLazyLoad)="aoMudarPagina($event)" #tabela>
               <ng-template pTemplate="header">
                   <tr>
-                      <th>ID</th>
                       <th>SubParcela</th>
                       <th></th>
                   </tr>
               </ng-template>
               <ng-template pTemplate="body" let-cadsubparcela>
                   <tr>
-                      <td>{{cadsubparcela.cdParcela}}</td>
+
                       <td>{{cadsubparcela.cdSubParcela}}</td>
                       <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
                         pTooltip="remover" class="ui-button-danger" tooltipPosition="left" >
