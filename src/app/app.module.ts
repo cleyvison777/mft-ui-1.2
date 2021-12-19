@@ -1,3 +1,6 @@
+import { FormaCopaModule } from './forma-copa/forma-copa.module';
+import { IluminacaoModule } from './iluminacao/iluminacao.module';
+import { PodridaoModule } from './podridao/podridao.module';
 import { DanoModule } from './dano/dano.module';
 import { GeracaoParcelaSubparcelaModule } from './geracao-parcela-subparcela/geracao-parcela-subparcela.module';
 import { SubParcelaModule } from './sub-parcela/sub-parcela.module';
@@ -58,7 +61,10 @@ import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subp
     ParcelaModule,
     SubParcelaModule,
     IdetificadoresSubparcelaSelecionadaModule,
-    DanoModule
+    DanoModule,
+    PodridaoModule,
+    IluminacaoModule,
+    FormaCopaModule
 
 
 

@@ -134,19 +134,15 @@ export class NavbarComponent implements OnInit {
               },
               {
                 label: 'Podridão',
-                routerLink: '/modnivel4'
+                routerLink: 'podridao/cadastro'
               },
               {
                 label: 'Iluminação',
-                routerLink: '/modnivel4'
+                routerLink: 'iluminacao/cadastro'
               },
               {
                 label: 'Forma da Copa',
-                routerLink: '/modnivel4'
-              },
-              {
-                label: 'Dano',
-                routerLink: '/modnivel4'
+                routerLink: 'forma-copa/cadastro'
               },
               {
                 label: 'Copy',

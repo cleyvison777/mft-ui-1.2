@@ -1,3 +1,6 @@
+import { FormaCadastroComponent } from './forma-copa/forma-cadastro/forma-cadastro.component';
+import { IluminacaoCadastroComponent } from './iluminacao/iluminacao-cadastro/iluminacao-cadastro.component';
+import { PodridaoCadastroComponent } from './podridao/podridao-cadastro/podridao-cadastro.component';
 import { DanoCadastroComponent } from './dano/dano-cadastro/dano-cadastro.component';
 import { CadastroGeracaoParcelaComponent } from './geracao-parcela-subparcela/cadastro-geracao-parcela/cadastro-geracao-parcela.component';
 import { EspecieCadastroComponent } from './lista-especie/especie-cadastro/especie-cadastro.component';
@@ -64,12 +67,17 @@ const routes: Routes = [
   {path: 'idetificadores-subparcela-selecionada/:codigo', component:IdentificadorCadastroComponent},
   {path: 'geracao-parcela/cadastro', component:CadastroGeracaoParcelaComponent},
   {path: 'geracao-parcela/:codigo', component:CadastroGeracaoParcelaComponent},
-
   {path: 'dano/cadastro', component:DanoCadastroComponent},
   {path: 'dano/:codigo', component:CadastroGeracaoParcelaComponent},
-
+  {path: 'podridao/cadastro', component:PodridaoCadastroComponent},
+  {path: 'podridao/:codigo', component:PodridaoCadastroComponent},
+  {path: 'iluminacao/cadastro', component:IluminacaoCadastroComponent},
+  {path: 'iluminacao/:codigo', component:IluminacaoCadastroComponent},
+  {path: 'forma-copa/cadastro', component:FormaCadastroComponent},
+  {path: 'forma-copa/:codigo', component:FormaCadastroComponent},
   {path: 'lista-especie/cadastro', component:EspecieCadastroComponent},
   {path: 'lista-especie/:codigo', component:EspecieCadastroComponent},
+
 
 
   {path: '**', redirectTo: 'pagina-nao-encontrada'},

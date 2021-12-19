@@ -4,9 +4,9 @@
             <h1> DANO {{ 'CADASTRO'}}</h1>
         </div>
 
-          <p-fieldset legend="Cadastro de Dano" class="ui-g-11 ui-md-11">
+          <p-fieldset legend="Cadastro de Podridão" class="ui-g-11 ui-md-11">
               <div class="ui-g-12  ui-md-7 ui-fluid">
-                <label>Abreveatura</label>
+                <label>Abreviatura</label>
                 <input id="input" name="nmClassefloresta" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder="Abreveatura" class="ng-dirty ng-invalid">
                 <div *ngIf= "nome.hasError('required') && nome.dirty">
                   <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
