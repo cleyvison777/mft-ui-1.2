@@ -52,14 +52,13 @@ export class CadastroFlorestaComponent implements OnInit {
 
   upload(form: FormData){
 
+
   }
 
 
   get editando(){
     return Boolean(this.classeflorestaSalva.cdClassefloresta);
   }
-
-
 
 
   adicionarFloresta(form: FormControl){
@@ -77,8 +76,9 @@ export class CadastroFlorestaComponent implements OnInit {
   atualizarFloresta(form: FormControl){
     this.florestaService.atualizar(this.classeflorestaSalva)
      .then(classefloresta => {
+       this.carregarFloresta(this.route.snapshot.params['codigo'])
         this.classeflorestaSalva = classefloresta;
-        this.toasty.success('Classe floresta atualizada com sucesso!');
+
         this.router.navigate(['/floresta/cadastro']);
      })
      .catch(erro => this.errorHandler.handle(erro));

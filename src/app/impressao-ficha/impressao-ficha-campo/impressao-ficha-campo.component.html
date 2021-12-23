@@ -16,10 +16,10 @@
               <div class="ui-g-6 ui-md-6">
                   <p-fieldset legend="Opção">
                     <div class="row radiobutton-margin">
-                      <p-radioButton name="valor" [value]="this.valor" aria-selected="true" label="Em branco" inputId="opt1"></p-radioButton>
+                      <p-radioButton name="valor" [value]="" aria-selected="true" label="Em branco" (click)="this.isButtonVisible = true" inputId="opt1"></p-radioButton>
                     </div>
                     <div class="row">
-                      <p-radioButton name="valor" [value]="this.valor" label="Preenchido" inputId="opt1"></p-radioButton>
+                      <p-radioButton name="valor" [value]=""  (click)="this.isButtonVisible = false" label="Preenchido" inputId="opt1"></p-radioButton>
                     </div>
                   </p-fieldset>
               </div>
@@ -36,9 +36,31 @@
                 </p-fieldset>
             </div>
 
-            <div class="ui-g-12 ui-md-12" *ngIf="valor">
-              <p-fieldset legend="Medida em">
+            <div class="ui-g-12 ui-md-12" *ngIf="!this.isButtonVisible">
+              <p-fieldset legend="Parametros">
+
                 <div class="row">
+                  <div class="ui-fluid ui-g-12 ui-lg-12 ui-md-12" >
+                    <label>Area de manejo florestal(AMF): </label>
+                    <p-dropdown name="classeInd" [options]="" [autoWidth]="false" placeholder= "Selecione a area"
+                    filter="true" required></p-dropdown>
+                  </div>
+
+                  <div class="ui-fluid ui-g-12 ui-lg-4 ui-md-4" >
+                    <label>Medição: </label>
+                    <p-dropdown name="classeInd" [options]="" [autoWidth]="false" placeholder= "Selecione a medição"
+                    filter="true" required></p-dropdown>
+                  </div>
+                  <div class="ui-fluid ui-g-12 ui-lg-4 ui-md-4" >
+                    <label>Parcela: </label>
+                    <p-dropdown name="classeInd" [options]="" [autoWidth]="false" placeholder= "Selecione a parcela"
+                    filter="true" required></p-dropdown>
+                  </div>
+                  <div class="ui-fluid ui-g-12 ui-lg-4 ui-md-4" >
+                    <label>Subparcela: </label>
+                    <p-dropdown name="classeInd" [options]="" [autoWidth]="false" placeholder= "Selecione a subparcela"
+                    filter="true" required></p-dropdown>
+                  </div>
 
                 </div>
               </p-fieldset>
@@ -46,6 +68,8 @@
 
             <div class="ui-g-6 ui-md-6">
              <p-button icon="pi pi-check" iconPos="right" label="Processar"></p-button>
+             <button pButton  icon="pi pi-sign-out" type="reset" label="Sair" class="ui-button-secondary" style="margin-left: 10px;" [routerLink]="['/dashboard']"></button>
+
             </div>
       </div>
 

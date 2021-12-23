@@ -16,7 +16,7 @@ export class ImpressaoFichaCampoComponent implements OnInit {
 
   classeInd = [];
 
-  valor = [false, true];
+   isButtonVisible = true;
 
   constructor(
     private classeTamanhoIndividuoService: ClasseTamanhoIndividuoService,
