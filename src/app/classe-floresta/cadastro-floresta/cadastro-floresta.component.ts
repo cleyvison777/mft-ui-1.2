@@ -9,6 +9,7 @@ import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ClasseFloresta, MenuEmpresa } from './../../core/model';
 import { Component, OnInit } from '@angular/core';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 @Component({
   selector: 'app-cadastro-floresta',
   templateUrl: './cadastro-floresta.component.html',
@@ -18,8 +19,10 @@ export class CadastroFlorestaComponent implements OnInit {
   empresas = [];
   cdEmp: any;
   floresta = [];
+  imagem:[];
   anexo: File = null;
   classeflorestaSalva = new ClasseFloresta();
+  classeflorestaSalva2 = new ClasseFloresta();
   empresaSelecionada = new MenuEmpresa();
 
 
@@ -74,15 +77,26 @@ export class CadastroFlorestaComponent implements OnInit {
 
 
   atualizarFloresta(form: FormControl){
-    this.florestaService.atualizar(this.classeflorestaSalva)
-     .then(classefloresta => {
-       this.carregarFloresta(this.route.snapshot.params['codigo'])
-        this.classeflorestaSalva = classefloresta;
+    this.florestaService.buscarPeloCodigo(this.classeflorestaSalva.cdClassefloresta)
+     .then(floresta => {
+      this.florestaService.atualizar(this.classeflorestaSalva, floresta.enderecoImagem)
+      .then(classefloresta => {
+        this.carregarFloresta(this.route.snapshot.params['codigo'])
+         this.classeflorestaSalva = classefloresta;
+         this.router.navigate(['/floresta/cadastro']);
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+     })
+  }
 
-        this.router.navigate(['/floresta/cadastro']);
+  carregarFloresta2(cdClassefloresta: number){
+
+    this.florestaService.buscarPeloCodigo(cdClassefloresta)
+     .then(floresta => {
+       this.classeflorestaSalva2 =  floresta;
      })
      .catch(erro => this.errorHandler.handle(erro));
-  }
+}
 
   confirmarAlterarFloresta(classeFloresta: any) {
     this.confirmation.confirm({
@@ -101,6 +115,8 @@ export class CadastroFlorestaComponent implements OnInit {
        })
        .catch(erro => this.errorHandler.handle(erro));
   }
+
+  
 
 
    atualizarTitoloEdicao(){

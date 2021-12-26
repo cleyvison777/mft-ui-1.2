@@ -112,10 +112,11 @@ export class FlorestaService {
        .then(() => null);
    }
 
-   atualizar(classeFloresta: ClasseFloresta){
+   atualizar(classeFloresta: ClasseFloresta, imagem: any){
     const headers = new Headers;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
     headers.append('Content-Type', 'application/json');
+    classeFloresta.enderecoImagem = imagem;
       return this.http.put(`${this.urlClasseFloresta}/${classeFloresta.cdClassefloresta}`,
       JSON.stringify(classeFloresta), {headers})
        .toPromise()
