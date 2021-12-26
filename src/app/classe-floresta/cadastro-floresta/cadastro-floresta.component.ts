@@ -19,10 +19,7 @@ export class CadastroFlorestaComponent implements OnInit {
   empresas = [];
   cdEmp: any;
   floresta = [];
-  imagem:[];
-  anexo: File = null;
   classeflorestaSalva = new ClasseFloresta();
-  classeflorestaSalva2 = new ClasseFloresta();
   empresaSelecionada = new MenuEmpresa();
 
 
@@ -52,12 +49,6 @@ export class CadastroFlorestaComponent implements OnInit {
   get urlUploadAnexo(){
     return this.florestaService.urlUploadAnexo(this.classeflorestaSalva);
   }
-
-  upload(form: FormData){
-
-
-  }
-
 
   get editando(){
     return Boolean(this.classeflorestaSalva.cdClassefloresta);
@@ -89,14 +80,6 @@ export class CadastroFlorestaComponent implements OnInit {
      })
   }
 
-  carregarFloresta2(cdClassefloresta: number){
-
-    this.florestaService.buscarPeloCodigo(cdClassefloresta)
-     .then(floresta => {
-       this.classeflorestaSalva2 =  floresta;
-     })
-     .catch(erro => this.errorHandler.handle(erro));
-}
 
   confirmarAlterarFloresta(classeFloresta: any) {
     this.confirmation.confirm({
@@ -117,8 +100,6 @@ export class CadastroFlorestaComponent implements OnInit {
   }
 
   
-
-
    atualizarTitoloEdicao(){
      this.title.setTitle(`Edição Floresta: ${this.classeflorestaSalva.nmClassefloresta}`)
    }
