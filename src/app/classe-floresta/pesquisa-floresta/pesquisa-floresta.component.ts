@@ -19,6 +19,7 @@ export class PesquisaFlorestaComponent implements OnInit {
   floresta = [];
   @ViewChild('tabela') grid;
   showDialog: ClasseFloresta;
+  img = [];
   classeflorestaSalva = new ClasseFloresta();
   display: boolean = false;
   constructor(
@@ -31,7 +32,7 @@ export class PesquisaFlorestaComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-     this.florestaService.pesquisarImagem().then(floresta => this.floresta = floresta)
+
 
   }
 //funcão do botão vizualizar
@@ -56,6 +57,16 @@ export class PesquisaFlorestaComponent implements OnInit {
      .catch(erro => this.errorHandler.handle(erro));
   }
 
+
+pesquisarImagem(){
+   this.florestaService.pesquisarImagem(this.classeflorestaSalva.cdClassefloresta)
+   .then(resultado =>{
+    this.totalRegistros = resultado.total;
+    this.img = resultado.classeFloresta;
+ })
+
+ .catch(erro => this.errorHandler.handle(erro));
+}
 
   aoMudarPagina(event: LazyLoadEvent){
     const page = event.first / event.rows;

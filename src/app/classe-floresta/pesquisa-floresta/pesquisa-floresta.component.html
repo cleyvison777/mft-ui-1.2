@@ -20,7 +20,7 @@
                 <div class="ui-g-12">
 
 
-                  <p-dataList  [value]="floresta" [paginator]="true"  [rows]="filtro.size"  [lazy]="true" #tabela
+                  <p-dataList  [value]="floresta"  [paginator]="true"  [rows]="filtro.size"  [lazy]="true" #tabela
                   (onLazyLoad)="aoMudarPagina($event)" [totalRecords]="totalRegistros">
                     <p-header>
                         Classe Floresta

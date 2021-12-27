@@ -14,6 +14,7 @@ export class ClasseFlorestaFiltro {
 export class FlorestaService {
 
   urlClasseFloresta ='http://localhost:8082/icclasefloresta';
+  urlClasseFlorestaImg = 'http://localhost:8082/icclasefloresta/img'
   constructor( private http: Http) { }
 
   pesquisar2(cdEmpresa: any): Promise<any> {
@@ -29,36 +30,24 @@ export class FlorestaService {
 
   };
 
-  pesquisarImagem(): Promise<any> {
-    const params = new URLSearchParams;
+  pesquisarImagem(cdClassefloresta: any): Promise<any> {
     const headers = new Headers;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-        return this.http.get(`${this.urlClasseFloresta}`, { headers})
+        return this.http.get(`${this.urlClasseFlorestaImg}/${cdClassefloresta}`, { headers})
         .toPromise()
-        .then(response => response.json().content)
+        .then(response => {
+          const responseJson = response.json();
+          const img = responseJson.content;
+          const resultado = {
+            img,
+            total: responseJson.totalElements
+          };
+          return resultado;
 
+        });
 
   };
 
-
-  pesquisarImagem2(cdClassefloresta: any): Promise<any> {
-    const headers = new Headers();
-    const params = new URLSearchParams;
-    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-
-    return this.http.get(`${this.urlClasseFloresta}?cdClassefloresta=${cdClassefloresta}`)
-      .toPromise()
-      .then(response => {
-        const responseJson = response.json();
-        const listaTs = responseJson.content;
-        const resultado = {
-          listaTs,
-          total: responseJson.totalElements
-        };
-        return resultado;
-
-      });
-  }
 
 
   adicionar(classeFloresta: ClasseFloresta) {
