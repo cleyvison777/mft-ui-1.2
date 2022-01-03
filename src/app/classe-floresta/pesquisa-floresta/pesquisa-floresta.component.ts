@@ -19,7 +19,6 @@ export class PesquisaFlorestaComponent implements OnInit {
   floresta = [];
   @ViewChild('tabela') grid;
   showDialog: ClasseFloresta;
-  img = [];
   classeflorestaSalva = new ClasseFloresta();
   display: boolean = false;
   constructor(
@@ -36,10 +35,12 @@ export class PesquisaFlorestaComponent implements OnInit {
 
   }
 //funcão do botão vizualizar
-  showDialo(event: Event, floresta: ClasseFloresta) {
-     this.showDialog = floresta;
+  showDialo(event: Event, cdClasseFloresta: ClasseFloresta) {
+    this.pesquisarImagem(cdClasseFloresta);
+     this.showDialog = cdClasseFloresta;
      this.display = true;
      event.preventDefault();
+
   }
   onDialogHide() {
     this.showDialog = null;
@@ -58,11 +59,11 @@ export class PesquisaFlorestaComponent implements OnInit {
   }
 
 
-pesquisarImagem(){
-   this.florestaService.pesquisarImagem(this.classeflorestaSalva.cdClassefloresta)
+pesquisarImagem(classeFloresta : any){
+   this.florestaService.pesquisarImagem(classeFloresta.cdClassefloresta)
    .then(resultado =>{
     this.totalRegistros = resultado.total;
-    this.img = resultado.classeFloresta;
+    this.floresta = resultado.classeFloresta;
  })
 
  .catch(erro => this.errorHandler.handle(erro));

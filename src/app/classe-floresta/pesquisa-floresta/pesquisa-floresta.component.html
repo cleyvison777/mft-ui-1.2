@@ -27,11 +27,7 @@
                     </p-header>
                     <ng-template let-floresta pTemplate="item">
                         <div class="ui-g ui-fluid floresta-item borda3">
-                            <div class="ui-g-12 ui-md-3" style="text-align:center">
-                            <strong><span>{{floresta.enderecoImagem ? null : 'Sem Imagem'}}
-                              <img src ="{{floresta.enderecoImagem}}" height="175" width="140"  onerror="this.style.display='none'"/>
-                            </span></strong>
-                            </div>
+
                             <div class="ui-g-12 ui-md-9 floresta-details">
                                 <div class="ui-g">
                                     <div class="ui-g-2 ui-sm-6">Código: </div>
@@ -45,7 +41,7 @@
                                     <div class="ui-g-10 ui-sm-6"><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
                                       (click)="confirmarExclusao(floresta)"></button>
                                       <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta.cdClassefloresta]"></button>
-                                      <button pButton icon="pi pi-pencil" class="ui-button-secondary" (click)="showDialo($event, floresta)"  pButton icon="pi pi-search" pTooltip="vizualizar"  style="margin-left: 10px;"></button>
+                                      <button pButton icon="pi pi-pencil" class="ui-button-secondary" (click)="showDialo($event, floresta.cdClassefloresta)"  pButton icon="pi pi-search" pTooltip="vizualizar"  style="margin-left: 10px;"></button>
                                     </div>
                                     <div *ngIf="showDialog">
                                     <p-dialog header="Classe Floresta" [(visible)]="display" (onAfterHide)="onDialogHide()" [responsive]="true" [modal]="true" showEffect="fade">

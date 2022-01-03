@@ -37,9 +37,9 @@ export class FlorestaService {
         .toPromise()
         .then(response => {
           const responseJson = response.json();
-          const img = responseJson.content;
+          const floresta = responseJson.content;
           const resultado = {
-            img,
+            floresta,
             total: responseJson.totalElements
           };
           return resultado;
