@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ClasseFloresta } from './../../core/model';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { ConfirmationService } from 'primeng/components/common/api';
+import { ConfirmationService, SelectItem } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { ClasseFlorestaFiltro, FlorestaService } from './../floresta.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -18,7 +18,9 @@ export class PesquisaFlorestaComponent implements OnInit {
   totalRegistros = 0;
   floresta = [];
   @ViewChild('tabela') grid;
-  showDialog: ClasseFloresta;
+  selectedImagem: ClasseFloresta;
+  sortOptions: SelectItem[];
+
   classeflorestaSalva = new ClasseFloresta();
   display: boolean = false;
   constructor(
@@ -35,15 +37,16 @@ export class PesquisaFlorestaComponent implements OnInit {
 
   }
 //funcão do botão vizualizar
-  showDialo(event: Event, cdClasseFloresta: ClasseFloresta) {
-    this.pesquisarImagem(cdClasseFloresta);
-     this.showDialog = cdClasseFloresta;
+  selectImagem(event: Event, floresta: ClasseFloresta) {
+
+     this.selectedImagem = floresta;
+     this.pesquisarImagem(floresta.cdClassefloresta); //undefined
      this.display = true;
      event.preventDefault();
 
   }
   onDialogHide() {
-    this.showDialog = null;
+    this.selectedImagem = null;
 }
 //////
 

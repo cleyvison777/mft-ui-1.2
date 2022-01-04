@@ -41,11 +41,11 @@
                                     <div class="ui-g-10 ui-sm-6"><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
                                       (click)="confirmarExclusao(floresta)"></button>
                                       <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta.cdClassefloresta]"></button>
-                                      <button pButton icon="pi pi-pencil" class="ui-button-secondary" (click)="showDialo($event, floresta.cdClassefloresta)"  pButton icon="pi pi-search" pTooltip="vizualizar"  style="margin-left: 10px;"></button>
+                                      <button pButton icon="pi pi-pencil" class="ui-button-secondary" (click)="selectImagem($event, floresta)"  pButton icon="pi pi-search" pTooltip="vizualizar"  style="margin-left: 10px;"></button>
                                     </div>
-                                    <div *ngIf="showDialog">
+                                    <div *ngIf="selectedImagem">
                                     <p-dialog header="Classe Floresta" [(visible)]="display" (onAfterHide)="onDialogHide()" [responsive]="true" [modal]="true" showEffect="fade">
-                                      <img src ="{{showDialog.enderecoImagem}}"/>
+                                      <img src ="{{selectedImagem.enderecoImagem}}"/>
                                   </p-dialog>
                                   </div>
                                 </div>
