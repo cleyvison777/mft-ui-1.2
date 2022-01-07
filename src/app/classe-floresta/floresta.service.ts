@@ -30,7 +30,7 @@ export class FlorestaService {
 
   };
 
-  pesquisarImagem(cdClassefloresta: any): Promise<any> {
+  pesquisarImagem(cdClassefloresta: number): Promise<any> {
     const headers = new Headers;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
         return this.http.get(`${this.urlClasseFlorestaImg}/${cdClassefloresta}`, { headers})
