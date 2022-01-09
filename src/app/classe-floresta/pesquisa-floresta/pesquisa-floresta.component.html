@@ -43,9 +43,9 @@
                                       <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta.cdClassefloresta]"></button>
                                       <button pButton icon="pi pi-pencil" class="ui-button-secondary" (click)="selectImagem($event, floresta)"  pButton icon="pi pi-search" pTooltip="vizualizar"  style="margin-left: 10px;"></button>
                                     </div>
-                                    <div *ngIf="selectedImagem">
-                                    <p-dialog header="Classe Floresta" [(visible)]="display" (onAfterHide)="onDialogHide()" [responsive]="true" [modal]="true" showEffect="fade">
-                                      <img src ="{{selectedImagem.enderecoImagem}}"/>
+                                    <div *ngIf="selectedImagem" >
+                                    <p-dialog header="Classe Floresta" [(visible)]="display" [minY]="70" [style]="{width: '350px', minWidth: '200px'}" (onAfterHide)="onDialogHide()" [responsive]="true" [modal]="true" >
+                                      <img  src = {{imagem}}/>
                                   </p-dialog>
                                   </div>
                                 </div>

@@ -14,7 +14,7 @@ export class ClasseFlorestaFiltro {
 export class FlorestaService {
 
   urlClasseFloresta ='http://localhost:8082/icclasefloresta';
-  urlClasseFlorestaImg = 'http://localhost:8082/icclasefloresta/img'
+  urlClasseFlorestaImg = 'http://localhost:8082/icclasefloresta/img/'
   constructor( private http: Http) { }
 
   pesquisar2(cdEmpresa: any): Promise<any> {
@@ -30,23 +30,7 @@ export class FlorestaService {
 
   };
 
-  pesquisarImagem(cdClassefloresta: number): Promise<any> {
-    const headers = new Headers;
-    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-        return this.http.get(`${this.urlClasseFlorestaImg}/${cdClassefloresta}`, { headers})
-        .toPromise()
-        .then(response => {
-          const responseJson = response.json();
-          const floresta = responseJson.content;
-          const resultado = {
-            floresta,
-            total: responseJson.totalElements
-          };
-          return resultado;
 
-        });
-
-  };
 
 
 
@@ -128,6 +112,7 @@ export class FlorestaService {
             });
 
    }
+
 
 
 

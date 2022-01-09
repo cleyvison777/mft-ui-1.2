@@ -17,9 +17,9 @@ export class PesquisaFlorestaComponent implements OnInit {
   filtro = new ClasseFlorestaFiltro();
   totalRegistros = 0;
   floresta = [];
+  imagem: any;
   @ViewChild('tabela') grid;
   selectedImagem: ClasseFloresta;
-
   classeflorestaSalva = new ClasseFloresta();
   display: boolean = false;
   constructor(
@@ -27,7 +27,6 @@ export class PesquisaFlorestaComponent implements OnInit {
     private confirmation: ConfirmationService,
     private errorHandler :ErrorHandlerService,
     private florestaService: FlorestaService,
-    private route: ActivatedRoute,
 
   ) {  }
 
@@ -39,7 +38,7 @@ export class PesquisaFlorestaComponent implements OnInit {
   selectImagem(event: Event, classefloresta: ClasseFloresta) {
 
      this.selectedImagem = classefloresta;
-     this.pesquisarImagem(classefloresta.cdClassefloresta); //esta encontrando
+     this.imagem = this.florestaService.urlClasseFlorestaImg + classefloresta.cdClassefloresta;
      this.display = true;
      event.preventDefault();
 
@@ -59,17 +58,6 @@ export class PesquisaFlorestaComponent implements OnInit {
 
      .catch(erro => this.errorHandler.handle(erro));
   }
-
-
-pesquisarImagem(cdClassefloresta : any){
-   this.florestaService.pesquisarImagem(cdClassefloresta)
-   .then(resultado =>{
-    this.totalRegistros = resultado.total;
-    this.floresta = resultado.cdClassefloresta;
- })
-
- .catch(erro => this.errorHandler.handle(erro));
-}
 
   aoMudarPagina(event: LazyLoadEvent){
     const page = event.first / event.rows;
