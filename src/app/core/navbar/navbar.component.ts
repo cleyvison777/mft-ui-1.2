@@ -122,7 +122,7 @@ export class NavbarComponent implements OnInit {
               },
               {
                 label: 'Tratamento anterior e Tratamento atual:',
-                routerLink: '/cadastro-tsatualtsanterior'
+                routerLink: 'mediacoes-anteriores/cadastro'
               },
               {
                 label: 'Classe de Indentificação do Fuste(CIF)',

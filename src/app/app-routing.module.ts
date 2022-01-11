@@ -1,3 +1,4 @@
+import { TsatualtsanteriorCadastroComponent } from './tsatualtsanterior/tsatualtsanterior-cadastro/tsatualtsanterior-cadastro.component';
 import { ImpressaoFichaCampoComponent } from './impressao-ficha/impressao-ficha-campo/impressao-ficha-campo.component';
 import { CipoCadastroComponent } from './cipo/cipo-cadastro/cipo-cadastro.component';
 import { FormaCadastroComponent } from './forma-copa/forma-cadastro/forma-cadastro.component';
@@ -61,6 +62,7 @@ const routes: Routes = [
   {path: 'classe-tamanho/:codigo', component:TamanhoCadastroComponent},
   {path: 'situacao-silvicultural/cadastro', component:SilviculturalCadastroComponent},
   {path: 'situacao-silvicultural/:codigo', component:SilviculturalCadastroComponent},
+  {path: 'mediacoes-anteriores/cadastro', component:TsatualtsanteriorCadastroComponent},
   {path: 'parcela/cadastro', component:ParceCadastroComponent},
   {path: 'parcela/:codigo', component:ParceCadastroComponent},
   {path: 'subparcela/cadastro', component:SubparcelaCadastroComponent},
@@ -82,6 +84,7 @@ const routes: Routes = [
   {path: 'impressao-ficha', component:ImpressaoFichaCampoComponent},
   {path: 'lista-especie/cadastro', component:EspecieCadastroComponent},
   {path: 'lista-especie/:codigo', component:EspecieCadastroComponent},
+
 
 
 

@@ -1,0 +1,31 @@
+
+
+<div class="container">
+    <p-fieldset legend="Dados Cadastrais">
+      <p-table [value]="listaTs"  [paginator]="true"   [rows]="10" [responsive]="true" [lazy]="true"  #tabela>
+                <ng-template pTemplate="header" >
+                    <tr>
+
+                      <th>Codigo</th>
+                      <th>Tratamento Atual</th>
+                      <th></th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-listaTs>
+                    <tr>
+                      <td>{{listaTs.cdTratamentoAnteriorPk}}</td>
+                      <td>{{listaTs.cdTratamentotual.nmTratamento}}</td>
+
+                      <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
+                        pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusaoTS(listaTs)">
+                      </button>
+                      <button pButton icon="pi pi-pencil" pTooltip="editar" tooltipPosition="top"  [routerLink]="['/cadastro-tsatualtsanterior', listaTs.cdTratamentoAnteriorPk]"  style="margin-right: 10px;"></button>
+                    </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </p-fieldset>
+
+</div>
+

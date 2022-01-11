@@ -1,0 +1,39 @@
+
+<div class="container">
+  <h1> CADASTRO DE TRATAMENTOS ANTERIORES</h1>
+</div>
+
+<div class="container">
+  <p-panel>
+        <p-header>Tratamento anterior e Tratamento atual:</p-header>
+                    <form #cadtsAnterior="ngForm" (submit)="adicionarTsAtual(cadtsAnterior)">
+                       <p-fieldset legend=" {{editandoTs ? 'EDITANDO ': ' '}}Tratamento anteriores">
+                           <div class="ui-g-12 ui-md-12 ui-fluid">
+                             <label>Empresas:</label>
+                               <p-dropdown name="empresa"  [options]="empresas" [autoWidth]="false"
+                               placeholder= "Selecione a empresa"  filter="true" [(ngModel)]="cadTsAtualTsAnteriorSalva.cdEmpresa.cdEmpresa"  required></p-dropdown>
+                         </div>
+
+                         <div class="ui-g-6 ui-md-6 ui-fluid">
+                           <label>Situações silviculturais permitidas em mediações anteriores:</label>
+                             <p-dropdown name="cdTratamentoAnterior" filter="true" [options]="listaTsSalva" [autoWidth]="false" [(ngModel)]="cadTsAtualTsAnteriorSalva.cdTratamentoAnterior.cdTratamento" placeholder= "Selecione a mediação anterior" required></p-dropdown>
+                       </div>
+
+                       <div class="ui-g-6 ui-md-6 ui-fluid">
+                         <label>Situações silviculturais permitidas em mediações atuais:</label>
+                           <p-dropdown name="cdTratamentotual" filter="true" [options]="listaTsSalva" [autoWidth]="false" [(ngModel)]="cadTsAtualTsAnteriorSalva.cdTratamentotual.cdTratamento" placeholder= "Selecione a mediação Atual" required></p-dropdown>
+                     </div>
+
+                     <div class="ui-g-1  ui-md-1">
+                         <button type="submit" pButton   label="Salvar" class="ui-button-success" [disabled]="!cadTsAtualTsAnteriorSalva.cdEmpresa.cdEmpresa"></button>
+                       </div>
+
+
+
+                   </p-fieldset>
+                 </form>
+
+     </p-panel>
+ </div>
+
+ <app-tsatualtsanterior-pesquisa></app-tsatualtsanterior-pesquisa>
