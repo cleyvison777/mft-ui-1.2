@@ -1,14 +1,13 @@
-import { EmpresaService } from 'src/app/empresa/empresa.service';
-import { TsatualtsanteriorService } from './../tsatualtsanterior.service';
+import { SilviculturalService } from './../../situacao-silvicultural/silvicultural.service';
+import { CadTsAtualTsAnterior, CadTratamentoSilvicultural, MenuEmpresa } from './../../core/model';
 import { FormControl } from '@angular/forms';
-import { MenuEmpresa, CadTsAtualTsAnterior, CadTratamentoSilvicultural } from './../../core/model';
+import { TsatualtsanteriorService } from './../tsatualtsanterior.service';
 import { Title } from '@angular/platform-browser';
-import { ToastyService } from 'ng2-toasty';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/components/common/api';
-import { ErrorHandlerService } from 'src/app/core/error-handler.service';
-import { SilviculturalService } from './../../situacao-silvicultural/silvicultural.service';
-import { MenuService } from 'src/app/core/menu/menu.service';
+import { ToastyService } from 'ng2-toasty/src/toasty.service';
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { MenuService } from './../../core/menu/menu.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -17,39 +16,50 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tsatualtsanterior-cadastro.component.css']
 })
 export class TsatualtsanteriorCadastroComponent implements OnInit {
-  empresaSelecionada = new MenuEmpresa();
-  cadTratamentoSilviculturalSalva = new CadTratamentoSilvicultural();
+listaTs = [];
+
   cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
-  listaTs = [];
-  empresas =[];
-  listaTsSalva = [];
+  cadTratamentoSilviculturalSalva = new CadTratamentoSilvicultural();
+  empresaSelecionada = new MenuEmpresa();
 
   constructor(
     private menuService: MenuService,
-    private cadEmpresaService: EmpresaService,
-    private situacaoService: SilviculturalService,
-    private tsService: TsatualtsanteriorService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
+    private tsatualtsanteriorService: TsatualtsanteriorService,
+    private situacaoService: SilviculturalService,
     private confirmation: ConfirmationService,
     private route: ActivatedRoute,
     private router: Router,
     private title: Title
+
   ) { }
 
   ngOnInit() {
 
-    this.carregarEmpresas();
     this.CarregarSilviculturaldropdown();
   }
 
 
-  get editandoTs() {
-    return Boolean(this.cadTsAtualTsAnteriorSalva.cdTratamentoAnteriorPk);
- }
+  pesquisar2(cdEmpresa){
+    return this.tsatualtsanteriorService.pesquisar2(cdEmpresa)
+     .then(empresaSelecionada => this.listaTs = empresaSelecionada)
+  }
+
+  carregarEmpresaSelecionada() {
+    return this.menuService.carregarEmpresaSelecionada()
+     .then(empresaSelecionada => {
+       this.empresaSelecionada.cdEmpresa = empresaSelecionada
+        this.pesquisar2(this.empresaSelecionada.cdEmpresa);
+         this.cadTratamentoSilviculturalSalva.cdEmpresa.cdEmpresa = this.empresaSelecionada.cdEmpresa
+
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+
+  }
 
   consultaTS(cdTratamentoAnterior: number) {
-    this.tsService.buscarPeloTs(cdTratamentoAnterior)
+    this.tsatualtsanteriorService.buscarPeloTs(cdTratamentoAnterior)
       .then(resultado => {
        this.listaTs = resultado.listaTs;
 
@@ -57,8 +67,9 @@ export class TsatualtsanteriorCadastroComponent implements OnInit {
    .catch(erro => this.errorHandler.handle(erro));
   }
 
+
   adicionarTsAtual(form: FormControl) {
-    this.tsService.adicionar(this.cadTsAtualTsAnteriorSalva)
+    this.tsatualtsanteriorService.adicionar(this.cadTsAtualTsAnteriorSalva)
       .then(() => {
         this.cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
         this.toasty.success('Cadastrado realizado com sucesso!');
@@ -71,39 +82,34 @@ export class TsatualtsanteriorCadastroComponent implements OnInit {
   }
 
 
-  carregarTsanterior(cod: number) {
-    this.tsService.buscarPeloTsAtualiza(cod)
-     .then(cadTsAtualTsAnterior => {
-        this.cadTsAtualTsAnteriorSalva = cadTsAtualTsAnterior;
-     })
-     .catch(erro => this.errorHandler.handle(erro));
-  }
-
-  carregarEmpresas() {
-    return this.cadEmpresaService.listarTodas()
-      .then(empresas => {
-        this.empresas = empresas.map(c => ({ label: c.cdEmpresa + ' - ' + c.nmEmpresa, value: c.cdEmpresa }));
+  carregarSilvicultural(codigo: number, ) {
+    this.situacaoService.buscarPeloCogigoSilvicultural(codigo)
+      .then(cadTratamentoSilvicultural => {
+        this.cadTratamentoSilviculturalSalva = cadTratamentoSilvicultural;
       })
       .catch(erro => this.errorHandler.handle(erro));
+
+       }
+
+
+       carregarTsanterior(cod: number) {
+        this.tsatualtsanteriorService.buscarPeloTsAtualiza(cod)
+         .then(cadTsAtualTsAnterior => {
+            this.cadTsAtualTsAnteriorSalva = cadTsAtualTsAnterior;
+         })
+         .catch(erro => this.errorHandler.handle(erro));
+      }
+
+
+
+      CarregarSilviculturaldropdown() {
+        return this.situacaoService.listarSilvicultural()
+          .then(listaTsSalva => {
+            this.listaTs = listaTsSalva.map(c => ({ label: c.cdTratamento + ' - ' + c.nmTratamento, value: c.cdTratamento }));
+          })
+          .catch(erro => this.errorHandler.handle(erro));
+      }
+
   }
 
-  CarregarSilviculturaldropdown() {
-    return this.situacaoService.listarSilvicultural()
-      .then(listaTsSalva => {
-        this.listaTsSalva = listaTsSalva.map(c => ({ label: c.cdTratamento + ' - ' + c.nmTratamento, value: c.cdTratamento }));
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }
 
-
-carregarSilvicultural(codigo: number, ) {
-  this.situacaoService.buscarPeloCogigoSilvicultural(codigo)
-    .then(cadTratamentoSilvicultural => {
-      this.cadTratamentoSilviculturalSalva = cadTratamentoSilvicultural;
-    })
-    .catch(erro => this.errorHandler.handle(erro));
-
-     }
-
-
-}

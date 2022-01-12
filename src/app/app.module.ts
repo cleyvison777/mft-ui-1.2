@@ -1,4 +1,3 @@
-import { TsatualtsanteriorModule } from './tsatualtsanterior/tsatualtsanterior.module';
 import { ImpressaoFichaModule } from './impressao-ficha/impressao-ficha.module';
 import { CipoModule } from './cipo/cipo.module';
 import { FormaCopaModule } from './forma-copa/forma-copa.module';
@@ -33,6 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { MenuComponent } from './core/menu/menu.component';
 import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subparcela-selecionada/idetificadores-subparcela-selecionada.module';
+import { TsatualtsanteriorModule } from './tsatualtsanterior/tsatualtsanterior.module';
+
 @NgModule({
   declarations: [
     AppComponent,

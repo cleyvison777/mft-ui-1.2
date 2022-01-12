@@ -63,6 +63,7 @@ const routes: Routes = [
   {path: 'situacao-silvicultural/cadastro', component:SilviculturalCadastroComponent},
   {path: 'situacao-silvicultural/:codigo', component:SilviculturalCadastroComponent},
   {path: 'mediacoes-anteriores/cadastro', component:TsatualtsanteriorCadastroComponent},
+  {path: 'mediacoes-anteriores/:codigo', component:TsatualtsanteriorCadastroComponent},
   {path: 'parcela/cadastro', component:ParceCadastroComponent},
   {path: 'parcela/:codigo', component:ParceCadastroComponent},
   {path: 'subparcela/cadastro', component:SubparcelaCadastroComponent},

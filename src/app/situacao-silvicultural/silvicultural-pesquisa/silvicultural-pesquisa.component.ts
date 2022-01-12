@@ -1,3 +1,5 @@
+import { TsatualtsanteriorService } from './../../tsatualtsanterior/tsatualtsanterior.service';
+import { CadTsAtualTsAnterior } from './../../core/model';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { MenuService } from './../../core/menu/menu.service';
 import { ConfirmationService } from 'primeng/components/common/api';
@@ -14,6 +16,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class SilviculturalPesquisaComponent implements OnInit {
   totalElementosSilvicultural = 0;
   listaSilvicultural = [];
+  listaTs = [];
+  cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
+
   filtro = new SilviculturalFiltro();
   cdEmp: any;
   @ViewChild('tabela') grid;
@@ -23,10 +28,13 @@ export class SilviculturalPesquisaComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
     private confirmation: ConfirmationService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private tsService: TsatualtsanteriorService,
   ) { }
 
   ngOnInit() {
+    this.carregarTS();
+
   }
 
   //consulta por empresa
@@ -84,5 +92,14 @@ export class SilviculturalPesquisaComponent implements OnInit {
        }
      });
   }
+
+   carregarTS(){
+    return this.tsService.listarTodasTS()
+     .then(listaTs => {
+       this.listaTs = listaTs.map(c => ({label: c.cdTratamentoAnterior, value: c.cdTratamentoAnterior}))
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
 
 }

@@ -1,12 +1,12 @@
 import { CadTratamentoSilvicultural } from './../../core/model';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import { SilviculturalService } from './../../situacao-silvicultural/silvicultural.service';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
-import { ConfirmationService } from 'primeng/components/common/api';
-import { MenuService } from 'src/app/core/menu/menu.service';
-import { ToastyService } from 'ng2-toasty';
-import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { TsatualtsanteriorService } from './../tsatualtsanterior.service';
+import { MenuService } from './../../core/menu/menu.service';
+import { ConfirmationService } from 'primeng/components/common/api';
+import { ToastyService } from 'ng2-toasty/src/toasty.service';
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -15,39 +15,31 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./tsatualtsanterior-pesquisa.component.css']
 })
 export class TsatualtsanteriorPesquisaComponent implements OnInit {
+  cadTratamentoSilviculturalSalva = new CadTratamentoSilvicultural();
   listaTs = [];
-  listaSilvicultural = [];
-  listaTsSalva = [];
-  cdEmp: any;
   @ViewChild('tabela') grid;
 
-  cadTratamentoSilviculturalSalva = new CadTratamentoSilvicultural();
 
   constructor(
-    private tsatualtsanteriorService: TsatualtsanteriorService,
-    private situacaoService: SilviculturalService,
 
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
+    private tsatualtsanteriorService: TsatualtsanteriorService,
     private confirmation: ConfirmationService,
     private menuService: MenuService,
-    private route: ActivatedRoute,
-
-    private router: Router
-
-
+    private situacaoService: SilviculturalService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
   }
 
 
-
    // consultaTS//
    consultaTS(cdTratamentoAnterior: number) {
     this.tsatualtsanteriorService.buscarPeloTs(cdTratamentoAnterior)
       .then(resultado => {
-       this.listaTs = resultado.listaTs;
+       this.tsatualtsanteriorService = resultado.listaTs;
 
      })
    .catch(erro => this.errorHandler.handle(erro));
@@ -57,7 +49,6 @@ export class TsatualtsanteriorPesquisaComponent implements OnInit {
      const page = event.first / event.rows;
      this.consultaTS(page);
  }
-
 
  excluirTsAnterior(listaTs: any) {
   this.tsatualtsanteriorService.excluir(listaTs.cdTratamentoAnteriorPk)
@@ -71,8 +62,7 @@ export class TsatualtsanteriorPesquisaComponent implements OnInit {
    })
    .catch(erro => this.errorHandler.handle(erro));
 
- }
-
+  }
 
 
  confirmarExclusaoTS(listaTs: any) {
@@ -85,15 +75,14 @@ export class TsatualtsanteriorPesquisaComponent implements OnInit {
   });
 }
 
+  carregarSilvicultural(codigo: number, ) {
+    this.situacaoService.buscarPeloCogigoSilvicultural(codigo)
+      .then(cadTratamentoSilvicultural => {
+        this.cadTratamentoSilviculturalSalva = cadTratamentoSilvicultural;
+      })
+      .catch(erro => this.errorHandler.handle(erro));
 
- carregarSilvicultural(codigo: number, ) {
-  this.situacaoService.buscarPeloCogigoSilvicultural(codigo)
-    .then(cadTratamentoSilvicultural => {
-      this.cadTratamentoSilviculturalSalva = cadTratamentoSilvicultural;
-    })
-    .catch(erro => this.errorHandler.handle(erro));
-
-     }
+       }
 
 
 }
