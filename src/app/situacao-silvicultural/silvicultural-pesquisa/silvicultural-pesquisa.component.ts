@@ -61,6 +61,14 @@ export class SilviculturalPesquisaComponent implements OnInit {
 
   }
 
+  consultaTS(cdTratamento: number) {
+    this.tsService.buscarPeloTs(cdTratamento)
+      .then(resultado => {
+       this.listaTs = resultado.listaTs;
+
+     })
+   .catch(erro => this.errorHandler.handle(erro));
+  }
   // paginaçãoaoMudarPaginaSilvicultal
 
   aoMudarPaginaSilvicultal(event: LazyLoadEvent) {

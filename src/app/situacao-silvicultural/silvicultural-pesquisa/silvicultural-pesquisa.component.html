@@ -36,7 +36,7 @@
             pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusao(listaSilvicultural)">
           </button>
           <button pButton icon="pi pi-pencil" pTooltip="editar" tooltipPosition="top" [routerLink]="['/situacao-silvicultural', listaSilvicultural.cdTratamento]" style="margin-right: 10px;" ></button>
-          <button pButton icon="pi pi-chevron-circle-right" class="ui-button-warning"  [routerLink]="['/mediacoes-anteriores/', listaSilvicultural.cdTratamento]"  pTooltip="Mediações Anteriores"></button>
+          <button pButton icon="pi pi-chevron-circle-right" class="ui-button-warning"  (click)="consultaTS(listaSilvicultural.cdTratamento)" pTooltip="Mediações Anteriores"></button>
         </td>
           </tr>
         </ng-template>

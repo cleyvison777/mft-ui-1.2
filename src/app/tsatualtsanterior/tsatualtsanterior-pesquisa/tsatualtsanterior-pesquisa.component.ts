@@ -36,10 +36,10 @@ export class TsatualtsanteriorPesquisaComponent implements OnInit {
 
 
    // consultaTS//
-   consultaTS(cdTratamentoAnterior: number) {
-    this.tsatualtsanteriorService.buscarPeloTs(cdTratamentoAnterior)
+   consultaTS(cdTratamentotual: number) {
+    this.tsatualtsanteriorService.buscarPeloTs(cdTratamentotual)
       .then(resultado => {
-       this.tsatualtsanteriorService = resultado.listaTs;
+       this.listaTs = resultado.listaTs;
 
      })
    .catch(erro => this.errorHandler.handle(erro));

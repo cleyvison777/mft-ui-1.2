@@ -49,31 +49,12 @@ export class TsatualtsanteriorService {
       .then(response => response.json());
   }
 
-  consultar(cdTratamentotual: number): Promise<any> {
-    const headers = new Headers;
-    return this.http.get(`${this.CadTsURL}?cdTratamentotual=${cdTratamentotual}`, { headers })
-      .toPromise()
-      .then(response => {
-        const responseJson = response.json();
-        const listaTs = responseJson.content;
-        const resultado = {
-          listaTs,
-          total: responseJson.totalElements
-        };
-        return resultado;
-
-      });
-  }
 
 
-
-  buscarPeloTs(cdTratamentoAnterior: any): Promise<any> {
+  buscarPeloTs(cdTratamentotual: any): Promise<any> {
     const headers = new Headers();
-    const params = new URLSearchParams;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-   /* params.set('page', filtroTs.page.toString());
-    params.set('size', filtroTs.size.toString());*/
-    return this.http.get(`${this.CadTsURL}?cdTratamentoAnterior=${cdTratamentoAnterior}`)
+    return this.http.get(`${this.CadTsURL}?cdEmpresa=${1}&cdTratamentotual=${cdTratamentotual}`)
       .toPromise()
       .then(response => {
         const responseJson = response.json();

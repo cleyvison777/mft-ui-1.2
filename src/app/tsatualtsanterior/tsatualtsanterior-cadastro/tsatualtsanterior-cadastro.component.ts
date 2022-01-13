@@ -58,8 +58,8 @@ listaTs = [];
 
   }
 
-  consultaTS(cdTratamentoAnterior: number) {
-    this.tsatualtsanteriorService.buscarPeloTs(cdTratamentoAnterior)
+  consultaTS(cdTratamentotual: number) {
+    this.tsatualtsanteriorService.buscarPeloTs(cdTratamentotual)
       .then(resultado => {
        this.listaTs = resultado.listaTs;
 
@@ -74,7 +74,7 @@ listaTs = [];
         this.cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
         this.toasty.success('Cadastrado realizado com sucesso!');
         ///Pega o valor do cdTratamento como busca na consultaTS
-        this.consultaTS(this.carregarSilvicultural =  this.route.snapshot.params['codigo']);
+
       })
 
       .catch(erro => this.errorHandler.handle(erro));
@@ -90,6 +90,8 @@ listaTs = [];
       .catch(erro => this.errorHandler.handle(erro));
 
        }
+
+
 
 
        carregarTsanterior(cod: number) {
