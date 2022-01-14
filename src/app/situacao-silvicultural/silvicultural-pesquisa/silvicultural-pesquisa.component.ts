@@ -44,32 +44,12 @@ export class SilviculturalPesquisaComponent implements OnInit {
   }
 
 
-
-
-
-
   showDialog(cdTratamento) {
    this.consultaTS(cdTratamento)
    this.display = true
 }
 
 
-
-
-//funcão do botão vizualizar
-// selectImagem(event: Event, classefloresta: ClasseFloresta) {
-
-//   this.selectedImagem = classefloresta;
-//   this.imagem = this.florestaService.urlClasseFlorestaImg + classefloresta.cdClassefloresta;
-//   this.display = true;
-//   event.preventDefault();
-
-// }
-// onDialogHide() {
-//  this.selectedImagem = null;
-// }
-
-  //consulta por empresa
   carregarEmpresaSelecionada() {
      return this.menuService.carregarEmpresaSelecionada()
        .then(empresaSelecionada => {
@@ -149,10 +129,11 @@ export class SilviculturalPesquisaComponent implements OnInit {
         this.situacaoService.excluirts(listaTs.cdTratamentoAnteriorPk)
          .then(() => {
            if (this.grid.first === 0) {
-             this.consultaTS(listaTs.cdTratamentoAnteriorPk);
+            this.display = false
                  } else {
           this.grid.first = 0;
-          this.consultaTS(listaTs.cdTratamentoAnteriorPk);      }
+          this.display = false
+    }
            this.toasty.success('Situação Silvicultural excluída com sucesso!');
          })
          .catch(erro => this.errorHandler.handle(erro));
