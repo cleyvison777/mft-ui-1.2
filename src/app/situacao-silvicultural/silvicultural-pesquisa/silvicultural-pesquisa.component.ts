@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { TsatualtsanteriorService } from './../../tsatualtsanterior/tsatualtsanterior.service';
-import { CadClassTamanhoIndividuo, CadTsAtualTsAnterior } from './../../core/model';
+import { CadClassTamanhoIndividuo, CadTsAtualTsAnterior, CadTratamentoSilvicultural } from './../../core/model';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { MenuService } from './../../core/menu/menu.service';
 import { ConfirmationService } from 'primeng/components/common/api';
@@ -22,6 +22,7 @@ export class SilviculturalPesquisaComponent implements OnInit {
   selectedTs: CadTsAtualTsAnterior;
   display: boolean = false;
   cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
+  cadTratamentoSilviculturalSalva = new CadTratamentoSilvicultural();
   filtro = new SilviculturalFiltro();
   cdEmp: any;
   @ViewChild('tabela') grid;
@@ -33,6 +34,8 @@ export class SilviculturalPesquisaComponent implements OnInit {
     private confirmation: ConfirmationService,
     private menuService: MenuService,
     private tsService: TsatualtsanteriorService,
+    private route: ActivatedRoute,
+
   ) { }
 
   ngOnInit() {
@@ -42,12 +45,31 @@ export class SilviculturalPesquisaComponent implements OnInit {
 
 
 
+
+
+
   showDialog(cdTratamento) {
    this.consultaTS(cdTratamento)
    this.display = true
 }
 
 
+
+
+//funcão do botão vizualizar
+// selectImagem(event: Event, classefloresta: ClasseFloresta) {
+
+//   this.selectedImagem = classefloresta;
+//   this.imagem = this.florestaService.urlClasseFlorestaImg + classefloresta.cdClassefloresta;
+//   this.display = true;
+//   event.preventDefault();
+
+// }
+// onDialogHide() {
+//  this.selectedImagem = null;
+// }
+
+  //consulta por empresa
   carregarEmpresaSelecionada() {
      return this.menuService.carregarEmpresaSelecionada()
        .then(empresaSelecionada => {
@@ -127,10 +149,10 @@ export class SilviculturalPesquisaComponent implements OnInit {
         this.situacaoService.excluirts(listaTs.cdTratamentoAnteriorPk)
          .then(() => {
            if (this.grid.first === 0) {
-             this.consultaTS(listaTs);
+             this.consultaTS(listaTs.cdTratamentoAnteriorPk);
                  } else {
           this.grid.first = 0;
-          this.consultaTS(listaTs);      }
+          this.consultaTS(listaTs.cdTratamentoAnteriorPk);      }
            this.toasty.success('Situação Silvicultural excluída com sucesso!');
          })
          .catch(erro => this.errorHandler.handle(erro));
@@ -147,4 +169,14 @@ export class SilviculturalPesquisaComponent implements OnInit {
           });
         }
 
+
+
+        carregarSilvicultural(codigo: number, ) {
+          this.situacaoService.buscarPeloCogigoSilvicultural(codigo)
+            .then(cadTratamentoSilvicultural => {
+              this.cadTratamentoSilviculturalSalva = cadTratamentoSilvicultural;
+            })
+            .catch(erro => this.errorHandler.handle(erro));
+
+             }
 }
