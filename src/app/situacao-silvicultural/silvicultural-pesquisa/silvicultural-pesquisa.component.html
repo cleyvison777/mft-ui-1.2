@@ -50,6 +50,8 @@
       [maximizable]="true" [baseZIndex]="10000">
 
       <div class="container">
+<app-tsatualtsanterior-cadastro></app-tsatualtsanterior-cadastro>
+
         <p-fieldset legend="Dados Cadastrais">
           <p-table [value]="listaTs"  [paginator]="true"   [rows]="10" [responsive]="true" [lazy]="true"  #tabela>
                     <ng-template pTemplate="header">
@@ -67,7 +69,7 @@
                           <td>{{listaTs.cdTratamentotual.nmTratamento}}</td>
 
                           <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
-                            pTooltip="remover" class="ui-button-danger" tooltipPosition="left">
+                            pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusaoTS(listaTs)">
                           </button>
 
                         </td>

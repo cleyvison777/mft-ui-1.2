@@ -1,4 +1,5 @@
-import { TsatualtsanteriorCadastroComponent } from './../tsatualtsanterior/tsatualtsanterior-cadastro/tsatualtsanterior-cadastro.component';
+import { TsatualtsanteriorModule } from './../tsatualtsanterior/tsatualtsanterior.module';
+import { ToastyModule } from 'ng2-toasty';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SilviculturalCadastroComponent } from './silvicultural-cadastro/silvicultural-cadastro.component';
@@ -47,7 +48,8 @@ import {DialogModule} from 'primeng/dialog';
     PanelModule,
     FieldsetModule,
     DialogModule,
-
+    ToastyModule,
+    TsatualtsanteriorModule
   ],
 
 

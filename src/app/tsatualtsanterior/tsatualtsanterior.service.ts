@@ -9,7 +9,6 @@ export class TsatualtsanteriorService {
 
   cadTsAtualTsAnterior = new CadTsAtualTsAnterior();
   CadTsURL = 'http://localhost:8082/cadtsatualtsanterior';
-  CadTs = 'http://localhost:8082/?cdEmpresa=1&cdTratamentotual=';
 
 
   constructor(private http: Http) { }

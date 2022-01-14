@@ -14,6 +14,7 @@ export class SilviculturalFiltro {
 })
 export class SilviculturalService {
   SilviculturalURL = 'http://localhost:8082/cadtratamentosilvicultural';
+  CadTsURL = 'http://localhost:8082/cadtsatualtsanterior';
 
 
   constructor(private http: Http) { }
@@ -115,6 +116,14 @@ export class SilviculturalService {
               .toPromise()
                 .then(response => response.json().content);
 
+          }
+
+          excluirts(cdTratamentoAnteriorPk: number): Promise<void> {
+            const headers = new Headers;
+            headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+            return this.http.delete(`${this.CadTsURL}/${cdTratamentoAnteriorPk}`, { headers })
+             .toPromise()
+              .then(() => null);
           }
 
 

@@ -33,7 +33,6 @@ export class SilviculturalPesquisaComponent implements OnInit {
     private confirmation: ConfirmationService,
     private menuService: MenuService,
     private tsService: TsatualtsanteriorService,
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -43,31 +42,12 @@ export class SilviculturalPesquisaComponent implements OnInit {
 
 
 
-
-
-
   showDialog(cdTratamento) {
    this.consultaTS(cdTratamento)
    this.display = true
 }
 
 
-
-
-//funcão do botão vizualizar
-// selectImagem(event: Event, classefloresta: ClasseFloresta) {
-
-//   this.selectedImagem = classefloresta;
-//   this.imagem = this.florestaService.urlClasseFlorestaImg + classefloresta.cdClassefloresta;
-//   this.display = true;
-//   event.preventDefault();
-
-// }
-// onDialogHide() {
-//  this.selectedImagem = null;
-// }
-
-  //consulta por empresa
   carregarEmpresaSelecionada() {
      return this.menuService.carregarEmpresaSelecionada()
        .then(empresaSelecionada => {
@@ -141,5 +121,30 @@ export class SilviculturalPesquisaComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
 
        }
+
+
+       excluirTsAnterior(listaTs: any) {
+        this.situacaoService.excluirts(listaTs.cdTratamentoAnteriorPk)
+         .then(() => {
+           if (this.grid.first === 0) {
+             this.consultaTS(listaTs);
+                 } else {
+          this.grid.first = 0;
+          this.consultaTS(listaTs);      }
+           this.toasty.success('Situação Silvicultural excluída com sucesso!');
+         })
+         .catch(erro => this.errorHandler.handle(erro));
+
+        }
+
+        confirmarExclusaoTS(listaTs: any) {
+          this.confirmation.confirm({
+            message: 'Tem certeza que deseja excluir?',
+            accept: () => {
+              this.excluirTsAnterior(listaTs);
+            }
+
+          });
+        }
 
 }
