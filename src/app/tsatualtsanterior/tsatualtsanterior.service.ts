@@ -9,6 +9,8 @@ export class TsatualtsanteriorService {
 
   cadTsAtualTsAnterior = new CadTsAtualTsAnterior();
   CadTsURL = 'http://localhost:8082/cadtsatualtsanterior';
+  CadTs = 'http://localhost:8082/?cdEmpresa=1&cdTratamentotual=';
+
 
   constructor(private http: Http) { }
 
@@ -104,10 +106,10 @@ export class TsatualtsanteriorService {
     }
 
 
-    buscarPeloTsAnterior(cdTratamento: number): Promise<CadTsAtualTsAnterior> {
+    buscarPeloTsAnterior(cdTratamentotual: number): Promise<CadTsAtualTsAnterior> {
       const headers = new Headers();
       headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-      return this.http.get(`${this.CadTsURL}/?cadtsatualtsanterior=${cdTratamento}`, { headers })
+      return this.http.get(`${this.CadTsURL}/?cdTratamentotual=${cdTratamentotual}`, { headers })
         .toPromise()
         .then(response => {
           const cadTsAtualTsAnterior = response.json() as CadTsAtualTsAnterior;

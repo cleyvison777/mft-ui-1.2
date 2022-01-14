@@ -1,3 +1,29 @@
 .borda3 {
   border: 1px solid #000;
 }
+
+
+.responsivo {
+  max-width: 1080px;
+  width: 100%;
+  height: auto;
+  text-align: c;
+}
+.responsivo img{
+ max-width: 1080px;   /* Máximo da largura da imagem */
+ width: 100%;
+ max-height: 500px;  /* Máximo da altura da imagem */
+ min-height: auto;      /* Mínimo da altura, por padrão “auto” */
+ background-size:100%;
+ background-repeat: no-repeat;
+}
+
+
+
+
+.responsivoDialog {
+  max-width: 1080px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}

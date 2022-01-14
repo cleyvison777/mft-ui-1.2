@@ -20,6 +20,7 @@ export class TsatualtsanteriorPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid;
 
 
+
   constructor(
 
     private errorHandler: ErrorHandlerService,
@@ -32,6 +33,7 @@ export class TsatualtsanteriorPesquisaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
 

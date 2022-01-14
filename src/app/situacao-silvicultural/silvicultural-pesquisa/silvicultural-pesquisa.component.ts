@@ -1,5 +1,6 @@
+import { ActivatedRoute } from '@angular/router';
 import { TsatualtsanteriorService } from './../../tsatualtsanterior/tsatualtsanterior.service';
-import { CadTsAtualTsAnterior } from './../../core/model';
+import { CadClassTamanhoIndividuo, CadTsAtualTsAnterior } from './../../core/model';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { MenuService } from './../../core/menu/menu.service';
 import { ConfirmationService } from 'primeng/components/common/api';
@@ -17,8 +18,10 @@ export class SilviculturalPesquisaComponent implements OnInit {
   totalElementosSilvicultural = 0;
   listaSilvicultural = [];
   listaTs = [];
-  cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
 
+  selectedTs: CadTsAtualTsAnterior;
+  display: boolean = false;
+  cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
   filtro = new SilviculturalFiltro();
   cdEmp: any;
   @ViewChild('tabela') grid;
@@ -30,12 +33,39 @@ export class SilviculturalPesquisaComponent implements OnInit {
     private confirmation: ConfirmationService,
     private menuService: MenuService,
     private tsService: TsatualtsanteriorService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.carregarTS();
+
 
   }
+
+
+
+
+
+
+  showDialog(cdTratamento) {
+   this.consultaTS(cdTratamento)
+   this.display = true
+}
+
+
+
+
+//funcão do botão vizualizar
+// selectImagem(event: Event, classefloresta: ClasseFloresta) {
+
+//   this.selectedImagem = classefloresta;
+//   this.imagem = this.florestaService.urlClasseFlorestaImg + classefloresta.cdClassefloresta;
+//   this.display = true;
+//   event.preventDefault();
+
+// }
+// onDialogHide() {
+//  this.selectedImagem = null;
+// }
 
   //consulta por empresa
   carregarEmpresaSelecionada() {
@@ -101,13 +131,15 @@ export class SilviculturalPesquisaComponent implements OnInit {
      });
   }
 
-   carregarTS(){
-    return this.tsService.listarTodasTS()
-     .then(listaTs => {
-       this.listaTs = listaTs.map(c => ({label: c.cdTratamentoAnterior, value: c.cdTratamentoAnterior}))
-     })
-     .catch(erro => this.errorHandler.handle(erro));
-  }
 
+
+  carregarTsModal(codigo: number, ) {
+    this.tsService.buscarPeloTsAnterior(codigo)
+      .then(cadTsAtualTsAnteriorSalva => {
+        this.cadTsAtualTsAnteriorSalva = cadTsAtualTsAnteriorSalva;
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+
+       }
 
 }

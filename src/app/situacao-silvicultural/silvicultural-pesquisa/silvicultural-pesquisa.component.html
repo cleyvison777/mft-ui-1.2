@@ -36,7 +36,7 @@
             pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusao(listaSilvicultural)">
           </button>
           <button pButton icon="pi pi-pencil" pTooltip="editar" tooltipPosition="top" [routerLink]="['/situacao-silvicultural', listaSilvicultural.cdTratamento]" style="margin-right: 10px;" ></button>
-          <button pButton icon="pi pi-chevron-circle-right" class="ui-button-warning"  (click)="consultaTS(listaSilvicultural.cdTratamento)" pTooltip="Mediações Anteriores"></button>
+          <button pButton icon="pi pi-chevron-circle-right" class="ui-button-warning"  (click)="showDialog(listaSilvicultural.cdTratamento)" pTooltip="Mediações Anteriores"></button>
         </td>
           </tr>
         </ng-template>
@@ -44,7 +44,42 @@
 
     </div>
 
-      </p-fieldset>
 
+      </p-fieldset>
+      <p-dialog header="Title" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
+      [maximizable]="true" [baseZIndex]="10000">
+
+      <div class="container">
+        <p-fieldset legend="Dados Cadastrais">
+          <p-table [value]="listaTs"  [paginator]="true"   [rows]="10" [responsive]="true" [lazy]="true"  #tabela>
+                    <ng-template pTemplate="header">
+                        <tr>
+
+                          <th>Codigo</th>
+                          <th>Tratamento Atual</th>
+                          <th></th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-listaTs>
+                        <tr>
+                          <td>{{listaTs.cdTratamentoAnteriorPk}}</td>
+                          <td>{{listaTs.cdTratamentotual.nmTratamento}}</td>
+
+                          <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
+                            pTooltip="remover" class="ui-button-danger" tooltipPosition="left">
+                          </button>
+
+                        </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+               </p-fieldset>
+
+
+      </div>
+
+
+    </p-dialog>
 
 </div>

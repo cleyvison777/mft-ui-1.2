@@ -44,7 +44,10 @@ import {PanelModule} from 'primeng/components/panel/panel';
     ButtonModule,
     MultiSelectModule,
     PanelModule,
-    FieldsetModule
+    FieldsetModule,
+  ],
+  exports:[
+    TsatualtsanteriorCadastroComponent
   ]
 })
 export class TsatualtsanteriorModule { }

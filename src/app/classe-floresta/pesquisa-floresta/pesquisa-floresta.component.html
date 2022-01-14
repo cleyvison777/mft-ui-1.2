@@ -36,16 +36,16 @@
                                     <div class="ui-g-2 ui-sm-6">Nome: </div>
                                     <div class="ui-g-10 ui-sm-6"><strong>{{floresta.nmClassefloresta}}</strong></div>
                                     <div class="ui-g-2 ui-sm-8" style="
-                                    margin-right: 2px;
-                                ">Exclusão/Edição/Visualização</div>
+                                    margin-right: 2px;">Exclusão/Edição/Visualização</div>
                                     <div class="ui-g-10 ui-sm-6"><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
                                       (click)="confirmarExclusao(floresta)"></button>
                                       <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/floresta',floresta.cdClassefloresta]"></button>
                                       <button pButton icon="pi pi-pencil" class="ui-button-secondary" (click)="selectImagem($event, floresta)"  pButton icon="pi pi-search" pTooltip="vizualizar"  style="margin-left: 10px;"></button>
                                     </div>
-                                    <div *ngIf="selectedImagem" >
-                                    <p-dialog header="Classe Floresta" [(visible)]="display" [minY]="70" [style]="{width: '350px', minWidth: '200px'}" (onAfterHide)="onDialogHide()" [responsive]="true" [modal]="true" >
-                                      <img  src = {{imagem}}/>
+                                    <div *ngIf="selectedImagem" class="responsivoDialog">
+                                    <p-dialog   header="Classe Floresta"  class="responsivo" [(visible)]="display" [maximizable]="true"  (onAfterHide)="onDialogHide()" [responsive]="true" [modal]="true" >
+                                        <img src = {{imagem}} />
+
                                   </p-dialog>
                                   </div>
                                 </div>
