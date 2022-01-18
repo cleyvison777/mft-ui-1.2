@@ -17,6 +17,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TsatualtsanteriorCadastroComponent implements OnInit {
 listaTs = [];
+cdEmp: any;
 
   cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
   cadTratamentoSilviculturalSalva = new CadTratamentoSilvicultural();
@@ -37,12 +38,14 @@ listaTs = [];
 
   ngOnInit() {
 
-    this.CarregarSilviculturaldropdown();
+    this.carregarEmpresaSelecionada(); //se bug quando seleciono a empresa // ao mandar carregar empresa da burg
+    this.CarregarSilviculturaldropdown(); //a empresa deve ser selecionada se na da erro na chave empresa
+
   }
 
 
   pesquisar2(cdEmpresa){
-    return this.tsatualtsanteriorService.pesquisar2(cdEmpresa)
+     this.tsatualtsanteriorService.pesquisar2(cdEmpresa)
      .then(empresaSelecionada => this.listaTs = empresaSelecionada)
   }
 
@@ -92,8 +95,6 @@ listaTs = [];
        }
 
 
-
-
        carregarTsanterior(cod: number) {
         this.tsatualtsanteriorService.buscarPeloTsAtualiza(cod)
          .then(cadTsAtualTsAnterior => {
@@ -106,8 +107,8 @@ listaTs = [];
 
       CarregarSilviculturaldropdown() {
         return this.situacaoService.listarSilvicultural()
-          .then(listaTsSalva => {
-            this.listaTs = listaTsSalva.map(c => ({ label: c.cdTratamento + ' - ' + c.nmTratamento, value: c.cdTratamento }));
+          .then(listaTs => {
+            this.listaTs = listaTs.map(c => ({ label: c.cdTratamento + ' - ' + c.nmTratamento, value: c.cdTratamento }));
           })
           .catch(erro => this.errorHandler.handle(erro));
       }

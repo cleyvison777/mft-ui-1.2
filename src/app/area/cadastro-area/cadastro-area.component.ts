@@ -51,7 +51,6 @@ export class CadastroAreaComponent implements OnInit {
 
 
   ngOnInit() {
-    this.carregarEmpresas();
     this.carregarListaEpecie();
     this.cadAmf.lgMudaContada = false;
     this.cadAmf.lgPalmeiraContada = false;
