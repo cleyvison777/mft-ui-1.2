@@ -238,3 +238,13 @@ export class CadSubParcela {
   cdParcela = new CadParcela();
 
 }
+
+export class InvContDano{
+
+ cdDano: number;
+ cdEmpresa = new Cadempresa();
+ nmDano: string
+ nmDanoAbreviatura: string
+
+
+}

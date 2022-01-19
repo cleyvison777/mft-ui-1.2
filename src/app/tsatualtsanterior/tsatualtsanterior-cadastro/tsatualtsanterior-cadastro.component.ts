@@ -38,7 +38,7 @@ cdEmp: any;
 
   ngOnInit() {
 
-    this.carregarEmpresaSelecionada(); //se bug quando seleciono a empresa // ao mandar carregar empresa da burg
+  //  this.carregarEmpresaSelecionada(); //se bug quando seleciono a empresa // ao mandar carregar empresa da burg
     this.CarregarSilviculturaldropdown(); //a empresa deve ser selecionada se na da erro na chave empresa
 
   }

@@ -44,7 +44,6 @@ generoURL = 'http://localhost:8082/genero';
    }
 
    adicionar(genero: Genero): Promise<Genero> {
-    const params = new URLSearchParams;
     const headers = new Headers();
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
     headers.append('Content-Type', 'application/json');
