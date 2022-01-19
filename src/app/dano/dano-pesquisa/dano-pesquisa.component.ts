@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
+import { InvContDano } from './../../core/model';
+import { DanoFiltro, DanoService } from './../dano.service';
+import { ToastyService } from 'ng2-toasty/src/toasty.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { ConfirmationService } from 'primeng/components/common/api';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-dano-pesquisa',
@@ -7,9 +13,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DanoPesquisaComponent implements OnInit {
 
-  constructor() { }
+  invContDano =[];
+  filtro = new DanoFiltro();
+  invContDanoSalva = new InvContDano();
+  @ViewChild('tabela') grid;
+  totalRegistrosDano = 0;
+
+  constructor(
+    private danoService: DanoService,
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService,
+    private toasty: ToastyService,
+  ) { }
 
   ngOnInit() {
   }
+
+  consultar(page = 0){
+    this.filtro.page = page;
+    this.danoService.consulta(this.filtro)
+     .then(resultado => {
+       this.totalRegistrosDano = resultado.total;
+      this.invContDano = resultado.invContDano
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+
+  }
+
+  aoMudarPaginaDano(event: LazyLoadEvent) {
+    const page = event.first / event.rows;
+    this.consultar(page);
+  }
+
+
+  excluir(invContDano: any) {
+    this.danoService.excluir(invContDano.cdDano)
+     .then(() => {
+       if (this.grid.first === 0) {
+         this.consultar();
+       } else {
+         this.grid.first = 0;
+         this.consultar();
+       }
+       this.toasty.success('Dano excluída com sucesso!');
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+      confirmarExclusao(invContDano: any) {
+        this.confirmation.confirm({
+          message: 'Tem certeza que deseja excluir?',
+          accept: () => {
+            this.excluir(invContDano);
+          }
+        });
+      }
+
 
 }
