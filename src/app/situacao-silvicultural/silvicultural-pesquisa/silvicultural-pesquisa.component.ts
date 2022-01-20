@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { TsatualtsanteriorService } from './../../tsatualtsanterior/tsatualtsanterior.service';
-import { CadClassTamanhoIndividuo, CadTsAtualTsAnterior, CadTratamentoSilvicultural } from './../../core/model';
+import { CadTsAtualTsAnterior, CadTratamentoSilvicultural } from './../../core/model';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { MenuService } from './../../core/menu/menu.service';
 import { ConfirmationService } from 'primeng/components/common/api';

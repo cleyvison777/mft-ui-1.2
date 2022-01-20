@@ -19,6 +19,7 @@ export class DanoPesquisaComponent implements OnInit {
   filtro = new DanoFiltro();
   @ViewChild('tabela') grid;
   totalRegistrosDano = 0;
+  invContDanoSalva = new InvContDano();
   empresaSelecionada = new MenuEmpresa();
   cdEmp: any;
 
@@ -32,12 +33,12 @@ export class DanoPesquisaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
   }
 
-  consultar(page = 0, cdEmpresa?:number){
+  consultar(page = 0){
     this.filtro.page = page;
-    this.danoService.consulta(this.filtro, cdEmpresa = 1 ) //fazer um carregar automatica de empresa
+    this.filtro.cdEmpresa = this.cdEmp;
+    this.danoService.consulta(this.filtro) //fazer um carregar automatica de empresa
      .then(resultado => {
        this.totalRegistrosDano = resultado.total;
       this.invContDano = resultado.invContDano
@@ -48,7 +49,7 @@ export class DanoPesquisaComponent implements OnInit {
 
   aoMudarPaginaDano(event: LazyLoadEvent) {
     const page = event.first / event.rows;
-    this.consultar(page);
+    this.carregarEmpresaSelecionada();
   }
 
 
@@ -73,6 +74,15 @@ export class DanoPesquisaComponent implements OnInit {
             this.excluir(invContDano);
           }
         });
+      }
+
+      carregarEmpresaSelecionada() {
+        return this.menuService.carregarEmpresaSelecionada()
+          .then(empresaSelecionada => {
+            this.cdEmp = empresaSelecionada;
+            this.consultar();
+          })
+          .catch(erro => this.errorHandler.handle(erro));
       }
 
 
