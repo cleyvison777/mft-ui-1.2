@@ -17,12 +17,10 @@ export class DanoPesquisaComponent implements OnInit {
 
   invContDano = [];
   filtro = new DanoFiltro();
-  invContDanoSalva = new InvContDano();
   @ViewChild('tabela') grid;
   totalRegistrosDano = 0;
   empresaSelecionada = new MenuEmpresa();
   cdEmp: any;
-  DanoSalva = new InvContDano();
 
   constructor(
     private danoService: DanoService,
