@@ -32,6 +32,7 @@ export class ProdricaoService {
       if(filtro.nmPodridao) {
           params.set('nmPodridao', filtro.nmPodridao)
       }
+
       return this.http.get(`${this.prodricaoUrl}`,
       {headers, search: filtro})
       .toPromise()
