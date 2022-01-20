@@ -36,8 +36,6 @@ export class TsatualtsanteriorService {
 
   }
 
-
-
   adicionar(cadTsAtualTsAnterior: CadTsAtualTsAnterior): Promise<CadTsAtualTsAnterior> {
     const params = new URLSearchParams;
     const headers = new Headers();
