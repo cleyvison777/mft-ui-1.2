@@ -73,7 +73,7 @@ const routes: Routes = [
   {path: 'geracao-parcela/cadastro', component:CadastroGeracaoParcelaComponent},
   {path: 'geracao-parcela/:codigo', component:CadastroGeracaoParcelaComponent},
   {path: 'dano/cadastro', component:DanoCadastroComponent},
-  {path: 'dano/:codigo', component:CadastroGeracaoParcelaComponent},
+  {path: 'dano/:codigo', component:DanoCadastroComponent},
   {path: 'podridao/cadastro', component:PodridaoCadastroComponent},
   {path: 'podridao/:codigo', component:PodridaoCadastroComponent},
   {path: 'iluminacao/cadastro', component:IluminacaoCadastroComponent},

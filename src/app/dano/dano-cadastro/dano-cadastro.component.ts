@@ -1,3 +1,4 @@
+import { MenuService } from './../../core/menu/menu.service';
 import { FormControl } from '@angular/forms';
 import { DanoService } from './../dano.service';
 import { InvContDano, MenuEmpresa } from './../../core/model';
@@ -15,11 +16,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DanoCadastroComponent implements OnInit {
 
-  DanoSalva = new InvContDano();
+  danoSalva = new InvContDano();
   empresaSelecionada = new MenuEmpresa();
-
+  dano = [];
   cdEmp: any;
   constructor(
+    private menuService: MenuService,
     private danoService: DanoService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
@@ -30,7 +32,7 @@ export class DanoCadastroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.carregarEmpresaSelecionadaDano()
     const codigoDano = this.route.snapshot.params['codigo'];
 
     if(codigoDano) {
@@ -43,11 +45,26 @@ export class DanoCadastroComponent implements OnInit {
   }
 
   get editando() {
-    return Boolean(this.DanoSalva.cdDano);
+    return Boolean(this.danoSalva.cdDano);
+  }
+
+  pesquisar2(cdEmpresa){
+    this.danoService.pesquisa2(cdEmpresa)
+     .then(empresaSelecionada => this.dano  = empresaSelecionada)
+  }
+
+  carregarEmpresaSelecionadaDano(){
+    return  this.menuService.carregarEmpresaSelecionada()
+     .then(empresaSelecionada => {
+       this.empresaSelecionada.cdEmpresa = empresaSelecionada;
+       this.pesquisar2(this.empresaSelecionada.cdEmpresa);
+       this.danoSalva.cdEmpresa.cdEmpresa = this.empresaSelecionada.cdEmpresa
+     })
+     .catch(erro => this.errorHandler.handle(erro));
   }
 
   adicionarDano(form: FormControl) {
-    this.danoService.adicionar(this.DanoSalva)
+    this.danoService.adicionar(this.danoSalva)
      .then(() =>{
       this.toasty.success('Cadastrado realizado com sucesso!');
       this.refresh();
@@ -58,9 +75,9 @@ export class DanoCadastroComponent implements OnInit {
   }
 
   atualizarDano(form: FormControl) {
-    this.danoService.atualizar(this.DanoSalva)
+    this.danoService.atualizar(this.danoSalva)
      .then(dano => {
-       this.DanoSalva = dano;
+       this.danoSalva = dano;
        this.toasty.success('Atualização realizada com sucesso!');
        this.router.navigate(['/dano/cadastro']);
 
@@ -68,6 +85,8 @@ export class DanoCadastroComponent implements OnInit {
 
      .catch(erro => this.errorHandler.handle(erro));
   }
+
+
 
 
    //confirmação para alterar
@@ -80,10 +99,20 @@ export class DanoCadastroComponent implements OnInit {
     });
   }
 
+  salvar(form: FormControl){
+     if(this.editando){
+       this.confirmarAlterar(form)
+     } else{
+      this.adicionarDano(form)
+     }
+
+  }
+
+
   carregarDano(codigo: number) {
     this.danoService.buscarPeloCodigoInvContDano(codigo)
     .then(dano => {
-      this.DanoSalva = dano;
+      this.danoSalva = dano;
       this.atualizarTituloEdicao();
 
     })
@@ -91,7 +120,7 @@ export class DanoCadastroComponent implements OnInit {
   }
 
   atualizarTituloEdicao(){
-    this.title.setTitle(`Edição Dano: ${this.DanoSalva.nmDano}`)
+    this.title.setTitle(`Edição Dano: ${this.danoSalva.nmDano}`)
   }
 
   refresh(): void {

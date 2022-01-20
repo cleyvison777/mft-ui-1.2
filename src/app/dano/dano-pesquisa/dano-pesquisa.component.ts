@@ -1,5 +1,7 @@
+import { Router, ActivatedRoute } from '@angular/router';
+import { MenuService } from './../../core/menu/menu.service';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
-import { InvContDano } from './../../core/model';
+import { InvContDano, MenuEmpresa, Cadempresa } from './../../core/model';
 import { DanoFiltro, DanoService } from './../dano.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
@@ -13,25 +15,31 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class DanoPesquisaComponent implements OnInit {
 
-  invContDano =[];
+  invContDano = [];
   filtro = new DanoFiltro();
   invContDanoSalva = new InvContDano();
   @ViewChild('tabela') grid;
   totalRegistrosDano = 0;
+  empresaSelecionada = new MenuEmpresa();
+  cdEmp: any;
+  DanoSalva = new InvContDano();
 
   constructor(
     private danoService: DanoService,
     private confirmation: ConfirmationService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
+    private menuService: MenuService,
+
   ) { }
 
   ngOnInit() {
+
   }
 
-  consultar(page = 0){
+  consultar(page = 0, cdEmpresa?:number){
     this.filtro.page = page;
-    this.danoService.consulta(this.filtro)
+    this.danoService.consulta(this.filtro, cdEmpresa = 1 ) //fazer um carregar automatica de empresa
      .then(resultado => {
        this.totalRegistrosDano = resultado.total;
       this.invContDano = resultado.invContDano
@@ -68,6 +76,8 @@ export class DanoPesquisaComponent implements OnInit {
           }
         });
       }
+
+
 
 
 }

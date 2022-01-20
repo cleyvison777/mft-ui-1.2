@@ -28,7 +28,7 @@ area = [];
               ) { }
 
   ngOnInit() {
-    this.pesquisarArea();
+
   }
 
   pesquisarArea(page = 0){

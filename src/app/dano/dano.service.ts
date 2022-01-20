@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 export class DanoFiltro {
   nmDano: string;
+  cdEmpresa?: number;
   page = 0;
   size = 15;
 }
@@ -19,7 +20,20 @@ export class DanoService {
   constructor(private http: Http) { }
 
 
-  consulta(filtro: DanoFiltro): Promise<any> {
+  pesquisa2(cdEmpresa: any): Promise<any> {
+
+    const params = new URLSearchParams;
+    const headers = new Headers;
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    params.set('cdEmpresa', cdEmpresa);
+     return this.http.get(`${this.danoUrl}?cdEmpresa=${cdEmpresa}`, {headers})
+      .toPromise()
+       .then(response =>
+         response.json().content)
+
+  }
+
+  consulta(filtro: DanoFiltro, cdEmpresa: number): Promise<any> {
     const params = new URLSearchParams();
     const headers = new Headers;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
@@ -29,7 +43,7 @@ export class DanoService {
      if(filtro.nmDano){
        params.set('nmDano', filtro.nmDano);
      }
-      return this.http.get(`${this.danoUrl}`,
+      return this.http.get(`${this.danoUrl}?cdEmpresa=${cdEmpresa}`,
       {headers, search: filtro})
       .toPromise()
        .then(response => {

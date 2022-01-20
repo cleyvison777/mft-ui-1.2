@@ -1,27 +1,42 @@
 <div class="ui-g">
     <div class="container">
           <div class="ui-g-12">
-            <h1> DANO {{ 'CADASTRO'}}</h1>
+            <h1>{{editando ? 'EDIÇÃO ': 'CADASTRO'}} DANO </h1>
         </div>
 
-          <p-fieldset legend="Cadastro de Podridão" class="ui-g-11 ui-md-11">
-              <div class="ui-g-12  ui-md-7 ui-fluid">
-                <label>Abreviatura</label>
-                <input id="input" name="nmClassefloresta" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder="Abreveatura" class="ng-dirty ng-invalid">
+           <form (ngSubmit)="salvar(dano)" #dano="ngForm" autocomplete="on">
+                <p-fieldset legend="Cadastro de Podridão" class="ui-g-11 ui-md-11">
+                  <div class="ui-g-12  ui-md-7 ui-fluid">
+                    <label>Abreviatura</label>
+                    <input id="input" name="nmDanoAbreviatura" type="text" pInputText ngModel #nome="ngModel"  required minlength="10" placeholder="Abreveatura" class="ng-dirty ng-invalid" [(ngModel)]="danoSalva.nmDanoAbreviatura">
+                    <div *ngIf= "nome.hasError('required') && nome.dirty">
+                      <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
+                  </div>
+                </div>
+                <!-- <div  class="ui-g-12  ui-md-2" style="margin-top: 20px;">
+                  <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000000"
+                  [url]=""></p-fileUpload>
+                </div> -->
+
+                <div class="ui-g-12  ui-md-10">
+                <h3 class="first">Dano</h3>
+                <textarea rows="5" cols="100" pInputTextarea ngModel #nome="ngModel" name="nmDano" required minlength="10" placeholder="Nome do dano" class="ng-dirty ng-invalid" [(ngModel)]="danoSalva.nmDano"></textarea>
                 <div *ngIf= "nome.hasError('required') && nome.dirty">
                   <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
               </div>
-            </div>
-            <div  class="ui-g-12  ui-md-2" style="margin-top: 20px;">
-              <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000000"
-              [url]=""></p-fileUpload>
-            </div>
+                </div>
 
-            <div class="ui-g-12  ui-md-10">
-             <h3 class="first">Dano</h3>
-            <textarea rows="5" cols="100" pInputTextarea></textarea>
-            </div>
-        </p-fieldset>
+
+                <div class="ui-g-12">
+                  <button pButton type="submit" label="salvar" [disabled]="!danoSalva.nmDano"></button>
+                  <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+                  </div>
+
+                  <div *ngIf="editando" class="ui-g-4 ui-md-2 ui-fluid">
+                    <button type="button" pButton label="Sair da edição" routerLink="/dano/cadastro"></button>
+                  </div>
+            </p-fieldset>
+           </form>
 
       </div>
   </div>
