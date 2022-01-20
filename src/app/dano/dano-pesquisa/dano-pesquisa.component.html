@@ -3,13 +3,13 @@
       <p-fieldset legend="Dados Cadastrais">
         <div class="ui-g">
           <div class="ui-g-12">
-              <form  autocomplete="off">
+            <form  autocomplete="off" (ngSubmit)="consultar()">
                   <div class="ui-g-12 ui-fluid">
                       <label style="display: block">Pesquisar por Nome: </label>
                       <div class="ui-g-12 ui-md-7">
                           <div class="ui-inputgroup">
                               <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
-                              <input type="text" pInputText name="nmEmpresa" [(ngModel)]="filtro.nmDano" placeholder="Pesquisar">
+                              <input type="text" pInputText name="nmDano" [(ngModel)]="filtro.nmDano" placeholder="Pesquisar">
                           </div>
                       </div>
 
