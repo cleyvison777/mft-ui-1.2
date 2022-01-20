@@ -1,4 +1,3 @@
-import { Router, ActivatedRoute } from '@angular/router';
 import { MenuService } from './../../core/menu/menu.service';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { InvContDano, MenuEmpresa, Cadempresa } from './../../core/model';
@@ -38,7 +37,7 @@ export class DanoPesquisaComponent implements OnInit {
   consultar(page = 0){
     this.filtro.page = page;
     this.filtro.cdEmpresa = this.cdEmp;
-    this.danoService.consulta(this.filtro) //fazer um carregar automatica de empresa
+    this.danoService.consulta(this.filtro)
      .then(resultado => {
        this.totalRegistrosDano = resultado.total;
       this.invContDano = resultado.invContDano

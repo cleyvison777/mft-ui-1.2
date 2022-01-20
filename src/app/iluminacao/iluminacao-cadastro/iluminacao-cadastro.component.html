@@ -1,29 +1,40 @@
 <div class="ui-g">
   <div class="container">
         <div class="ui-g-12">
-          <h1> ILUMINAÇÃO {{ 'CADASTRO'}}</h1>
+          <h1>{{editando ? 'EDIÇÃO ': 'CADASTRO'}} ILUMINAÇÃO </h1>
       </div>
 
-        <p-fieldset legend="Cadastro de Iluminação" class="ui-g-11 ui-md-11">
-            <div class="ui-g-12  ui-md-7 ui-fluid">
-              <label>Abreviatura</label>
-              <input id="input" name="nmClassefloresta" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder="Abreveatura" class="ng-dirty ng-invalid">
-              <div *ngIf= "nome.hasError('required') && nome.dirty">
-                <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
+      <form (ngSubmit)="salvar(ilumniacao)" #ilumniacao="ngForm" autocomplete="on">
+            <p-fieldset legend="Cadastro de Iluminação" class="ui-g-11 ui-md-11">
+              <div class="ui-g-12  ui-md-7 ui-fluid">
+                <label>Abreviatura</label>
+                <input id="input" name="nmIluminacaoAbreviatura" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder="Abreveatura" class="ng-dirty ng-invalid" [(ngModel)]="iluminacaoSalva.nmIluminacaoAbreviatura">
+                <div *ngIf= "nome.hasError('required') && nome.dirty">
+                  <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
+              </div>
             </div>
-          </div>
-          <!-- <div  class="ui-g-12  ui-md-2" style="margin-top: 20px;">
-            <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000000"
-            [url]=""></p-fileUpload>
-          </div> -->
+            <!-- <div  class="ui-g-12  ui-md-2" style="margin-top: 20px;">
+              <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000000"
+              [url]=""></p-fileUpload>
+            </div> -->
 
-          <div class="ui-g-12  ui-md-10">
-           <h3>Iluminação:</h3>
-          <textarea rows="5" cols="77" pInputTextarea></textarea>
-          </div>
-      </p-fieldset>
+            <div class="ui-g-12  ui-md-10">
+            <h3>Iluminação:</h3>
+            <textarea rows="5" name="nmIluminacao" cols="77" pInputTextarea [(ngModel)]="iluminacaoSalva.nmIluminacao"></textarea>
+            </div>
 
-    </div>
+
+            <div class="ui-g-12">
+              <button pButton type="submit" label="salvar" [disabled]="!iluminacaoSalva.nmIluminacao "></button>
+              <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+              </div>
+
+              <div *ngIf="editando" class="ui-g-4 ui-md-2 ui-fluid">
+                <button type="button" pButton label="Sair da edição" routerLink="/dano/cadastro"></button>
+              </div>
+        </p-fieldset>
+     </form>
+  </div>
 </div>
 
 

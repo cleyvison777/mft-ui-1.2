@@ -16,6 +16,7 @@ export class IluminacaoPesquisaComponent implements OnInit {
   totalRegistrosIluminacao = 0;
 
   iluminacao = [];
+  cdEmp: any;
   filtro = new IluminacaoFiltro();
   ivContIluminacao = new InvContIluminacao();
   @ViewChild('tabela') grid;
@@ -31,9 +32,10 @@ export class IluminacaoPesquisaComponent implements OnInit {
   ngOnInit() {
   }
 
-  consultar(page = 0, cdEmpresa?:number) {
+  consultar(page = 0) {
      this.filtro.page =page;
-     this.iluminacaoService.consultar(this.filtro, cdEmpresa = 1)
+     this.filtro.cdEmpresa = this.cdEmp;
+     this.iluminacaoService.consultar(this.filtro)
       .then (resultado => {
         this.totalRegistrosIluminacao = resultado.total;
          this.iluminacao = resultado.iluminacao;
@@ -44,7 +46,7 @@ export class IluminacaoPesquisaComponent implements OnInit {
 
   aoMudarPaginaIluminacao(event: LazyLoadEvent) {
     const page = event.first / event.rows;
-    this.consultar(page);
+    this.carregarEmpresaSelecionada();
   }
 
   excluir(iluminacao: any){
@@ -71,5 +73,15 @@ export class IluminacaoPesquisaComponent implements OnInit {
       })
 
   }
+
+  carregarEmpresaSelecionada() {
+    return this.menuService.carregarEmpresaSelecionada()
+      .then(empresaSelecionada => {
+        this.cdEmp = empresaSelecionada;
+        this.consultar();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
 
 }

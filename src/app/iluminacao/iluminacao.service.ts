@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 export class IluminacaoFiltro {
   nmIluminacao: string;
-  cdEmpresa?: number;
+  cdEmpresa: number;
   page = 0;
   size = 15;
 }
@@ -28,7 +28,7 @@ export class IluminacaoService {
         response.json().content)
   }
 
-  consultar(filtro: IluminacaoFiltro, cdEmpresa: number): Promise<any> {
+  consultar(filtro: IluminacaoFiltro): Promise<any> {
     const params = new URLSearchParams();
     const headers = new Headers;
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
@@ -36,7 +36,7 @@ export class IluminacaoService {
         params.set('nmIluminacao', filtro.nmIluminacao);
       }
 
-      return this.http.get(`${this.IluminacaoUrl}?cdEmpresa=${cdEmpresa}`,
+      return this.http.get(`${this.IluminacaoUrl}`,
        {headers, search: filtro})
         .toPromise()
          .then(response =>
@@ -70,7 +70,7 @@ export class IluminacaoService {
             .then(() => null)
       }
 
-        atualizar(invContIluminacao: InvContIluminacao) {
+        atualizar(invContIluminacao: InvContIluminacao): Promise<any> {
 
           const headers = new Headers;
           headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
@@ -85,7 +85,7 @@ export class IluminacaoService {
 
         }
 
-        buscarPeloCodigoInvContDano(cdIluminacao: number): Promise<InvContIluminacao>{
+        buscarPeloCodigoIluminacao(cdIluminacao: number): Promise<InvContIluminacao>{
           const headers = new Headers();
           headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
           return this.http.get(`${this.IluminacaoUrl}/${cdIluminacao}`, {headers})
