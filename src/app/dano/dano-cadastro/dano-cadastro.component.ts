@@ -34,6 +34,7 @@ export class DanoCadastroComponent implements OnInit {
   ngOnInit() {
     this.carregarEmpresaSelecionadaDano()
     const codigoDano = this.route.snapshot.params['codigo'];
+
     if(codigoDano) {
       this.carregarDano(codigoDano);
 

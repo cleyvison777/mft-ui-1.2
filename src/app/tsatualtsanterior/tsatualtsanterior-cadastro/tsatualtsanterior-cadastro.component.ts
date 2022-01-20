@@ -38,8 +38,8 @@ cdEmp: any;
 
   ngOnInit() {
 
-  //  this.carregarEmpresaSelecionada(); //se bug quando seleciono a empresa // ao mandar carregar empresa da burg
-    this.CarregarSilviculturaldropdown(); //a empresa deve ser selecionada se na da erro na chave empresa
+    this.carregarEmpresaSelecionada(); //se bug quando seleciono a empresa // ao mandar carregar empresa da burg
+    this.CarregarSilviculturaldropdown();
 
   }
 
@@ -52,8 +52,9 @@ cdEmp: any;
   carregarEmpresaSelecionada() {
     return this.menuService.carregarEmpresaSelecionada()
      .then(empresaSelecionada => {
-       this.empresaSelecionada.cdEmpresa = empresaSelecionada
-        this.pesquisar2(this.empresaSelecionada.cdEmpresa);
+       this.empresaSelecionada.cdEmpresa = empresaSelecionada;
+       this.cdEmp = this.empresaSelecionada.cdEmpresa;
+       // this.pesquisar2(this.empresaSelecionada.cdEmpresa);
          this.cadTratamentoSilviculturalSalva.cdEmpresa.cdEmpresa = this.empresaSelecionada.cdEmpresa
 
      })
@@ -72,10 +73,12 @@ cdEmp: any;
 
 
   adicionarTsAtual(form: FormControl) {
+    this.cadTsAtualTsAnteriorSalva.cdEmpresa.cdEmpresa = this.cdEmp;
     this.tsatualtsanteriorService.adicionar(this.cadTsAtualTsAnteriorSalva)
       .then(() => {
         this.cadTsAtualTsAnteriorSalva = new CadTsAtualTsAnterior();
         this.toasty.success('Cadastrado realizado com sucesso!');
+        this.refresh();
         ///Pega o valor do cdTratamento como busca na consultaTS
 
       })
@@ -112,6 +115,11 @@ cdEmp: any;
           })
           .catch(erro => this.errorHandler.handle(erro));
       }
+
+
+  refresh(): void {
+    window.location.reload();
+ }
 
   }
 

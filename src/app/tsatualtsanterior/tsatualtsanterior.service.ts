@@ -43,9 +43,7 @@ export class TsatualtsanteriorService {
     const headers = new Headers();
     headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
     headers.append('Content-Type', 'application/json');
-    return this.http.post(this.CadTsURL,
-      JSON.stringify(cadTsAtualTsAnterior),
-      { headers })
+    return this.http.post(this.CadTsURL,  JSON.stringify(cadTsAtualTsAnterior),  { headers })
       .toPromise()
       .then(response => response.json());
   }

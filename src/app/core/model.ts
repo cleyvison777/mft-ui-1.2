@@ -254,3 +254,10 @@ cdEmpresa = new Cadempresa();
 nmIluminacao: string;
 nmIluminacaoAbreviatura: string;
 }
+export class InvContPodridao {
+
+cdPodridao: number;
+cdEmpresa = new Cadempresa();
+nmPodridao: string;
+nmPodridaoAbreviatura:string;
+}
