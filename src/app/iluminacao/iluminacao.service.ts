@@ -90,7 +90,7 @@ export class IluminacaoService {
           headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
           return this.http.get(`${this.IluminacaoUrl}/${cdIluminacao}`, {headers})
            .toPromise()
-          .then(response => {
+           .then(response => {
             const iluminacao = response.json() as InvContIluminacao;
             return iluminacao;
           });

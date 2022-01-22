@@ -1,5 +1,4 @@
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
-import { InvContIluminacao } from './../../core/model';
 import { MenuService } from 'src/app/core/menu/menu.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
