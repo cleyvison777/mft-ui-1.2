@@ -1,3 +1,4 @@
+import { InvContPodridao } from './../core/model';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 export class PodricaoFiltro {
@@ -49,4 +50,58 @@ export class ProdricaoService {
        })
 
   }
+
+  adicionar(invContPodridao: InvContPodridao) {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.prodricaoUrl,
+      JSON.stringify(invContPodridao), {headers})
+       .toPromise()
+        .then(response => response.json())
+   }
+
+   excluir(cdPodridao: InvContPodridao){
+    const headers = new Headers;
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+     return this.http.delete(`${this.prodricaoUrl}/${cdPodridao}`, {headers})
+      .toPromise()
+       .then(() => null)
+   }
+
+    atualizar(invContPodridao: InvContPodridao) {
+      const headers = new Headers;
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+      headers.append('Content-Type', 'application/json');
+        return this.http.put(`${this.prodricaoUrl}/${invContPodridao.cdPodridao}`,
+         JSON.stringify(invContPodridao), {headers})
+          .toPromise()
+           .then(response => {
+             const invContPodridaoAltera =  response.json() as InvContPodridao;
+              return invContPodridaoAltera
+           })
+
+    }
+    buscarPeloCodigoPodricao(cdPodridao: number): Promise<InvContPodridao>{
+      const headers = new Headers();
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+      return this.http.get(`${this.prodricaoUrl}/${cdPodridao}`, {headers})
+       .toPromise()
+      .then(response => {
+        const iluminacao = response.json() as InvContPodridao;
+        return iluminacao;
+      });
+    }
+
+    listarTodasPodricao(){
+      const headers = new Headers;
+      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+      headers.append('Content-Type', 'application/json');
+        return this.http.get(`${this.prodricaoUrl}`, {headers})
+        .toPromise()
+        .then(response => response.json().content);
+    }
+
+
 }

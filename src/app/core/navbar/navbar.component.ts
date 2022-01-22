@@ -121,10 +121,6 @@ export class NavbarComponent implements OnInit {
                 routerLink: '/situacao-silvicultural/cadastro'
               },
               {
-                label: 'Tratamento anterior e Tratamento atual:',
-                routerLink: 'mediacoes-anteriores/cadastro'
-              },
-              {
                 label: 'Classe de Indentificação do Fuste(CIF)',
                 routerLink: '/unidadelocalsublocal'
               },
