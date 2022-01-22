@@ -39,10 +39,10 @@ export class ProdricaoService {
       .toPromise()
        .then(response => {
         const responseJson = response.json();
-        const podricao = responseJson.content;
+        const podridao = responseJson.content;
 
         const resultado = {
-          podricao,
+          podridao,
           total: responseJson.totalElements
         };
         return resultado;

@@ -18,7 +18,6 @@ export class IluminacaoPesquisaComponent implements OnInit {
   iluminacao = [];
   cdEmp: any;
   filtro = new IluminacaoFiltro();
-  ivContIluminacao = new InvContIluminacao();
   @ViewChild('tabela') grid;
 
   constructor(
@@ -33,7 +32,7 @@ export class IluminacaoPesquisaComponent implements OnInit {
   }
 
   consultar(page = 0) {
-     this.filtro.page =page;
+     this.filtro.page = page;
      this.filtro.cdEmpresa = this.cdEmp;
      this.iluminacaoService.consultar(this.filtro)
       .then (resultado => {
