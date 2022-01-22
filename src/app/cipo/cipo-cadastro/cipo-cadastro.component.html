@@ -1,10 +1,10 @@
 <div class="ui-g">
   <div class="container">
         <div class="ui-g-12">
-          <h1> CIPÓ {{ 'CADASTRO'}}</h1>
+          <h1>{{editando ? 'EDIÇÃO ': 'CADASTRO'}} CIPÓ </h1>
       </div>
 
-         <form (ngSubmit)="adicionarCipo(cipo)" #cipo="ngForm" autocomplete="on">
+         <form (ngSubmit)="salvar(cipo)" #cipo="ngForm" autocomplete="on">
 
               <p-fieldset legend="Cadastro de Cipó" class="ui-g-11 ui-md-11">
                 <div class="ui-g-12  ui-md-7 ui-fluid">
