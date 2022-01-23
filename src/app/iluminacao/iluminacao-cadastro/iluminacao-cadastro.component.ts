@@ -112,10 +112,11 @@ export class IluminacaoCadastroComponent implements OnInit {
 
      atualizarTituloEdicao(){
       this.title.setTitle(`Edição Iluminacao: ${this.iluminacaoSalva.cdIluminacao}`)
-    }
- refresh(): void {
-  window.location.reload();
-  }
+      }
+
+    refresh(): void {
+      window.location.reload();
+      }
 
 
 }

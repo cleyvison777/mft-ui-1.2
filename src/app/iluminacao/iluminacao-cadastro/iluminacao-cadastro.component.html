@@ -5,7 +5,7 @@
       </div>
 
       <form (ngSubmit)="salvar(ilumniacao)" #ilumniacao="ngForm" autocomplete="on">
-            <p-fieldset legend="Cadastro de Iluminação" class="ui-g-11 ui-md-11">
+            <p-fieldset legend="Cadastro de Iluminação" class="ui-g-11 ui-md-12">
               <div class="ui-g-12  ui-md-7 ui-fluid">
                 <label>Abreviatura</label>
                 <input id="input" name="nmIluminacaoAbreviatura" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder="Abreveatura" class="ng-dirty ng-invalid" [(ngModel)]="iluminacaoSalva.nmIluminacaoAbreviatura">

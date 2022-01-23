@@ -269,12 +269,8 @@ cdEmpresa = new Cadempresa();
 nmCipo: string;
 nmCipoAbreviatura: string;
 }
-
-
 export class InvContFormaCopa {
-
-
-cdFormaCopa: number ;
+cdFormaCopa: number;
 cdEmpresa = new Cadempresa();
 nmFormaCopa: string;
 nmFormaCopaAbreviatura: string;

@@ -1,5 +1,43 @@
-<p>
-  forma-cadastro works!
-</p>
+<div class="ui-g">
+  <div class="container">
+        <div class="ui-g-12">
+          <h1>{{editando ? 'EDIÇÃO ': 'CADASTRO'}} FORMA COPA </h1>
+      </div>
+
+      <form (ngSubmit)="salvar(copa)" #copa="ngForm" autocomplete="on">
+            <p-fieldset legend="Cadastro formação de copa" class="ui-g-11 ui-md-12">
+              <div class="ui-g-12  ui-md-7 ui-fluid">
+                <label>Abreviatura</label>
+                <input id="input" name="nmFormaCopaAbreviatura" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder="Abreveatura" class="ng-dirty ng-invalid" [(ngModel)]="formaCopaSalva.nmFormaCopaAbreviatura">
+                <div *ngIf= "nome.hasError('required') && nome.dirty">
+                  <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
+              </div>
+            </div>
+            <!-- <div  class="ui-g-12  ui-md-2" style="margin-top: 20px;">
+              <p-fileUpload mode="basic" name="anexo" chooseLabel="Imagem" auto="true"  accept="image/*" maxFileSize="1000000000"
+              [url]=""></p-fileUpload>
+            </div> -->
+
+            <div class="ui-g-12  ui-md-10">
+            <h3>Forma da Copa:</h3>
+            <textarea rows="5" name="nmFormaCopa" cols="77" pInputTextarea [(ngModel)]="formaCopaSalva.nmFormaCopa"></textarea>
+            </div>
+
+
+            <div class="ui-g-12">
+              <button pButton type="submit" label="salvar" [disabled]="!formaCopaSalva.nmFormaCopa"></button>
+              <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+              </div>
+
+              <div *ngIf="" class="ui-g-4 ui-md-2 ui-fluid">
+                <button type="button" pButton label="Sair da edição" routerLink="/iluminacao/cadastro"></button>
+              </div>
+        </p-fieldset>
+     </form>
+  </div>
+</div>
+
+
+
 
 <app-forma-pesquisa></app-forma-pesquisa>
