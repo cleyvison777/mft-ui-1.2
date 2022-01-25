@@ -276,3 +276,18 @@ nmFormaCopa: string;
 nmFormaCopaAbreviatura: string;
 
 }
+
+
+export class InvContCIF {
+  cdCif: number;
+  cdClasseTamanho = new CadClassTamanhoIndividuo();
+	cdEmpresa = new Cadempresa();
+  nmCif: string;
+	lgViva: boolean;
+  lgDesaparecida: boolean;
+	lgEgressa: boolean;
+	lgTemDescricaoFuste: boolean;
+
+}
+
+

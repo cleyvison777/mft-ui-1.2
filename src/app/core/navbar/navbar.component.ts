@@ -122,7 +122,7 @@ export class NavbarComponent implements OnInit {
               },
               {
                 label: 'Classe de Indentificação do Fuste(CIF)',
-                routerLink: '/unidadelocalsublocal'
+                routerLink: '/identificacao-fuste/cadastro'
               },
               {
                 label: 'Dano',

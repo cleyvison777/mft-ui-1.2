@@ -1,3 +1,4 @@
+import { CifModule } from './cif/cif.module';
 import { ImpressaoFichaModule } from './impressao-ficha/impressao-ficha.module';
 import { CipoModule } from './cipo/cipo.module';
 import { FormaCopaModule } from './forma-copa/forma-copa.module';
@@ -71,7 +72,8 @@ import { TsatualtsanteriorModule } from './tsatualtsanterior/tsatualtsanterior.m
     FormaCopaModule,
     CipoModule,
     ImpressaoFichaModule,
-    TsatualtsanteriorModule
+    TsatualtsanteriorModule,
+    CifModule
 
 
 
