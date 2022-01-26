@@ -6,47 +6,52 @@
         <h1> CLASSE DE IDENTIFICAÇÃO DO FUSTE </h1>
         </div>
        <p-fieldset legend="Classe de identificação do fuste">
-        <div class="ui-fluid ui-g-12 ui-md-7">
-          <label>Classe de tamanho de indiuvíduo: </label>
-          <p-dropdown name="familia" [options]="selecao" [autoWidth]="false" placeholder= "Selecione a classe de tamanho:"
-          filter="true">
+              <div class="ui-fluid ui-g-12 ui-md-7">
+                <label>Classe de tamanho de indiuvíduo: </label>
+                <p-dropdown name="familia" [options]="" [autoWidth]="false" placeholder= "Selecione a classe de tamanho:"
+                filter="true">
+              </p-dropdown>
+          </div>
 
-        </p-dropdown>
-    </div>
-
-        <div class="ui-g-12  ui-md-7 ui-fluid">
-          <label> Identificação do fuste:</label>
-          <input id="input" name="" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder=" identificação do fuste" class="ng-dirty ng-invalid" >
-          <div *ngIf= "nome.hasError('required') && nome.dirty">
-            <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
-        </div>
-      </div>
+            <div class="ui-g-12  ui-md-7 ui-fluid">
+              <label> Identificação do fuste:</label>
+              <input id="input" name="" type="text" pInputText ngModel #nome="ngModel" required minlength="10" placeholder=" identificação do fuste" class="ng-dirty ng-invalid" >
+              <div *ngIf= "nome.hasError('required') && nome.dirty">
+                <p-message severity="error" text="Nome completo é obrigatorio"></p-message>
+            </div>
+          </div>
        </p-fieldset>
+              <p-fieldset legend="Classe de identificação do fuste">
+                    <div class="ui-g-5 ui-md-5">
+                        <div class="row radiobutton-margin">
+                          <p-checkbox name="groupname" value="val1" label="Indivíduo vivo"></p-checkbox>
+                        </div>
+                        <div class="row radiobutton-margin">
+                          <p-checkbox name="groupname" value="val2" label="Indivíduo desaparecido"></p-checkbox>
+                       </div>
+                    </div>
+                    <div class="ui-g-5 ui-md-5">
+                        <div class="row radiobutton-margin">
+                          <p-checkbox name="groupname" value="val2" label="Indivíduo egresso"></p-checkbox>
+                        </div>
+                        <div class="row radiobutton-margin">
+                          <p-checkbox name="groupname" value="val2" label="Possui descrição de fuste"></p-checkbox>
+                        </div>
 
+                  </div>
+                  <div class="ui-g-12">
+                    <button pButton type="submit" label="salvar" [disabled]=" "></button>
+                    <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+                    </div>
 
-
-       <div class="ui-g-12 ui-md-12" *ngIf="!selecao.values(1)">
-        <p-fieldset legend="Medida em">
-          <div class="row radiobutton-margin">
-            <p-radioButton name="valor" [value]=""  label="Diâmetro(mm)" inputId="opt1"></p-radioButton>
-          </div>
-          <div class="row">
-            <p-radioButton name="valor" [value]=""  label="Circunferência(mm)" inputId="opt1"></p-radioButton>
-          </div>
-        </p-fieldset>
+                    <div *ngIf="" class="ui-g-4 ui-md-2 ui-fluid">
+                      <button type="button" pButton label="Sair da edição" routerLink="/?/cadastro"></button>
+                    </div>
+          </p-fieldset>
       </div>
+  </div>
 
-      <div class="ui-g-12 ui-md-12" *ngIf="!selecao.values(2)">
-        <p-fieldset legend="Medida em">
-          <div class="row radiobutton-margin">
-            <p-radioButton name="valor" [value]=""  label="Diâmetro(mm)" inputId="opt1"></p-radioButton>
-          </div>
-        </p-fieldset>
-      </div>
 
-    </div>
-
-</div>
-
+<app-pesquisa-cif></app-pesquisa-cif>
 
 

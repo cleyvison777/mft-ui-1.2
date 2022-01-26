@@ -56,7 +56,7 @@ import {ProgressSpinnerModule} from 'primeng/components/progressspinner/progress
     DialogModule,
     TabMenuModule,
     ProgressSpinnerModule,
-    RadioButtonModule
+    RadioButtonModule,
 
   ]
 })

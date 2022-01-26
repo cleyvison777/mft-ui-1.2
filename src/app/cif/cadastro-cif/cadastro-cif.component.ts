@@ -7,11 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroCifComponent implements OnInit {
 
-  selecao = [
-    {label: ''},
-    {label: 'teste1', value: 1},
-    {label: 'teste2', value: 2}
-  ];
+
   constructor() { }
 
   ngOnInit() {
