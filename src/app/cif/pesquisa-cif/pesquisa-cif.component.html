@@ -1,7 +1,55 @@
-<div class="ui-g">
-   <div class="container">
-      <p>
-        pesquisa-cif works!
-      </p>
-   </div>
+<div class=" container">
+  <div class="ui-g">
+      <p-fieldset legend="Dados Cadastrais">
+        <div class="ui-g">
+          <div class="ui-g-12">
+            <form  autocomplete="off" (ngSubmit)="consultar()">
+                  <div class="ui-g-12 ui-fluid">
+                      <label style="display: block">Pesquisar por Iluminação: </label>
+                      <div class="ui-g-12 ui-md-7">
+                          <div class="ui-inputgroup">
+                              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                              <input type="text" pInputText name="nmCif" [(ngModel)]="filtro.nmCif" placeholder="Pesquisar">
+                          </div>
+                      </div>
+
+                  </div>
+              </form>
+          </div>
+        </div>
+        <div class="ui-g">
+
+            <div class="ui-g-12 ui-md-12">
+                  <p-table [value]="cif" [responsive]="true" [paginator]="true" [rows]="filtro.size" [lazy]="true" #tabela
+                   (onLazyLoad)="aoMudarPaginaCif($event)" [totalRecords]="totalRegistrosCif">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th>Id</th>
+                        <th>Classe de Tamanho</th>
+                        <th>Nome CIF</th>
+                        <th></th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-cif>
+                      <tr>
+                        <td>{{cif.cdCif}}</td>
+                        <td>{{cif.cdClasseTamanho.nmClasseTamanho}}</td>
+                        <td>{{cif.nmCif}}</td>
+
+                        <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
+                          (click)="confirmarExclusao(cif)"></button>
+                        <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/?', cif.cdCif]"></button></td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+
+
+                </div>
+
+              </div>
+
+      </p-fieldset>
+
+
+      </div>
 </div>
