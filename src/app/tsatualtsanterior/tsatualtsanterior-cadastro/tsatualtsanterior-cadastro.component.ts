@@ -54,7 +54,6 @@ cdEmp: any;
      .then(empresaSelecionada => {
        this.empresaSelecionada.cdEmpresa = empresaSelecionada;
        this.cdEmp = this.empresaSelecionada.cdEmpresa;
-       // this.pesquisar2(this.empresaSelecionada.cdEmpresa);
          this.cadTratamentoSilviculturalSalva.cdEmpresa.cdEmpresa = this.empresaSelecionada.cdEmpresa
 
      })
