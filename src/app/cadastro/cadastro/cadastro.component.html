@@ -17,8 +17,8 @@
 
                             <div class="ui-fluid ui-g-12 ui-md-4" >
                               <label>Tipo amostra </label>
-                              <p-dropdown name="amf" [options]="" [autoWidth]="false" placeholder= "Selecione o tipo"
-                              filter="true" required></p-dropdown>
+                              <p-dropdown name="selecao" [options]="selecao" [(ngModel)]="selecao" [autoWidth]="false" placeholder= "Selecione o tipo"
+                              required></p-dropdown>
                             </div>
 
                             <div class="ui-g-12 ui-md-6 ui-fluid">
@@ -48,7 +48,7 @@
 
                 </p-fieldset>
 
-         <p-fieldset legend="Unidades Isoladas / Transectos">
+         <p-fieldset legend="Unidades Isoladas / Transectos" *ngIf="selecao == 1">
                 <div class="ui-g-12 ui-md-12 ui-fluid">
                     <div class="ui-g-12 ui-md-4">
                       <label><h4 style="margin-top: 0px;margin-bottom: 0px;">Unidades de Amostra(UA)<br />ou transectos</h4></label>
@@ -85,6 +85,52 @@
         </div>
 
            </p-fieldset>
+
+
+                <p-fieldset legend="Conglomerado" *ngIf="selecao == 2">
+                  <div class="ui-g-12 ui-md-12 ui-fluid">
+                      <div class="ui-g-12 ui-md-4">
+                        <label><h4 class="margin-0">Nº Unidades de amostra<br />conglomerados</h4></label>
+                          <input type="text" pInputText name="data" >
+                      </div>
+                      <div class="ui-g-12 ui-md-4">
+                        <label><h4  class="margin-0">Nº Unidades de registros<br />por U.A</h4></label>
+                        <input type="text" pInputText name="data" >
+                    </div>
+
+                    <div class="ui-g-12 ui-md-4">
+                      <label><h4  class="margin-0">Nº Unidades por <br />unidades de registros</h4></label>
+                      <input type="text" pInputText name="data" >
+                  </div>
+              </div>
+
+                      <div class="ui-g-12 ui-md-4 ui-fluid">
+                        <label><h4 class="margin-0">Dimenções unidades de<br />resgistros</h4></label>
+                        <div class="ui-g-12 ui-md-5">
+                          <label><h5  class="margin-0">Lag. (m)</h5></label>
+                            <input type="text" pInputText name="data" >
+                        </div>
+                        <div class="ui-g-12 ui-md-5">
+                          <label><h5 class="margin-0">Comp. (cm)</h5></label>
+                          <input type="text" pInputText name="data" >
+                      </div>
+                </div>
+
+                <div class="ui-g-12 ui-md-5 ui-fluid">
+                  <label><h4 class="margin-0">Dimenções subunidades de<br />amostra</h4></label>
+                  <div class="ui-g-12 ui-md-5">
+                    <label><h5  class="margin-0">Lag. (m)</h5></label>
+                      <input type="text" pInputText name="data" >
+                  </div>
+                  <div class="ui-g-12 ui-md-4">
+                    <label><h5  class="margin-0">Comp. (cm)</h5></label>
+                    <input type="text" pInputText name="data" >
+                </div>
+          </div>
+
+   </p-fieldset>
+
+
 
            <p-fieldset>
 
