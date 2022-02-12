@@ -1,0 +1,109 @@
+<div class="ui-g">
+    <div class="container">
+                  <p-fieldset legend="Header">
+                              <div class="ui-fluid ui-g-12 ui-md-12" style="margin-right:60px;">
+                                <label>Área de manejo florestal </label>
+                                <p-dropdown name="amf" [options]="" [autoWidth]="false" placeholder= "Selecione a área"
+                                filter="true" required></p-dropdown>
+                              </div>
+
+                              <div class="ui-g-12 ui-md-2 ui-fluid">
+                                <label>Ano</label>
+                                <div class="ui-inputgroup">
+                                    <span class="ui-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+                                    <input type="text" pInputText name="data"  placeholder="ano">
+                                </div>
+                            </div>
+
+                            <div class="ui-fluid ui-g-12 ui-md-4" >
+                              <label>Tipo amostra </label>
+                              <p-dropdown name="amf" [options]="" [autoWidth]="false" placeholder= "Selecione o tipo"
+                              filter="true" required></p-dropdown>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-fluid">
+                              <label ><h5 class="margin-0">Medir individuo na subunidade
+                                com DAP entre (cm)</h5></label>
+                              <div class="ui-g-12 ui-md-4">
+                                  <input type="text" pInputText name="data" >
+                              </div>
+                            <div class="ui-g-12 ui-md-1" style=" padding-left: 15px; "><Strong><span >e</span></Strong></div>
+                              <div class="ui-g-12 ui-md-4">
+                                <input type="text" pInputText name="data"  >
+                            </div>
+                          </div>
+
+
+                          <div class="ui-g-12 ui-md-6 ui-fluid">
+                            <label><h4 class="margin-0">Maximo permitido para individuos cadastrados</h4></label>
+                            <div class="ui-g-12 ui-md-4">
+                              <label><h5  class="margin-0">Altura(m)</h5></label>
+                                <input type="text" pInputText name="data" >
+                            </div>
+                            <div class="ui-g-12 ui-md-4">
+                              <label><h5  class="margin-0">Circunferencia(cm)</h5></label>
+                              <input type="text" pInputText name="data" >
+                          </div>
+                        </div>
+
+                </p-fieldset>
+
+         <p-fieldset legend="Unidades Isoladas / Transectos">
+                <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <div class="ui-g-12 ui-md-4">
+                      <label><h4 style="margin-top: 0px;margin-bottom: 0px;">Unidades de Amostra(UA)<br />ou transectos</h4></label>
+                        <input type="text" pInputText name="data" >
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                      <label><h4  class="margin-0">Unidades de Amostra(UA)<br />ou transectos</h4></label>
+                      <input type="text" pInputText name="data" >
+                  </div>
+            </div>
+
+                    <div class="ui-g-12 ui-md-4 ui-fluid">
+                      <label><h4 style="margin-top: 0px;margin-bottom: 0px;">Dimenção padrão das<br />unidades de amostra</h4></label>
+                      <div class="ui-g-12 ui-md-5">
+                        <label><h5  class="margin-0">Lag. (m)</h5></label>
+                          <input type="text" pInputText name="data" >
+                      </div>
+                      <div class="ui-g-12 ui-md-5">
+                        <label><h5 class="margin-0">Comp. (cm)</h5></label>
+                        <input type="text" pInputText name="data" >
+                    </div>
+              </div>
+
+              <div class="ui-g-12 ui-md-5 ui-fluid">
+                <label><h4 class="margin-0">Dimenções das<br />subunidades</h4></label>
+                <div class="ui-g-12 ui-md-5">
+                  <label><h5  class="margin-0">Lag. (m)</h5></label>
+                    <input type="text" pInputText name="data" >
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                  <label><h5  class="margin-0">Comp. (cm)</h5></label>
+                  <input type="text" pInputText name="data" >
+              </div>
+        </div>
+
+           </p-fieldset>
+
+           <p-fieldset>
+
+           <div style="text-align: center;">
+
+                <button pButton type="button" icon="pi pi-pencil" iconPos="left" label="Unidade de Amostra" ></button>
+                <button pButton type="button" icon="pi pi-trash" iconPos="left" label="Excluir U.A" class="ui-button-danger button-margin"></button>
+                <button pButton type="button" icon="pi pi-file" iconPos="left" label="Regerar U.A"  class="ui-button-secondary button-margin"></button>
+           </div>
+
+           </p-fieldset>
+
+           <p-fieldset legend="Observação">
+
+            <textarea rows="5" cols="150" pInputTextarea autoResize="autoResize"></textarea>
+
+
+          </p-fieldset>
+
+    </div>
+
+</div>

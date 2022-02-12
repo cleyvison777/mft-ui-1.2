@@ -7,7 +7,7 @@ export class DanoFiltro {
   nmDano: string;
   cdEmpresa: number;
   page = 0;
-  size = 15;
+  size = 5;
 }
 @Injectable({
   providedIn: 'root'

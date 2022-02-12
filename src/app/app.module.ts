@@ -1,3 +1,4 @@
+import { CadastroModule } from './cadastro/cadastro.module';
 import { CifModule } from './cif/cif.module';
 import { ImpressaoFichaModule } from './impressao-ficha/impressao-ficha.module';
 import { CipoModule } from './cipo/cipo.module';
@@ -73,7 +74,8 @@ import { TsatualtsanteriorModule } from './tsatualtsanterior/tsatualtsanterior.m
     CipoModule,
     ImpressaoFichaModule,
     TsatualtsanteriorModule,
-    CifModule
+    CifModule,
+    CadastroModule
 
 
 

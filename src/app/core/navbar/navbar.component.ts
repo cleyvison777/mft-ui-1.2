@@ -165,7 +165,7 @@ export class NavbarComponent implements OnInit {
           items: [
             {
               label: 'Cadastro',
-              routerLink: '/appmonitoramento'
+              routerLink: 'cadastro/cadastro'
             },
             {separator: true},
             {

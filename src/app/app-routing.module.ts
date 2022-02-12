@@ -1,3 +1,4 @@
+import { CadastroComponent } from './cadastro/cadastro/cadastro.component';
 import { CadastroCifComponent } from './cif/cadastro-cif/cadastro-cif.component';
 import { TsatualtsanteriorCadastroComponent } from './tsatualtsanterior/tsatualtsanterior-cadastro/tsatualtsanterior-cadastro.component';
 import { ImpressaoFichaCampoComponent } from './impressao-ficha/impressao-ficha-campo/impressao-ficha-campo.component';
@@ -88,6 +89,8 @@ const routes: Routes = [
   {path: 'lista-especie/:codigo', component:EspecieCadastroComponent},
   {path: 'identificacao-fuste/cadastro', component:CadastroCifComponent},
   {path: 'identificacao-fuste/:codigo', component:CadastroCifComponent},
+  {path: 'cadastro/cadastro', component:CadastroComponent},
+  {path: 'cadastro/:codigo', component:CadastroComponent},
 
 
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
