@@ -37,6 +37,7 @@ import { MenuComponent } from './core/menu/menu.component';
 import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subparcela-selecionada/idetificadores-subparcela-selecionada.module';
 import { TsatualtsanteriorModule } from './tsatualtsanterior/tsatualtsanterior.module';
 import { QualidadeFusteModule } from './qualidade-fuste/qualidade-fuste.module';
+import { FichaCampoTemporarioModule } from './ficha-campo-temporario/ficha-campo-temporario.module';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { QualidadeFusteModule } from './qualidade-fuste/qualidade-fuste.module';
     CifModule,
     CadastroModule,
     TipoAmostraModule,
-    QualidadeFusteModule
+    QualidadeFusteModule,
+    FichaCampoTemporarioModule
 
 
 

@@ -1,3 +1,4 @@
+import { FichaTemporarioComponent } from './ficha-campo-temporario/ficha-temporario/ficha-temporario.component';
 import { QualidadeCadastroComponent } from './qualidade-fuste/qualidade-cadastro/qualidade-cadastro.component';
 import { AmostraCadastroComponent } from './tipo-amostra/amostra-cadastro/amostra-cadastro.component';
 import { CadastroComponent } from './cadastro/cadastro/cadastro.component';
@@ -97,7 +98,7 @@ const routes: Routes = [
   {path: 'tipo-amostra/:codigo', component:AmostraCadastroComponent},
   {path: 'qualidade-fuste/cadastro', component:QualidadeCadastroComponent},
   {path: 'qualidade-fuste/:codigo', component:QualidadeCadastroComponent},
-
+  {path: 'impressao-temporario', component:FichaTemporarioComponent},
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
 ];
 

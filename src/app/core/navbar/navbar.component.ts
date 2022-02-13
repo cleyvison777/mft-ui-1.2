@@ -187,6 +187,7 @@ export class NavbarComponent implements OnInit {
           },
 
             {label: 'Impressão de Ficha de Campo',
+            routerLink: '/impressao-temporario',
             icon: 'pi pi-fw pi-print',
           }
         ]
