@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AmostraCadastroComponent } from './amostra-cadastro/amostra-cadastro.component';
-import { AmostraPesquisaComponent } from './amostra-pesquisa/amostra-pesquisa.component';
+import { QualidadeCadastroComponent } from './qualidade-cadastro/qualidade-cadastro.component';
+import { QualidadePesquisaComponent } from './qualidade-pesquisa/qualidade-pesquisa.component';
 
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/components/messages/messages';
@@ -18,7 +18,7 @@ import { AppRoutingModule } from './../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
-  declarations: [AmostraCadastroComponent, AmostraPesquisaComponent],
+  declarations: [QualidadeCadastroComponent, QualidadePesquisaComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -37,7 +37,6 @@ import { BrowserModule } from '@angular/platform-browser';
     MessagesModule,
     MessageModule,
     ButtonModule,
-
   ]
 })
-export class TipoAmostraModule { }
+export class QualidadeFusteModule { }

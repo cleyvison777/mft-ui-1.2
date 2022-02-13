@@ -1,3 +1,4 @@
+import { QualidadeCadastroComponent } from './qualidade-fuste/qualidade-cadastro/qualidade-cadastro.component';
 import { AmostraCadastroComponent } from './tipo-amostra/amostra-cadastro/amostra-cadastro.component';
 import { CadastroComponent } from './cadastro/cadastro/cadastro.component';
 import { CadastroCifComponent } from './cif/cadastro-cif/cadastro-cif.component';
@@ -94,7 +95,8 @@ const routes: Routes = [
   {path: 'cadastro/:codigo', component:CadastroComponent},
   {path: 'tipo-amostra/cadastro', component:AmostraCadastroComponent},
   {path: 'tipo-amostra/:codigo', component:AmostraCadastroComponent},
-
+  {path: 'qualidade-fuste/cadastro', component:QualidadeCadastroComponent},
+  {path: 'qualidade-fuste/:codigo', component:QualidadeCadastroComponent},
 
   {path: '**', redirectTo: 'pagina-nao-encontrada'},
 ];

@@ -36,6 +36,7 @@ import { HttpModule } from '@angular/http';
 import { MenuComponent } from './core/menu/menu.component';
 import { IdetificadoresSubparcelaSelecionadaModule } from './idetificadores-subparcela-selecionada/idetificadores-subparcela-selecionada.module';
 import { TsatualtsanteriorModule } from './tsatualtsanterior/tsatualtsanterior.module';
+import { QualidadeFusteModule } from './qualidade-fuste/qualidade-fuste.module';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { TsatualtsanteriorModule } from './tsatualtsanterior/tsatualtsanterior.m
     TsatualtsanteriorModule,
     CifModule,
     CadastroModule,
-    TipoAmostraModule
+    TipoAmostraModule,
+    QualidadeFusteModule
 
 
 

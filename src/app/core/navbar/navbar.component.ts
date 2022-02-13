@@ -178,7 +178,7 @@ export class NavbarComponent implements OnInit {
             },
             {
               label: 'Qualidade do Fuste',
-              routerLink: '/appavaliacao'
+              routerLink: '/qualidade-fuste/cadastro'
             },
             {separator: true},
             {

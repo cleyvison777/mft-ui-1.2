@@ -1,0 +1,25 @@
+<div class="ui-g">
+  <div class="container">
+
+     <p-fieldset legend="Qualidade do fuste" class="ui-g-12 ui-md-12">
+
+      <div class="ui-g-12 ui-md-7 ui-fluid">
+        <label>Fuste: </label>
+        <input type="text" pInputText name="nmtipo" required>
+
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="salvar" [disabled]=""></button>
+        <button pButton type="reset" label="Limpar" class="ui-button-warning" style="margin-left: 10px;"></button>
+        </div>
+
+        <div *ngIf="" class="ui-g-4 ui-md-2 ui-fluid">
+          <button type="button" pButton label="Sair da edição" routerLink="/dano/cadastro"></button>
+        </div>
+     </p-fieldset>
+  </div>
+</div>
+
+
+<app-qualidade-pesquisa></app-qualidade-pesquisa>
