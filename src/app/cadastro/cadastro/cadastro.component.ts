@@ -9,10 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class CadastroComponent implements OnInit {
   selecao:any = [
     {label: 'Comercial', value:1},
-    {label: 'Não Comercial', value: 2}
+    {label: 'Não Comercial', value:2}
   ];
-
-
 
 
   constructor() {
@@ -20,7 +18,7 @@ export class CadastroComponent implements OnInit {
    }
 
   ngOnInit() {
-   this.selecao =1
+   this.selecao(1);
 
   }
 

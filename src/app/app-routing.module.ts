@@ -1,3 +1,4 @@
+import { AmostraCadastroComponent } from './tipo-amostra/amostra-cadastro/amostra-cadastro.component';
 import { CadastroComponent } from './cadastro/cadastro/cadastro.component';
 import { CadastroCifComponent } from './cif/cadastro-cif/cadastro-cif.component';
 import { TsatualtsanteriorCadastroComponent } from './tsatualtsanterior/tsatualtsanterior-cadastro/tsatualtsanterior-cadastro.component';
@@ -91,6 +92,8 @@ const routes: Routes = [
   {path: 'identificacao-fuste/:codigo', component:CadastroCifComponent},
   {path: 'cadastro/cadastro', component:CadastroComponent},
   {path: 'cadastro/:codigo', component:CadastroComponent},
+  {path: 'tipo-amostra/cadastro', component:AmostraCadastroComponent},
+  {path: 'tipo-amostra/:codigo', component:AmostraCadastroComponent},
 
 
   {path: '**', redirectTo: 'pagina-nao-encontrada'},

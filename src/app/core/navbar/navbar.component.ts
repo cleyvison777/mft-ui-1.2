@@ -174,7 +174,7 @@ export class NavbarComponent implements OnInit {
             },
             {
               label: 'Tipo Amostra',
-              routerLink: '/appavaliacao'
+              routerLink: '/tipo-amostra/cadastro'
             },
             {
               label: 'Qualidade do Fuste',
