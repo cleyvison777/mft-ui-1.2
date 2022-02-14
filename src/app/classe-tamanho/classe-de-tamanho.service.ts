@@ -2,7 +2,7 @@ import { CadClasseDeTamanho } from './../core/model';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 export class classeTamanhoFiltro {
-  cdEmpresa: any;
+cdEmpresa: any;
   page = 0;
   size = 10;
 }

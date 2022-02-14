@@ -1,55 +1,49 @@
-<div class=" container">
+<div class="container">
   <div class="ui-g">
-      <p-fieldset legend="Dados Cadastrais">
-        <div class="ui-g">
-          <div class="ui-g-12">
-            <form  autocomplete="off" (ngSubmit)="consultar()">
-                  <div class="ui-g-12 ui-fluid">
-                      <label style="display: block">Pesquisar por Iluminação: </label>
-                      <div class="ui-g-12 ui-md-7">
-                          <div class="ui-inputgroup">
-                              <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
-                              <input type="text" pInputText name="nmCif" [(ngModel)]="filtro.nmCif" placeholder="Pesquisar">
-                          </div>
-                      </div>
-
-                  </div>
-              </form>
-          </div>
-        </div>
-        <div class="ui-g">
-
-            <div class="ui-g-12 ui-md-12">
-                  <p-table [value]="cif" [responsive]="true" [paginator]="true" [rows]="filtro.size" [lazy]="true" #tabela
-                   (onLazyLoad)="aoMudarPaginaCif($event)" [totalRecords]="totalRegistrosCif">
-                    <ng-template pTemplate="header">
-                      <tr>
-                        <th>Id</th>
-                        <th>Classe de Tamanho</th>
-                        <th>Nome CIF</th>
-                        <th></th>
-                      </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-cif>
-                      <tr>
-                        <td>{{cif.cdCif}}</td>
-                        <td>{{cif.cdClasseTamanho.nmClasseTamanho}}</td>
-                        <td>{{cif.nmCif}}</td>
-
-                        <td><button pButton icon="pi pi-trash" style="margin-right: 10px;" pTooltip="remover" class="ui-button-danger" tooltipPosition="top"
-                          (click)="confirmarExclusao(cif)"></button>
-                        <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/?', cif.cdCif]"></button></td>
-                      </tr>
-                    </ng-template>
-                  </p-table>
 
 
-                </div>
+   <p-fieldset legend="Dados cadastrais">
+       <div class="ui-g-12 ui-md-12">
+             <form  autocomplete="off" (ngSubmit)="consultaClasseTamanho()">
+               <div class="ui-g-12 ui-fluid">
+                   <label style="display: block">Pesquisar Classe Tamanho: </label>
+                   <div class="ui-g-12 ui-md-7">
+                       <div class="ui-inputgroup">
+                           <span class="ui-inputgroup-addon"><i class="pi pi-search" style="line-height: 1.25;"></i></span>
+                           <input type="text" pInputText name="nmClasseTamanho" [(ngModel)]="filtroInd.nmClasseTamanho" placeholder="Pesquisar">
+                       </div>
+                   </div>
 
-              </div>
+               </div>
+           </form>
+       </div>
 
-      </p-fieldset>
+         <div class="ui-g-12 ui-md-12">
+             <p-table [value]="listaClasseTamanho"  [paginator]="true"   [rows]="filtro.size" [responsive]="true" [lazy]="true"
+               [totalRecords]="totalregistrosClassTamanho" (onLazyLoad)="aoMudarPaginaClasseTamanho($event)" #tabela>
+                 <ng-template pTemplate="header" >
+                     <tr>
 
+                       <th>Codigo</th>
+                       <th> Classe de Tamanho Indivíduo</th>
+                       <th></th>
 
-      </div>
+                     </tr>
+                 </ng-template>
+                 <ng-template pTemplate="body" let-listaClasseTamanho>
+                     <tr class="hoverCtegoria">
+                       <td>{{listaClasseTamanho.cdClasseTamanho}}</td>
+                       <td>{{listaClasseTamanho.nmClasseTamanho}}</td>
+
+                       <td style="text-align: center;"><button pButton icon="pi pi-trash" style="margin-right: 10px;"
+                         pTooltip="remover" class="ui-button-danger" tooltipPosition="left" (click)="confirmarExclusaoClasseTamanho(listaClasseTamanho)">
+                       </button>
+                       <button pButton icon="pi pi-pencil" pTooltip="editar" [routerLink]="['/classe-tamanho-individuo', listaClasseTamanho.cdClasseTamanho]"></button></td>
+                 </tr>
+               </ng-template>
+             </p-table>
+
+         </div>
+     </p-fieldset>
+  </div>
 </div>

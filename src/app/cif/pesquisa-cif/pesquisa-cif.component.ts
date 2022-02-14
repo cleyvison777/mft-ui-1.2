@@ -1,4 +1,4 @@
-import { CifService, CifFiltro } from './../cif.service';
+import { CifService, CifFiltro, classFiltro } from './../cif.service';
 import { MenuService } from 'src/app/core/menu/menu.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
@@ -13,11 +13,13 @@ import { typeWithParameters } from '@angular/compiler/src/render3/util';
 })
 export class PesquisaCifComponent implements OnInit {
   totalRegistrosCif = 0;
-
   cdEmp: any;
   cif = [];
   filtro = new  CifFiltro();
+  filtroInd = new classFiltro();
   @ViewChild('tabela') grid;
+  listaClasseTamanho = [];
+  totalregistrosClassTamanho = 0;
 
   constructor(
     private cifService: CifService,
@@ -29,9 +31,10 @@ export class PesquisaCifComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.carregarEmpresaSelecionada();
   }
 
-  consultar(page = 0) {
+  consultarcif(page = 0) {
     this.filtro.page = page;
     this.filtro.cdEmpresa = this.cdEmp;
      this.cifService.consulta(this.filtro)
@@ -49,15 +52,14 @@ export class PesquisaCifComponent implements OnInit {
   }
 
 
-
      excluir(cif: any) {
        this.cifService.excluir(cif.cdCif)
        .then(() => {
         if (this.grid.first === 0) {
-          this.consultar();
+          this.consultarcif();
         } else {
           this.grid.first = 0;
-          this.consultar();
+          this.consultarcif();
         }
         this.toasty.success('Cif excluída com sucesso!');
       })
@@ -75,13 +77,60 @@ export class PesquisaCifComponent implements OnInit {
 
   }
 
+
+
+
+
+
+  consultaClasseTamanho(page = 0){
+    this.filtro.page = page;
+    // this.filtro.cdEmpresa = this.cdEmp;
+    this.cifService.consultarInd(this.filtroInd)
+     .then(resultado =>{
+       this.cifService = resultado.total;
+       this.cifService = resultado.listaClasseTamanho;
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  //paginação
+  aoMudarPaginaClasseTamanho(event: LazyLoadEvent) {
+    const page = event.first / event.rows;
+    this.consultaClasseTamanho(page);
+  }
+
+
+  excluirClasseIndividuo(listaClasseTamanho: any){
+    this.cifService.excluirInd(listaClasseTamanho.cdClasseTamanho)
+     .then(()=> {
+       if(this.grid.first === 0){
+         this.consultaClasseTamanho();
+       } else {
+        this.grid.first = 0;
+        this.consultaClasseTamanho();
+       }
+       this.toasty.success('Classe Tamanho excluída com sucesso!');
+     })
+     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  confirmarExclusaoClasseTamanho(listaClasseTamanho: any) {
+    this.confirmation.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+        this.excluirClasseIndividuo(listaClasseTamanho);
+      }
+    });
+  }
+
   carregarEmpresaSelecionada() {
     return this.menuService.carregarEmpresaSelecionada()
       .then(empresaSelecionada => {
         this.cdEmp = empresaSelecionada;
-        this.consultar();
+        this.consultaClasseTamanho();
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
+
 
 }
