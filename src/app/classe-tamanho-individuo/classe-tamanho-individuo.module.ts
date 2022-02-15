@@ -5,7 +5,6 @@ import { ClasseTamanhoPesquisaComponent } from './classe-tamanho-pesquisa/classe
 
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/components/messages/messages';
-import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -20,6 +19,7 @@ import { AppRoutingModule } from './../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {PanelModule} from 'primeng/components/panel/panel';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   declarations: [ClasseTamanhoCadastroComponent, ClasseTamanhoPesquisaComponent],
@@ -37,13 +37,13 @@ import {PanelModule} from 'primeng/components/panel/panel';
     FieldsetModule,
     BrowserAnimationsModule,
     SelectButtonModule,
-    DropdownModule,
     TableModule,
     MessagesModule,
     MessageModule,
     ButtonModule,
     MultiSelectModule,
-    PanelModule
+    PanelModule,
+    DialogModule
   ]
 })
 export class ClasseTamanhoIndividuoModule { }

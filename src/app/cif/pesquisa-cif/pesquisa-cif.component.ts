@@ -1,4 +1,4 @@
-import { CifService, CifFiltro, classFiltro } from './../cif.service';
+import { CifService, CifFiltro } from './../cif.service';
 import { MenuService } from 'src/app/core/menu/menu.service';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
@@ -16,7 +16,6 @@ export class PesquisaCifComponent implements OnInit {
   cdEmp: any;
   cif = [];
   filtro = new  CifFiltro();
-  filtroInd = new classFiltro();
   @ViewChild('tabela') grid;
   listaClasseTamanho = [];
   totalregistrosClassTamanho = 0;
@@ -82,52 +81,15 @@ export class PesquisaCifComponent implements OnInit {
 
 
 
-  consultaClasseTamanho(page = 0){
-    this.filtro.page = page;
-    // this.filtro.cdEmpresa = this.cdEmp;
-    this.cifService.consultarInd(this.filtroInd)
-     .then(resultado =>{
-       this.cifService = resultado.total;
-       this.cifService = resultado.listaClasseTamanho;
-     })
-     .catch(erro => this.errorHandler.handle(erro));
-  }
-
-  //paginação
-  aoMudarPaginaClasseTamanho(event: LazyLoadEvent) {
-    const page = event.first / event.rows;
-    this.consultaClasseTamanho(page);
-  }
 
 
-  excluirClasseIndividuo(listaClasseTamanho: any){
-    this.cifService.excluirInd(listaClasseTamanho.cdClasseTamanho)
-     .then(()=> {
-       if(this.grid.first === 0){
-         this.consultaClasseTamanho();
-       } else {
-        this.grid.first = 0;
-        this.consultaClasseTamanho();
-       }
-       this.toasty.success('Classe Tamanho excluída com sucesso!');
-     })
-     .catch(erro => this.errorHandler.handle(erro));
-  }
 
-  confirmarExclusaoClasseTamanho(listaClasseTamanho: any) {
-    this.confirmation.confirm({
-      message: 'Tem certeza que deseja excluir?',
-      accept: () => {
-        this.excluirClasseIndividuo(listaClasseTamanho);
-      }
-    });
-  }
 
   carregarEmpresaSelecionada() {
     return this.menuService.carregarEmpresaSelecionada()
       .then(empresaSelecionada => {
         this.cdEmp = empresaSelecionada;
-        this.consultaClasseTamanho();
+        this.consultarcif();
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

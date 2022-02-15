@@ -19,28 +19,28 @@ export class ClasseTamanhoService {
   constructor(private http: Http) { }
 
 
-  // pesquisar2(cdEmpresa: any): Promise<any> {
+  pesquisar2(cdEmpresa: any): Promise<any> {
 
-  //   const params = new URLSearchParams;
-  //   const headers = new Headers;
-  //   headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
-  //   params.set('cdEmpresa', cdEmpresa);
+   const params = new URLSearchParams;
+    const headers = new Headers;
+   headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    params.set('cdEmpresa', cdEmpresa);
 
-  //   return this.http.get(`${this.ClassIndividuoURL}?cdEmpresa=${cdEmpresa}`, { headers})
-  //   .toPromise()
-  //     .then(response => {
-  //       const responseJson = response.json();
-  //       const listaClasseTamanho = responseJson.content;
+    return this.http.get(`${this.ClassIndividuoURL}?cdEmpresa=${cdEmpresa}`, { headers})
+  .toPromise()
+   .then(response => {
+     const responseJson = response.json();
+      const listaClasseTamanho = responseJson.content;
 
-  //       const resultado = {
-  //         listaClasseTamanho,
-  //          total: responseJson.totalElements
-  //       };
-  //       return resultado;
-  //     });
+       const resultado = {
+         listaClasseTamanho,
+          total: responseJson.totalElements
+      };
+       return resultado;
+     });
 
 
-  // }
+  }
 
           //consultar
           consultar(filtro: ClassIndividuoFiltro): Promise<any> {
